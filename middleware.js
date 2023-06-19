@@ -1,36 +1,33 @@
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 
-// export async function middleware(req) {
-//   const res = NextResponse.next()
-//   const supabase = createMiddlewareClient({ req, res })
-
-//   const {
-//     data: { user },
-//   } = await supabase.auth.getUser()
-
-//   // if user is signed in and the current path is / redirect the user to /account
-//   if (user && req.nextUrl.pathname === '/') {
-//     console.log('user found!', user)
-//     return NextResponse.redirect(new URL('/account', req.url))
-//   }
-
-//   // if user is not signed in and the current path is not / redirect the user to /
-//   if (!user && req.nextUrl.pathname !== '/') {
-//     console.log('user not found!')
-//     return NextResponse.redirect(new URL('/', req.url))
-//   }
-
-//   return res
-// }
+const UNPROTECTED_ROUTES = ['/', '/:cardId', '/login', '/new-card']
+const PROTECTED_ROUTES = ['/account']
 
 export async function middleware(req) {
+  // console.log(req.nextUrl.pathname)
+
   const res = NextResponse.next()
   const supabase = createMiddlewareClient({ req, res })
-  await supabase.auth.getSession()
-  return res
-}
 
-export const config = {
-  matcher: ['/', '/account'],
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  if (
+    [...UNPROTECTED_ROUTES, ...PROTECTED_ROUTES].includes(req.nextUrl.pathname)
+  )
+    if (user && req.nextUrl.pathname === '/login') {
+      // if user is signed in and the current path is login, then redirect to home
+      console.log('user already logged in!')
+      return NextResponse.redirect(new URL('/', req.url))
+    }
+
+  // if user is not signed in and the current path is not / redirect the user to /
+  if (!user && PROTECTED_ROUTES.includes(req.nextUrl.pathname)) {
+    console.log('user not found!')
+    return NextResponse.redirect(new URL('/login', req.url))
+  }
+
+  return res
 }
