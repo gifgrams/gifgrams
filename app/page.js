@@ -9,8 +9,10 @@ export default async function App() {
 
   return (
     <>
-      <h1>hello world</h1>
-      <h3>{session.user.email}</h3>
+      <main>
+        <h1>hello world</h1>
+        <h3>{session?.user.email}</h3>
+      </main>
     </>
   )
 }
