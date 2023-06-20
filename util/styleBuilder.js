@@ -7,9 +7,10 @@
  * @example styleBuilder(["a", "b"]) -> "a b"
  * @example styleBuilder(["a", ["b", condition]]) -> "a b" if condition else "a"
  */
-export function styleBuilder(styles) {
+export default function styleBuilder(styles) {
   const usedStyles = []
   for (const style of styles) {
+    if (!style) continue
     if (typeof style === 'string') usedStyles.push(style)
     else if (style[1]) usedStyles.push(style[0])
   }

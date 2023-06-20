@@ -1,5 +1,11 @@
-import styles from './layout.module.scss'
+import Image from 'next/image'
+import styles from '@/styles/app/(auth)/layout.module.scss'
 
 export default function authLayout({ children }) {
-  return <div className={styles.container}>{children}</div>
+  return (
+    <div className={styles.container}>
+      <Image src="/wordmark.svg" alt="wordmark" width={208} height={42}></Image>
+      {children}
+    </div>
+  )
 }
