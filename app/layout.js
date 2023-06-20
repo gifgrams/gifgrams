@@ -4,14 +4,7 @@ import localFont from 'next/font/local'
 const generalSans = localFont({
   src: [
     {
-      path: '../fonts/GeneralSans-Regular.otf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../fonts/GeneralSans-Medium.otf',
-      weight: '500',
-      style: 'normal',
+      path: '../fonts/GeneralSans-Variable.ttf',
     },
   ],
 })
