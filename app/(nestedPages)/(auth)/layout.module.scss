@@ -1,0 +1,14 @@
+.container {
+  width: 100dvw;
+  min-height: 100dvh;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #41C4E0;
+  background: url('/ripple.png');
+  background-size: cover;
+  background-position: center center;
+  overflow: scroll;
+}

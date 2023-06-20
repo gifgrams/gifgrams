@@ -1,3 +1,5 @@
+import styles from './layout.module.scss'
+
 export default function authLayout({ children }) {
-  return <div style={{ background: 'red' }}>{children}</div>
+  return <div className={styles.container}>{children}</div>
 }
