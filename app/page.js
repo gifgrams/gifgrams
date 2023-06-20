@@ -1,6 +1,11 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 
+export const metadata = {
+  title: 'GifGrams',
+  description: '...',
+}
+
 export default async function App() {
   const supabase = createServerComponentClient({ cookies })
   const {
