@@ -1,5 +1,5 @@
 import Icon from '@/ui/Icon'
-import styles from '@/styles/components/AuthToggle.scss'
+import styles from '@/styles/components/AuthToggle.module.scss'
 
 export default function AuthToggle() {
   return (

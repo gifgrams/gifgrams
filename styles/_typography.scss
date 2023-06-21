@@ -3,36 +3,39 @@
 $weight-medium: 500;
 $weight-semibold: 600;
 
-body {
+@mixin text-base {
   font-family: 'General Sans', 'ui-sans-serif', 'sans-serif';
-  font-weight: $weight-medium;
 }
 
-.text-sm {
+@mixin text-sm {
   font-size: 16px;
   line-height: 24px;
 }
 
-.text-md {
+@mixin text-md {
   font-size: 20px;
   line-height: 24px;
 }
 
-.text-lg {
+@mixin text-lg {
   font-size: 24px;
   line-height: 24px;
 }
 
-.text-xl {
+@mixin text-xl {
   font-size: 32px;
   line-height: 24px;
 }
 
-.text-2xl {
+@mixin text-2xl {
   font-size: 36px;
   line-height: 24px;
 }
 
-.font-bold {
+@mixin font-medium {
+  font-weight: $weight-medium;
+}
+
+@mixin font-semibold {
   font-weight: $weight-semibold;
 }

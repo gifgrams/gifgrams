@@ -1,5 +1,4 @@
 import '@/styles/globals.scss'
-import '@/styles/typography.scss'
 import localFont from 'next/font/local'
 
 const generalSans = localFont({

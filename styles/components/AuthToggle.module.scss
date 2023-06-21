@@ -1,0 +1,16 @@
+@use '/styles/typography';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  opacity: 0.4;
+
+  >p {
+    @include typography.text-base;
+    @include typography.text-md;
+    @include typography.font-semibold;
+    margin: 0;
+    display: inline-block;
+  }
+}

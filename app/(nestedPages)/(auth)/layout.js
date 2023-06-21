@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import AuthToggle from '@/components/AuthToggle'
-import styles from '@/styles/app/(auth)/layout.module.scss'
+import styles from '@/styles/app/authLayout.module.scss'
 
 export default function authLayout({ children }) {
   return (
