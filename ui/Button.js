@@ -1,11 +1,22 @@
+import { colors } from '@/constants'
 import Icon from '@/ui/Icon'
-import styles from '@/ui/Button.modules.scss'
+import styles from '@/styles/ui/Button.module.scss'
 
-export default function Button({ icon, label, onClick }) {
+export default function Button(props) {
+  const { icon, label, background, color, onClick, style, ...buttonProps } =
+    props
   return (
     <div className={styles.container}>
-      <button onClick={onclick}>
-        <Icon width={24} path={icon} />
+      <button
+        style={{
+          ...{ background: colors[background], color: colors[color] },
+          ...style,
+        }}
+        onClick={onclick}
+        {...buttonProps}
+      >
+        {icon && <Icon width={24} path={icon} />}
+        <p>{label}</p>
       </button>
     </div>
   )

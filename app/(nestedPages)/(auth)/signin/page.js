@@ -4,6 +4,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import TextInput from '@/ui/TextInput'
+import Button from '@/ui/Button'
 import styles from '@/styles/app/signin.module.scss'
 
 export default function Login() {
@@ -42,6 +43,12 @@ export default function Login() {
       <h1>Sign In</h1>
       <TextInput label="Email" placeholder="Email" />
       <TextInput label="Password" placeholder="Password" />
+      <Button
+        label="Sign In"
+        background="bubbleBlue"
+        color="justWhite"
+        style={{ marginTop: '48px' }}
+      />
       {/* <input
         name="email"
         onChange={(e) => setEmail(e.target.value)}

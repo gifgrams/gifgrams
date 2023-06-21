@@ -1,0 +1,19 @@
+@use '/styles/colors';
+@use '/styles/typography';
+
+.container {
+
+  >button {
+    width: 416px;
+    height: 56px;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    @include typography.text-base;
+    @include typography.text-lg;
+    @include typography.text-semibold;
+  }
+}

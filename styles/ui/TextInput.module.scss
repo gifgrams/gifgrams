@@ -2,12 +2,12 @@
 @use '/styles/typography';
 
 .container {
-  @include typography.text-base;
 
   >h3 {
-    margin: 24px 0px 12px 0px;
+    @include typography.text-base;
     @include typography.text-lg;
     @include typography.text-semibold;
+    margin: 24px 0px 12px 0px;
     color: colors.$text-secondary;
   }
 
