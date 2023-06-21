@@ -1,0 +1,38 @@
+@use 'colors';
+
+$weight-medium: 500;
+$weight-semibold: 600;
+
+body {
+  font-family: 'General Sans', 'ui-sans-serif', 'sans-serif';
+  font-weight: $weight-medium;
+}
+
+.text-sm {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-md {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.text-lg {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.text-xl {
+  font-size: 32px;
+  line-height: 24px;
+}
+
+.text-2xl {
+  font-size: 36px;
+  line-height: 24px;
+}
+
+.font-bold {
+  font-weight: $weight-semibold;
+}
