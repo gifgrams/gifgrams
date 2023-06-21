@@ -3,6 +3,7 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import styles from '@/styles/app/signin.module.scss'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -36,8 +37,8 @@ export default function Login() {
   }
 
   return (
-    <>
-      <h1 className="text-xl font-bold">Login</h1>
+    <div className={styles.container}>
+      <h1>Sign In</h1>
       <input
         name="email"
         onChange={(e) => setEmail(e.target.value)}
@@ -52,6 +53,6 @@ export default function Login() {
       <button onClick={handleSignUp}>Sign up</button>
       <button onClick={handleSignIn}>Sign in</button>
       <button onClick={handleSignOut}>Sign out</button>
-    </>
+    </div>
   )
 }

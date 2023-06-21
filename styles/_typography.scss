@@ -5,6 +5,7 @@ $weight-semibold: 600;
 
 @mixin text-base {
   font-family: 'General Sans', 'ui-sans-serif', 'sans-serif';
+  margin: 0;
 }
 
 @mixin text-sm {
@@ -19,23 +20,23 @@ $weight-semibold: 600;
 
 @mixin text-lg {
   font-size: 24px;
-  line-height: 24px;
+  line-height: 32px;
 }
 
 @mixin text-xl {
   font-size: 32px;
-  line-height: 24px;
+  line-height: 44px;
 }
 
 @mixin text-2xl {
   font-size: 36px;
-  line-height: 24px;
+  line-height: 48px;
 }
 
-@mixin font-medium {
+@mixin text-medium {
   font-weight: $weight-medium;
 }
 
-@mixin font-semibold {
+@mixin text-semibold {
   font-weight: $weight-semibold;
 }

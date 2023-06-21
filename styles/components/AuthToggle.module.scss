@@ -9,7 +9,7 @@
   >p {
     @include typography.text-base;
     @include typography.text-md;
-    @include typography.font-semibold;
+    @include typography.text-semibold;
     margin: 0;
     display: inline-block;
   }
