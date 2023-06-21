@@ -13,5 +13,6 @@
     @include typography.text-xl;
     @include typography.text-semibold;
     margin: 0px 0px 48px 0px;
+    color: colors.$text-primary;
   }
 }

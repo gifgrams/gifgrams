@@ -3,6 +3,7 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import TextInput from '@/ui/TextInput'
 import styles from '@/styles/app/signin.module.scss'
 
 export default function Login() {
@@ -39,7 +40,9 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <h1>Sign In</h1>
-      <input
+      <TextInput label="Email" placeholder="Email" />
+      <TextInput label="Password" placeholder="Password" />
+      {/* <input
         name="email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
@@ -49,10 +52,7 @@ export default function Login() {
         name="password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
-      />
-      <button onClick={handleSignUp}>Sign up</button>
-      <button onClick={handleSignIn}>Sign in</button>
-      <button onClick={handleSignOut}>Sign out</button>
+      /> */}
     </div>
   )
 }
