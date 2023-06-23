@@ -1,6 +1,8 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 
+import SignOut from '@/components/SignOut'
+
 export const metadata = {
   title: 'GifGrams',
   description: '...',
@@ -18,6 +20,7 @@ export default async function App() {
         <h1>hello world</h1>
         <h3>{session?.user.email}</h3>
       </main>
+      <SignOut />
     </>
   )
 }

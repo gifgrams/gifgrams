@@ -12,7 +12,7 @@ export default function Button(props) {
           ...{ background: colors[background], color: colors[color] },
           ...style,
         }}
-        onClick={onclick}
+        onClick={onClick}
         {...buttonProps}
       >
         {icon && <Icon width={24} path={icon} />}

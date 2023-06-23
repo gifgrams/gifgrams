@@ -15,5 +15,10 @@
     @include typography.text-base;
     @include typography.text-lg;
     @include typography.text-semibold;
+    transition: filter 0.2s;
+
+    &:active {
+      filter: brightness(0.9);
+    }
   }
 }

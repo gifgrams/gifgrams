@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import TextInput from '@/ui/TextInput'
 import Button from '@/ui/Button'
+import AuthToggle from '@/components/AuthToggle'
 import styles from '@/styles/app/signin.module.scss'
 
 export default function Login() {
@@ -12,18 +13,6 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const router = useRouter()
   const supabase = createClientComponentClient()
-
-  const handleSignUp = async () => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
-      },
-    })
-    console.log(data, error)
-    router.refresh()
-  }
 
   const handleSignIn = async () => {
     await supabase.auth.signInWithPassword({
@@ -39,27 +28,33 @@ export default function Login() {
   }
 
   return (
-    <div className={styles.container}>
-      <h1>Sign In</h1>
-      <TextInput label="Email" placeholder="Email" />
-      <TextInput label="Password" placeholder="Password" />
-      <Button
-        label="Sign In"
-        background="bubbleBlue"
-        color="justWhite"
-        style={{ marginTop: '48px' }}
-      />
-      {/* <input
-        name="email"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-      <input
-        type="password"
-        name="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-      /> */}
-    </div>
+    <>
+      <div className={styles.container}>
+        <h1>Sign In</h1>
+        <TextInput
+          label="Email"
+          placeholder="Email"
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <TextInput
+          label="Password"
+          placeholder="Password"
+          type="password"
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+        <Button
+          label="Sign In"
+          background="bubbleBlue"
+          color="justWhite"
+          style={{ marginTop: '48px' }}
+          onClick={handleSignIn}
+        />
+      </div>
+      <AuthToggle label="Sign Up" path="/signup" />
+    </>
   )
 }

@@ -1,0 +1,36 @@
+@use '/styles/breakpoints';
+@use '/styles/colors';
+@use '/styles/typography';
+
+$margin: 24px;
+
+.container {
+  max-width: calc(100svw - (2 * $margin));
+  padding: 12px 16px 12px 12px;
+  border-radius: 16px;
+  display: inline-block;
+  position: fixed;
+  bottom: $margin;
+  right: $margin;
+  display: flex;
+  gap: 12px;
+  background: white;
+  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.1);
+
+  >p {
+    @include typography.text-base;
+    @include typography.text-sm;
+    @include typography.text-medium;
+    color: colors.$text-primary;
+  }
+
+  >h3 {
+    @include typography.text-base;
+    @include typography.text-sm;
+    @include typography.text-semibold;
+  }
+
+  @media screen and (max-width: breakpoints.$phone) {
+    width: calc(100svw - (2 * $margin));
+  }
+}

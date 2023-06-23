@@ -6,6 +6,10 @@
   gap: 8px;
   opacity: 0.4;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   >p {
     @include typography.text-base;
     @include typography.text-md;
