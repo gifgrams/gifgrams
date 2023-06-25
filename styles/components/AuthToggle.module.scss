@@ -1,9 +1,11 @@
+@use '/styles/colors';
 @use '/styles/typography';
 
 .container {
   display: flex;
   flex-direction: row;
   gap: 8px;
+  color: colors.$just-black;
   opacity: 0.4;
 
   &:hover {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import Icon from '@/ui/Icon'
+import UserCircle from '@/public/icons/UserCircle.svg'
 import styles from '@/styles/components/AuthToggle.module.scss'
 
 export default function AuthToggle({ label, path }) {
@@ -14,7 +14,7 @@ export default function AuthToggle({ label, path }) {
         router.push(path)
       }}
     >
-      <Icon path="User Circle" />
+      <UserCircle />
       <p>{label}</p>
     </div>
   )

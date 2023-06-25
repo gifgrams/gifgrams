@@ -17,17 +17,30 @@ $margin: 24px;
   background: white;
   box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.1);
 
-  >p {
+  &.neutral {
+    background: #ffffff;
+  }
+
+  &.success {
+    background: #ffffff;
+  }
+
+  &.warning {
+    background: #ffffff;
+  }
+
+  p {
     @include typography.text-base;
     @include typography.text-sm;
     @include typography.text-medium;
-    color: colors.$text-primary;
+    color: colors.$text-secondary;
   }
 
-  >h3 {
+  h3 {
     @include typography.text-base;
     @include typography.text-sm;
     @include typography.text-semibold;
+    color: colors.$text-primary;
   }
 
   @media screen and (max-width: breakpoints.$phone) {

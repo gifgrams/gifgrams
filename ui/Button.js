@@ -1,5 +1,5 @@
 import { colors } from '@/constants'
-import Icon from '@/ui/Icon'
+
 import styles from '@/styles/ui/Button.module.scss'
 
 export default function Button(props) {
@@ -15,7 +15,7 @@ export default function Button(props) {
         onClick={onClick}
         {...buttonProps}
       >
-        {icon && <Icon width={24} path={icon} />}
+        {/* {icon && <Icon width={24} path={icon} />} */}
         <p>{label}</p>
       </button>
     </div>
