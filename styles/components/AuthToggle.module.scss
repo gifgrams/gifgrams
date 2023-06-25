@@ -6,9 +6,11 @@
   flex-direction: row;
   gap: 8px;
   color: colors.$just-black;
-  opacity: 0.4;
+  opacity: 0.3;
+  transition: opacity 0.2s;
 
   &:hover {
+    opacity: 0.4;
     cursor: pointer;
   }
 

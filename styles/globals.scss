@@ -1,3 +1,5 @@
+@use '/styles/colors';
+
 * {
   box-sizing: border-box;
 }
@@ -14,4 +16,9 @@ button {
   &:hover {
     cursor: pointer;
   }
+}
+
+::selection {
+  background: colors.$bubble-blue;
+  color: colors.$just-white;
 }

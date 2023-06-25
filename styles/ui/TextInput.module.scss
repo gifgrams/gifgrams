@@ -2,12 +2,13 @@
 @use '/styles/typography';
 
 .container {
+  margin-top: 24px;
 
   >h3 {
     @include typography.text-base;
     @include typography.text-lg;
     @include typography.text-semibold;
-    margin: 24px 0px 12px 0px;
+    margin-bottom: 12px;
     color: colors.$text-secondary;
   }
 
@@ -28,6 +29,10 @@
 
     &::placeholder {
       color: colors.$text-tertiary;
+    }
+
+    &:hover {
+      border-color: darken(colors.$n-100, 10%);
     }
 
     &:focus {

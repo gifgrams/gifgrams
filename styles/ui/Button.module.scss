@@ -6,7 +6,7 @@
   >button {
     width: 416px;
     height: 56px;
-    border: none;
+    border: 2px solid colors.$bubble-blue;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -15,10 +15,20 @@
     @include typography.text-base;
     @include typography.text-lg;
     @include typography.text-semibold;
-    transition: filter 0.2s;
+    transition: border-color 0.2s, background 0.2s;
+
+    &:hover {
+      border-color: darken(colors.$bubble-blue, 10%) !important;
+      background: lighten(colors.$bubble-blue, 5%) !important;
+    }
 
     &:active {
-      filter: brightness(0.9);
+      border-color: darken(colors.$bubble-blue, 10%) !important;
+      background: darken(colors.$bubble-blue, 10%) !important;
+    }
+
+    &:focus {
+      outline-color: transparent;
     }
   }
 }

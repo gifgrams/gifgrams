@@ -19,7 +19,7 @@ export default function authLayout({ children }) {
         open={true}
         severity="error"
         subject={'Error signing in'}
-        message={'Hello world'}
+        message={'Your username or password is incorrect.'}
       />
     </>
   )
