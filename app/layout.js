@@ -1,5 +1,6 @@
 import '@/styles/globals.scss'
 import localFont from 'next/font/local'
+import Toast from '@/ui/Toast'
 
 const generalSans = localFont({
   src: [

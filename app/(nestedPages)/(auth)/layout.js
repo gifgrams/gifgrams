@@ -15,7 +15,12 @@ export default function authLayout({ children }) {
         ></Image>
         {children}
       </div>
-      <Toast open={true} subject={'Error signing in'} message={'Hello world'} />
+      <Toast
+        open={true}
+        severity="error"
+        subject={'Error signing in'}
+        message={'Hello world'}
+      />
     </>
   )
 }
