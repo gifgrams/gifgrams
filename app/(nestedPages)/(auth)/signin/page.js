@@ -15,11 +15,13 @@ export default function Login() {
   const supabase = createClientComponentClient()
 
   const handleSignIn = async () => {
-    await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
-    router.refresh()
+    if (error) {
+      console.log('Error signing in')
+    } else router.refresh()
   }
 
   const handleSignOut = async () => {

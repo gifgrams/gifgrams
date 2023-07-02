@@ -1,0 +1,26 @@
+@use '/styles/breakpoints';
+@use '/styles/colors';
+@use '/styles/constants';
+
+.container {
+  width: 100svw;
+  height: 96px;
+  padding: 0px 24px;
+  display: flex;
+  justify-content: center;
+  background: colors.$bubble-blue;
+
+  >.content {
+    width: constants.$navBarContentMaxWidth;
+    max-width: constants.$navBarContentMaxWidth;
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    >.wordmark {
+      position: relative;
+      top: 3px;
+    }
+  }
+}

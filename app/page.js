@@ -1,6 +1,6 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-
+import NavBar from '@/components/NavBar'
 import SignOut from '@/components/SignOut'
 
 export const metadata = {
@@ -16,8 +16,9 @@ export default async function App() {
 
   return (
     <>
+      <NavBar newBtnVisible={true} />
       <main>
-        <h1>hello world</h1>
+        {/* <h1>hello world</h1> */}
         <h3>{session?.user.email}</h3>
       </main>
       <SignOut />
