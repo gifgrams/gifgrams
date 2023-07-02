@@ -8,6 +8,7 @@
   color: colors.$just-black;
   opacity: 0.3;
   transition: opacity 0.2s;
+  user-select: none;
 
   &:hover {
     opacity: 0.4;
