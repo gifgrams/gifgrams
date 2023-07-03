@@ -4,6 +4,14 @@
   width: 130px;
   height: 48px;
   border-radius: 24px;
+  position: relative;
   box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.10);
   background: colors.$just-white;
+
+  >.pfp {
+    border-radius: 18px;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+  }
 }
