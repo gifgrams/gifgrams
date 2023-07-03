@@ -3,7 +3,6 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import Button from '@/ui/Button'
 import TextInput from '@/ui/TextInput'
 import Toast from '@/ui/Toast'

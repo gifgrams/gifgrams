@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import styleBuilder from '@/util/styleBuilder'
 import styles from '@/styles/ui/Toast.module.scss'
 import ErrorIcon from '@/public/icons/Error.svg'
@@ -10,12 +11,7 @@ const icons = {
   success: <SuccessIcon />,
 }
 
-export default function Toast({
-  open = true,
-  severity = 'info',
-  subject,
-  message,
-}) {
+function Toast({ open = true, severity = 'info', subject, message }) {
   return (
     <>
       {open && (
@@ -29,4 +25,8 @@ export default function Toast({
       )}
     </>
   )
+}
+
+export default function emitToast(subject, message, severity = 'info') {
+  toast(<Toast severity={severity} subject={subject} message={message} />)
 }
