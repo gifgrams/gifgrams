@@ -20,6 +20,7 @@ const StyledContainer = styled(ToastContainer)`
   }
   .Toastify__toast {
     padding: 0;
+    margin: 12px 0px 0px 0px;
     overflow: visible;
     background: none;
     box-shadow: none;
@@ -28,7 +29,9 @@ const StyledContainer = styled(ToastContainer)`
     padding: 0;
     animation: none;
   }
-  .Toastify__progress-bar {
+  Toastify__toast-container {
+    right: 24px;
+    bottom: 24px;
   }
 `
 
