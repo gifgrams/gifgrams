@@ -18,13 +18,13 @@ export default function SignIn() {
 
   const handleSignIn = async (e) => {
     e.preventDefault()
-    console.log(e)
+
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
     if (error) {
-      console.log('Error signing in')
+      console.error('Error signing in')
       toast(
         <Toast
           severity="error"
@@ -46,6 +46,7 @@ export default function SignIn() {
             name="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            required
           />
           <TextInput
             label="Password"
@@ -54,6 +55,7 @@ export default function SignIn() {
             name="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            required
           />
           <Button
             label="Sign In"

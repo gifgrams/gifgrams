@@ -5,8 +5,13 @@ import 'react-toastify/dist/ReactToastify.css'
 const StyledContainer = styled(ToastContainer)`
   // https://styled-components.com/docs/faqs#how-can-i-override-styles-with-higher-specificity
   &&&.Toastify__toast-container {
-    right: 24px;
-    bottom: 24px;
+    box-sizing: border-box;
+    width: 384px;
+    max-width: 100svw;
+    margin: 24px;
+    padding: 0;
+    right: 0px;
+    bottom: 0px;
   }
   .Toastify__toast {
     width: fit-content;
@@ -26,7 +31,7 @@ export default function Container() {
   return (
     <StyledContainer
       position="bottom-right"
-      autoClose={5000}
+      autoClose={0}
       hideProgressBar={true}
       newestOnTop={true}
       closeButton={false}

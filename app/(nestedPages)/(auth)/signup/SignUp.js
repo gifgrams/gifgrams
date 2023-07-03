@@ -3,8 +3,10 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import TextInput from '@/ui/TextInput'
+import { toast } from 'react-toastify'
 import Button from '@/ui/Button'
+import TextInput from '@/ui/TextInput'
+import Toast from '@/ui/Toast'
 import AuthToggle from '@/components/AuthToggle'
 import styles from '@/styles/app/signin.module.scss'
 
@@ -14,7 +16,9 @@ export default function SignIn() {
   const router = useRouter()
   const supabase = createClientComponentClient()
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault()
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -23,6 +27,9 @@ export default function SignIn() {
       },
     })
     console.log(data, error)
+    if (error) {
+      console.error('Error signing up')
+    }
     router.refresh()
   }
 
@@ -30,28 +37,32 @@ export default function SignIn() {
     <>
       <div className={styles.container}>
         <h1>Sign Up</h1>
-        <TextInput
-          label="Email"
-          placeholder="Email"
-          name="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <TextInput
-          label="Password"
-          placeholder="Password"
-          type="password"
-          name="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <Button
-          label="Sign Up"
-          background="bubbleBlue"
-          color="justWhite"
-          style={{ marginTop: '48px' }}
-          onClick={handleSignUp}
-        />
+        <form>
+          <TextInput
+            label="Email"
+            placeholder="Email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
+          <TextInput
+            label="Password"
+            placeholder="Password"
+            type="password"
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+          <Button
+            label="Sign Up"
+            background="bubbleBlue"
+            color="justWhite"
+            style={{ marginTop: '48px' }}
+            onClick={handleSignUp}
+          />
+        </form>
       </div>
       <AuthToggle label="Sign In" href="/signin" />
     </>

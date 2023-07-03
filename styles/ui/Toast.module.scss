@@ -29,7 +29,8 @@ $margin: 24px;
 // }
 
 .container {
-  max-width: 384px;
+  max-width: calc(100svw - 2 * $margin);
+  width: 384px;
   padding: 12px 16px 12px 12px;
   border-radius: 16px;
   display: inline-block;
@@ -73,8 +74,8 @@ $margin: 24px;
     @include typography.text-semibold;
   }
 
-  @media screen and (max-width: breakpoints.$phone) {
-    max-width: none;
-    width: calc(100svw - (2 * $margin));
-  }
+  // @media screen and (max-width: breakpoints.$phone) {
+  //   max-width: none;
+  //   width: calc(100svw - (2 * $margin));
+  // }
 }
