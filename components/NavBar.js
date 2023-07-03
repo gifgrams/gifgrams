@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import NavDock from '@/components/NavDock'
 import styles from '@/styles/components/NavBar.module.scss'
 
 export default function NavBar({ newBtnVisible }) {
@@ -12,7 +13,7 @@ export default function NavBar({ newBtnVisible }) {
           width={178}
           height={36}
         ></Image>
-        <p>text</p>
+        <NavDock />
       </div>
     </nav>
   )
