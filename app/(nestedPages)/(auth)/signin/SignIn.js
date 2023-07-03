@@ -16,7 +16,9 @@ export default function SignIn() {
   const router = useRouter()
   const supabase = createClientComponentClient()
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e) => {
+    e.preventDefault()
+    console.log(e)
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -33,37 +35,34 @@ export default function SignIn() {
     } else router.refresh()
   }
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    router.refresh()
-  }
-
   return (
     <>
       <div className={styles.container}>
         <h1>Sign In</h1>
-        <TextInput
-          label="Email"
-          placeholder="Email"
-          name="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <TextInput
-          label="Password"
-          placeholder="Password"
-          type="password"
-          name="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <Button
-          label="Sign In"
-          background="bubbleBlue"
-          color="justWhite"
-          style={{ marginTop: '48px' }}
-          onClick={handleSignIn}
-        />
+        <form onSubmit={handleSignIn}>
+          <TextInput
+            label="Email"
+            placeholder="Email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <TextInput
+            label="Password"
+            placeholder="Password"
+            type="password"
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <Button
+            label="Sign In"
+            background="bubbleBlue"
+            color="justWhite"
+            style={{ marginTop: '48px' }}
+            onClick={handleSignIn}
+          />
+        </form>
       </div>
       <AuthToggle label="Sign Up" href="/signup" />
     </>

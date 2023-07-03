@@ -26,11 +26,6 @@ export default function SignIn() {
     router.refresh()
   }
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    router.refresh()
-  }
-
   return (
     <>
       <div className={styles.container}>

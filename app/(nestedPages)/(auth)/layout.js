@@ -12,6 +12,7 @@ export default function authLayout({ children }) {
           alt="wordmark"
           width={208}
           height={42}
+          priority
         ></Image>
         {children}
       </div>
