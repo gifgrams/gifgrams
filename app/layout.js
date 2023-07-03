@@ -1,8 +1,10 @@
+'use client'
+
+import styled from 'styled-components'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/globals.scss'
 import localFont from 'next/font/local'
-import Toast from '@/ui/Toast'
 
 const generalSans = localFont({
   src: [
@@ -12,12 +14,38 @@ const generalSans = localFont({
   ],
 })
 
+const StyledContainer = styled(ToastContainer)`
+  // https://styled-components.com/docs/faqs#how-can-i-override-styles-with-higher-specificity
+  &&&.Toastify__toast-container {
+  }
+  .Toastify__toast {
+    padding: 0;
+    overflow: visible;
+    background: none;
+    box-shadow: none;
+  }
+  .Toastify__toast-body {
+    padding: 0;
+    animation: none;
+  }
+  .Toastify__progress-bar {
+  }
+`
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={generalSans.className}>
         {children}
-        <ToastContainer />
+        <StyledContainer
+          position="bottom-right"
+          autoClose={5000}
+          closeButton={false}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+        />
       </body>
     </html>
   )

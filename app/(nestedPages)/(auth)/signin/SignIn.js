@@ -4,9 +4,10 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState, useContext } from 'react'
 import { toast } from 'react-toastify'
-import TextInput from '@/ui/TextInput'
-import Button from '@/ui/Button'
 import AuthToggle from '@/components/AuthToggle'
+import Button from '@/ui/Button'
+import TextInput from '@/ui/TextInput'
+import Toast from '@/ui/Toast'
 import styles from '@/styles/app/signin.module.scss'
 
 export default function SignIn() {
@@ -22,7 +23,13 @@ export default function SignIn() {
     })
     if (error) {
       console.log('Error signing in')
-      toast.error('Error signing in')
+      toast(
+        <Toast
+          severity="error"
+          subject="Error signing in"
+          message="Username or password is incorrect."
+        />
+      )
     } else router.refresh()
   }
 

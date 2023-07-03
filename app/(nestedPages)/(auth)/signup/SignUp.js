@@ -58,7 +58,7 @@ export default function SignIn() {
           onClick={handleSignUp}
         />
       </div>
-      <AuthToggle label="Sign Up" href="/signin" />
+      <AuthToggle label="Sign In" href="/signin" />
     </>
   )
 }

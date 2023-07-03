@@ -10,7 +10,12 @@ const icons = {
   success: <SuccessIcon />,
 }
 
-export default function Toast({ open, severity = 'info', subject, message }) {
+export default function Toast({
+  open = true,
+  severity = 'info',
+  subject,
+  message,
+}) {
   return (
     <>
       {open && (

@@ -4,45 +4,42 @@
 
 $margin: 24px;
 
-@keyframes fadein {
-  from {
-    transform: translate(0px, 18px);
-    opacity: 0;
-  }
+// @keyframes fadein {
+//   from {
+//     transform: translate(0px, 18px);
+//     opacity: 0;
+//   }
 
-  to {
-    transform: translate(0px, 0px);
-    opacity: 1;
-  }
-}
+//   to {
+//     transform: translate(0px, 0px);
+//     opacity: 1;
+//   }
+// }
 
-@keyframes fadeout {
-  from {
-    transform: translate(0px, 0px);
-    opacity: 1;
-  }
+// @keyframes fadeout {
+//   from {
+//     transform: translate(0px, 0px);
+//     opacity: 1;
+//   }
 
-  to {
-    transform: translate(0px, -18px);
-    opacity: 0;
-  }
-}
+//   to {
+//     transform: translate(0px, -18px);
+//     opacity: 0;
+//   }
+// }
 
 .container {
   max-width: 384px;
   padding: 12px 16px 12px 12px;
   border-radius: 16px;
   display: inline-block;
-  position: fixed;
-  bottom: $margin;
-  right: $margin;
   display: flex;
   gap: 8px;
   background: colors.$just-white;
   box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.1);
 
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation-timing-function: ease-out;
+  // animation: fadein 0.5s, fadeout 0.5s 5s;
+  // animation-timing-function: ease-out;
 
   &.info {
     background: colors.$just-white;
@@ -67,7 +64,7 @@ $margin: 24px;
     @include typography.text-base;
     @include typography.text-sm;
     @include typography.text-medium;
-    color: colors.$text-secondary;
+    color: colors.$text-primary;
   }
 
   h3 {
