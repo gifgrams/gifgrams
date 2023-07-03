@@ -2,7 +2,8 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { toast } from 'react-toastify'
 import TextInput from '@/ui/TextInput'
 import Button from '@/ui/Button'
 import AuthToggle from '@/components/AuthToggle'
@@ -21,6 +22,7 @@ export default function SignIn() {
     })
     if (error) {
       console.log('Error signing in')
+      toast.error('Error signing in')
     } else router.refresh()
   }
 

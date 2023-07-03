@@ -1,3 +1,5 @@
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/globals.scss'
 import localFont from 'next/font/local'
 import Toast from '@/ui/Toast'
@@ -13,7 +15,10 @@ const generalSans = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={generalSans.className}>{children}</body>
+      <body className={generalSans.className}>
+        {children}
+        <ToastContainer />
+      </body>
     </html>
   )
 }
