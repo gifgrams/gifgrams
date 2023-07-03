@@ -8,10 +8,10 @@ export default async function SignOut() {
   const supabase = createClientComponentClient()
 
   const handleSignOut = async () => {
-    console.log('signing out')
+    // console.log('signing out')
     await supabase.auth.signOut()
     router.refresh()
-    console.log('signed out')
+    // console.log('signed out')
   }
 
   return <button onClick={handleSignOut}>Sign Out</button>

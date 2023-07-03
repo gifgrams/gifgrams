@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import Button from '@/ui/Button'
 import TextInput from '@/ui/TextInput'
-import Toast from '@/ui/Toast'
+import emitToast from '@/ui/Toast'
 import AuthToggle from '@/components/AuthToggle'
 import styles from '@/styles/app/signin.module.scss'
 
@@ -25,11 +25,16 @@ export default function SignIn() {
         emailRedirectTo: `${location.origin}/auth/callback`,
       },
     })
-    console.log(data, error)
     if (error) {
       console.error('Error signing up')
+      emitToast('Error signing up', 'Username or password is invalid.', 'error')
     }
-    router.refresh()
+    // router.refresh()
+    emitToast(
+      'A verification link has been sent',
+      `Note: if an account for ${email} already exists, no link will be sent.`,
+      'success'
+    )
   }
 
   return (

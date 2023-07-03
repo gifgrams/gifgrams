@@ -27,6 +27,16 @@ function Toast({ open = true, severity = 'info', subject, message }) {
   )
 }
 
-export default function emitToast(subject, message, severity = 'info') {
+/**
+ * Emit an in-app notification on screen.
+ * @param {string} subject Optional bolded subject line
+ * @param {string} message Optional message
+ * @param {string} severity Optional severity of notification
+ */
+export default function emitToast(
+  subject = '',
+  message = '',
+  severity = 'info'
+) {
   toast(<Toast severity={severity} subject={subject} message={message} />)
 }
