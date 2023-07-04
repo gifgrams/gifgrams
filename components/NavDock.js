@@ -10,6 +10,7 @@ export default function NavDock() {
         width={36}
         height={36}
         alt="pfp"
+        priority
       ></Image>
     </div>
   )

@@ -12,6 +12,7 @@ export default function NavBar({ newBtnVisible }) {
           alt="wordmark"
           width={178}
           height={36}
+          priority
         ></Image>
         <NavDock />
       </div>

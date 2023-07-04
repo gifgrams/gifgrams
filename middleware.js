@@ -5,7 +5,7 @@ const UNPROTECTED_ROUTES = ['/', '/:cardId', '/login', '/new-card']
 const PROTECTED_ROUTES = ['/account']
 
 export async function middleware(req) {
-  // console.log(req.nextUrl.pathname)
+  console.log(req.nextUrl.pathname)
 
   const res = NextResponse.next()
   const supabase = createMiddlewareClient({ req, res })
@@ -17,7 +17,7 @@ export async function middleware(req) {
   // if (
   //   [...UNPROTECTED_ROUTES, ...PROTECTED_ROUTES].includes(req.nextUrl.pathname)
   // )
-  if (user && ['/signin', 'signup'].includes(req.nextUrl.pathname)) {
+  if (user && ['/signin', '/signup'].includes(req.nextUrl.pathname)) {
     // if user is signed in and the current path is login, then redirect to home
     // console.log('user already logged in!')
     return NextResponse.redirect(new URL('/', req.url))

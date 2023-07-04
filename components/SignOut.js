@@ -10,7 +10,7 @@ export default async function SignOut() {
   const handleSignOut = async () => {
     // console.log('signing out')
     await supabase.auth.signOut()
-    router.refresh()
+    router.push('/signin')
     // console.log('signed out')
   }
 
