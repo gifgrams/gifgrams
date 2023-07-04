@@ -12,11 +12,13 @@ import styles from '@/styles/app/signin.module.scss'
 export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [submitting, setSubmitting] = useState(false)
   const router = useRouter()
   const supabase = createClientComponentClient()
 
   const handleSignUp = async (e) => {
     e.preventDefault()
+    setSubmitting(true)
 
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -28,13 +30,16 @@ export default function SignIn() {
     if (error) {
       console.error('Error signing up')
       emitToast('Error signing up', 'Username or password is invalid.', 'error')
+    } else {
+      emitToast(
+        'A verification link has been sent',
+        `Note: if an account for ${email} already exists, no link will be sent.`,
+        'success'
+      )
+      router.push('/signin')
     }
-    // router.refresh()
-    emitToast(
-      'A verification link has been sent',
-      `Note: if an account for ${email} already exists, no link will be sent.`,
-      'success'
-    )
+
+    setSubmitting(false)
   }
 
   return (
@@ -60,12 +65,14 @@ export default function SignIn() {
             required
           />
           <Button
-            label="Sign Up"
             background="bubbleBlue"
             color="justWhite"
             style={{ marginTop: '48px' }}
+            loading={submitting}
             onClick={handleSignUp}
-          />
+          >
+            Sign Up
+          </Button>
         </form>
       </div>
       <AuthToggle label="Sign In" href="/signin" />

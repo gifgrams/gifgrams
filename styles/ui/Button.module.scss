@@ -30,5 +30,9 @@
     &:focus {
       outline-color: transparent;
     }
+
+    &.disabled {
+      pointer-events: none;
+    }
   }
 }

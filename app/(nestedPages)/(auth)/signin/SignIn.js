@@ -3,33 +3,38 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState, useContext } from 'react'
-import emitToast from '@/ui/Toast'
 import AuthToggle from '@/components/AuthToggle'
 import Button from '@/ui/Button'
 import TextInput from '@/ui/TextInput'
+import emitToast from '@/ui/Toast'
 import styles from '@/styles/app/signin.module.scss'
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [submitting, setSubmitting] = useState(false)
   const router = useRouter()
   const supabase = createClientComponentClient()
 
   const handleSignIn = async (e) => {
     e.preventDefault()
+    setSubmitting(true)
+    setTimeout(async (e) => {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      if (error) {
+        console.error('Error signing in')
+        emitToast(
+          'Error signing in',
+          'Username or password is incorrect.',
+          'error'
+        )
+      } else router.push('/')
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    if (error) {
-      console.error('Error signing in')
-      emitToast(
-        'Error signing in',
-        'Username or password is incorrect.',
-        'error'
-      )
-    } else router.refresh()
+      setSubmitting(false)
+    }, 5000)
   }
 
   return (
@@ -55,12 +60,14 @@ export default function SignIn() {
             required
           />
           <Button
-            label="Sign In"
             background="bubbleBlue"
             color="justWhite"
             style={{ marginTop: '48px' }}
+            loading={submitting}
             onClick={handleSignIn}
-          />
+          >
+            Sign In
+          </Button>
         </form>
       </div>
       <AuthToggle label="Sign Up" href="/signup" />
