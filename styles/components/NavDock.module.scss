@@ -1,18 +1,41 @@
 @use '/styles/colors';
 
 .container {
-  width: 130px;
+  // width: 130px;
   height: 48px;
   border-radius: 24px;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.10);
   background: colors.$just-white;
 
-  >.pfp {
+  >.menu {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    svg {
+      color: colors.$text-tertiary;
+      transition: all 0.2s;
+
+      &:hover {
+        scale: 1.1;
+        color: colors.$text-secondary;
+        cursor: pointer;
+      }
+    }
+  }
+
+  >.profile {
     margin-right: 6px;
     border-radius: 18px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
