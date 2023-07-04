@@ -13,7 +13,6 @@ export default function Button({
   style,
   ...buttonProps
 }) {
-  console.log('disabled', disabled, 'loading', loading)
   return (
     <div className={styles.container}>
       <button

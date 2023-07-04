@@ -1,5 +1,6 @@
 'use client'
 
+import Providers from '@/util/Providers'
 import ToastContainer from '@/components/ToastContainer'
 import '@/styles/globals.scss'
 import localFont from 'next/font/local'
@@ -16,8 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={generalSans.className}>
-        {children}
-        <ToastContainer />
+        <Providers>
+          {children}
+          <ToastContainer />
+        </Providers>
       </body>
     </html>
   )
