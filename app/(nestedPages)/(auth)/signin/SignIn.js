@@ -19,22 +19,21 @@ export default function SignIn() {
   const handleSignIn = async (e) => {
     e.preventDefault()
     setSubmitting(true)
-    setTimeout(async (e) => {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
-      if (error) {
-        console.error('Error signing in')
-        emitToast(
-          'Error signing in',
-          'Username or password is incorrect.',
-          'error'
-        )
-      } else router.push('/')
 
-      setSubmitting(false)
-    }, 5000)
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+    if (error) {
+      console.error('Error signing in')
+      emitToast(
+        'Error signing in',
+        'Username or password is incorrect.',
+        'error'
+      )
+    } else router.push('/')
+
+    setSubmitting(false)
   }
 
   return (

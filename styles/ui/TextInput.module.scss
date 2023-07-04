@@ -4,11 +4,12 @@
 .container {
   margin-top: 24px;
 
-  >h3 {
+  h3 {
     @include typography.text-base;
     @include typography.text-lg;
     @include typography.text-semibold;
     margin-bottom: 12px;
+    display: inline-block;
     color: colors.$text-secondary;
   }
 
