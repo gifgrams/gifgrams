@@ -69,7 +69,7 @@ export default function SignIn() {
           </Button>
         </form>
       </div>
-      <AuthToggle label="Sign Up" href="/signup" />
+      <AuthToggle label="No account? Sign up!" href="/signup" />
     </>
   )
 }
