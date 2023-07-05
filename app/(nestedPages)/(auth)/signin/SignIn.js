@@ -9,12 +9,17 @@ import TextInput from '@/ui/TextInput'
 import emitToast from '@/ui/Toast'
 import styles from '@/styles/app/signin.module.scss'
 
+import { SessionContext } from '@/util/Providers'
+
 export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const router = useRouter()
   const supabase = createClientComponentClient()
+
+  const session = useContext(SessionContext)
+  console.log('session', session)
 
   const handleSignIn = async (e) => {
     e.preventDefault()
@@ -40,6 +45,7 @@ export default function SignIn() {
     <>
       <div className={styles.container}>
         <h1>Sign In</h1>
+        {session && <h1>Session!</h1>}
         <form onSubmit={handleSignIn}>
           <TextInput
             label="Email"

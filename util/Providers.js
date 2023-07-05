@@ -3,18 +3,24 @@
 import { useState, useEffect, createContext } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-export const AuthContext = createContext(null)
+export const SessionContext = createContext(null)
 
 export default function Providers({ children }) {
   const supabase = createClientComponentClient()
-  const [auth, setAuth] = useState()
+  const [session, setSession] = useState()
 
   useEffect(() => {
-    const getAuth = async () => {
-      setAuth(await supabase.auth.getUser())
+    const getSession = async () => {
+      const ses = await supabase.auth.getSession()
+      setSession(ses?.data?.session)
+      console.log('session', ses)
     }
-    getAuth()
+    getSession()
   }, [supabase.auth])
 
-  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>
+  return (
+    <SessionContext.Provider value={session}>
+      {children}
+    </SessionContext.Provider>
+  )
 }
