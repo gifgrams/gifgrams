@@ -9,6 +9,7 @@
   opacity: 0.3;
   transition: opacity 0.2s;
   user-select: none;
+  text-decoration: none !important;
 
   &:hover {
     opacity: 0.4;
