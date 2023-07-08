@@ -7,9 +7,8 @@ export default function NavBar({ newBtnVisible }) {
   return (
     <nav className={styles.container}>
       <div className={styles.content}>
-        <Link href="/">
+        <Link href="/" className={styles.wordmark}>
           <Image
-            className={styles.wordmark}
             src="/wordmark.svg"
             alt="wordmark"
             width={178}
