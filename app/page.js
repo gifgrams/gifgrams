@@ -18,7 +18,6 @@ export default async function App() {
     <>
       <NavBar newBtnVisible={true} />
       <main>
-        {/* <h1>hello world</h1> */}
         <h3>{session?.user.email}</h3>
       </main>
       <SignOut />
