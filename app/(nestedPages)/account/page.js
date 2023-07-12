@@ -5,6 +5,11 @@ import NavBar from '@/components/NavBar'
 import SignOut from '@/components/SignOut'
 import styles from '@/styles/app/accountPage.module.scss'
 
+export const metadata = {
+  title: 'Account – GifGrams',
+  description: '...',
+}
+
 export default async function Account() {
   const supabase = createServerComponentClient({ cookies })
 

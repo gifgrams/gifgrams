@@ -1,0 +1,17 @@
+@use '/styles/colors';
+
+
+.container {
+  width: 100dvw;
+  height: 100dvh;
+  background-size: cover;
+  background-position: center center;
+  overflow: scroll;
+
+  >main {
+    width: 100dvw;
+    padding: 64px;
+    display: flex;
+    justify-content: center;
+  }
+}
