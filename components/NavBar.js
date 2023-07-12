@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import NavDock from '@/components/NavDock'
+import SmallNewButton from '@/components/SmallNewButton'
 import styles from '@/styles/components/NavBar.module.scss'
 
 export default function NavBar({ newBtnVisible }) {
@@ -16,6 +17,11 @@ export default function NavBar({ newBtnVisible }) {
             priority
           ></Image>
         </Link>
+        {newBtnVisible && (
+          <Link href="/new">
+            <SmallNewButton />
+          </Link>
+        )}
         <NavDock />
       </div>
     </nav>
