@@ -1,0 +1,29 @@
+@use '/styles/colors';
+@use '/styles/typography';
+
+.container {
+  height: 48px;
+  padding: 0px 20px;
+  border: 2px solid transparent;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include typography.text-base;
+  @include typography.text-md;
+  @include typography.text-semibold;
+  color: colors.$just-white;
+  background: colors.$e-400;
+
+  transition: all 0.2s;
+
+  &:hover {
+    border: 2px solid darken(colors.$e-400, 10%) !important;
+    background: lighten(colors.$e-400, 5%) !important;
+  }
+
+  &:active {
+    border-color: darken(colors.$e-400, 10%) !important;
+    background: darken(colors.$e-400, 10%) !important;
+  }
+}

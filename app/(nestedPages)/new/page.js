@@ -1,10 +1,10 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import NavBar from '@/components/NavBar'
-import styles from '@/styles/app/rootPage.module.scss'
+import styles from '@/styles/app/newPage.module.scss'
 
 export const metadata = {
-  title: 'GifGrams',
+  title: 'New Card – GifGrams',
   description: '...',
 }
 
