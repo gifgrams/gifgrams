@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,6 +10,18 @@ import New from '@/public/icons/New.svg'
 import Widget from '@/public/icons/Widget.svg'
 
 export default function NavDock() {
+  const [session, setSession] = useState()
+
+  const supabase = createClientComponentClient()
+  useEffect(() => {
+    const getSession = async () => {
+      const { data, error } = await supabase.auth.getSession()
+      if (error) console.log('Error in getSession() in NavDock.js', error)
+      setSession(data.session)
+    }
+    getSession()
+  }, [setSession, supabase.auth])
+
   const router = useRouter()
 
   return (
@@ -25,17 +38,22 @@ export default function NavDock() {
           }}
         />
       </div>
+      {/* /account is a protected route and redirects to signin if no session exists */}
       <Link className={styles.profile} href="/account">
-        <Image
-          src="/profile.png"
-          width={36}
-          height={36}
-          alt="pfp"
-          priority
-          onClick={() => {
-            router.push('/account')
-          }}
-        ></Image>
+        {session ? (
+          <Image
+            src="/profile.png"
+            width={36}
+            height={36}
+            alt="pfp"
+            priority
+            onClick={() => {
+              router.push('/account')
+            }}
+          ></Image>
+        ) : (
+          <div className={styles.loginBtn}>Login</div>
+        )}
       </Link>
     </div>
   )

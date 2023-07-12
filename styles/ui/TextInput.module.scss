@@ -17,7 +17,7 @@
     width: 416px;
     height: 56px;
     padding: 16px 12px;
-    border: 2px solid colors.$n-100;
+    border: 2px solid colors.$n-200;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@
     }
 
     &:hover {
-      border-color: darken(colors.$n-100, 10%);
+      border-color: darken(colors.$n-200, 10%);
     }
 
     &:focus {
