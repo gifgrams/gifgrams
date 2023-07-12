@@ -1,0 +1,9 @@
+@use '/styles/colors';
+@use '/styles/typography';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: cetner;
+}

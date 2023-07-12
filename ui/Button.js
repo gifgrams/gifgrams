@@ -1,22 +1,35 @@
 import { colors } from '@/constants'
-
+import styleBuilder from '@/util/styleBuilder'
+import Progress from '@/ui/Progress'
 import styles from '@/styles/ui/Button.module.scss'
 
-export default function Button(props) {
-  const { icon, label, background, color, onClick, style, ...buttonProps } =
-    props
+export default function Button({
+  children,
+  background,
+  color,
+  loading = false,
+  disabled = loading,
+  onClick,
+  style,
+  ...buttonProps
+}) {
   return (
     <div className={styles.container}>
       <button
+        className={styleBuilder([[styles.disabled, loading || disabled]])}
         style={{
-          ...{ background: colors[background], color: colors[color] },
+          ...{
+            background: colors[background],
+            color: `${colors[color]}${disabled ? '80' : 'ff'}`,
+          },
           ...style,
         }}
+        disabled={disabled}
         onClick={onClick}
         {...buttonProps}
       >
-        {/* {icon && <Icon width={24} path={icon} />} */}
-        <p>{label}</p>
+        {loading && <Progress />}
+        {children}
       </button>
     </div>
   )

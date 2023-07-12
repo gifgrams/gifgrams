@@ -1,7 +1,60 @@
 @use '/styles/colors';
+@use '/styles/typography';
 
 .container {
-  width: 130px;
-  height: 
+  // width: 130px;
+  height: 48px;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.10);
   background: colors.$just-white;
+
+  >.menu {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    svg {
+      color: colors.$text-tertiary;
+      transition: all 0.2s;
+
+      &:hover {
+        scale: 1.05;
+        color: colors.$text-secondary;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .profile {
+    height: 36px;
+    margin-right: 6px;
+    text-decoration: none;
+
+    img {
+      border-radius: 18px;
+    }
+
+    >.loginBtn {
+      height: 36px;
+      padding: 6px 12px;
+      border-radius: 18px;
+      @include typography.text-base;
+      @include typography.text-sm;
+      @include typography.text-semibold;
+      background: colors.$n-200;
+      color: colors.$text-secondary;
+
+      transition: background 0.2s;
+
+      &:hover {
+        background: colors.$n-300;
+      }
+    }
+  }
 }

@@ -14,13 +14,25 @@
     width: constants.$navBarContentMaxWidth;
     max-width: constants.$navBarContentMaxWidth;
     height: 96px;
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    >.wordmark {
+    .wordmark {
+      height: 36px;
       position: relative;
       top: 3px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .newBtn {
+      position: absolute;
+      // top: 50%;
+      left: calc(50% - (180px / 2));
     }
   }
 }
