@@ -12,11 +12,13 @@
   >.profilePic {
     border-radius: 152px;
     box-shadow: 0px 0px 0px 24px rgba(0, 0, 0, 0.05);
+    background: colors.$n-300;
   }
 
   >h1 {
     @include typography.text-base;
     @include typography.text-2xl;
     @include typography.text-semibold;
+    color: colors.$text-primary;
   }
 }
