@@ -4,7 +4,7 @@ import NavDock from '@/components/NavDock'
 import SmallNewButton from '@/components/SmallNewButton'
 import styles from '@/styles/components/NavBar.module.scss'
 
-export default function NavBar({ newBtnVisible }) {
+export default function NavBar({ newBtnVisible = true }) {
   return (
     <nav className={styles.container}>
       <div className={styles.content}>
@@ -18,7 +18,7 @@ export default function NavBar({ newBtnVisible }) {
           ></Image>
         </Link>
         {newBtnVisible && (
-          <Link href="/new">
+          <Link className={styles.newBtn} href="/new">
             <SmallNewButton />
           </Link>
         )}
