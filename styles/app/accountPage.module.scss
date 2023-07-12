@@ -20,5 +20,6 @@
     @include typography.text-2xl;
     @include typography.text-semibold;
     color: colors.$text-primary;
+    margin-bottom: 24px;
   }
 }
