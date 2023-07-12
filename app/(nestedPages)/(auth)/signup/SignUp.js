@@ -10,6 +10,7 @@ import AuthToggle from '@/components/AuthToggle'
 import styles from '@/styles/app/signin.module.scss'
 
 export default function SignIn() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
@@ -47,6 +48,14 @@ export default function SignIn() {
       <div className={styles.container}>
         <h1>Sign Up</h1>
         <form>
+          <TextInput
+            label="Full Name"
+            placeholder="Bruce Wayne"
+            name="name"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            required
+          />
           <TextInput
             label="Email"
             placeholder="Email"
