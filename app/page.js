@@ -5,7 +5,6 @@ import styles from '@/styles/app/rootPage.module.scss'
 
 export const metadata = {
   title: 'GifGrams',
-  description: '...',
 }
 
 export default async function App() {
