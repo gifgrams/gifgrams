@@ -1,20 +1,36 @@
-import { cookies } from 'next/headers'
+'use client'
+
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useRouter } from 'next/navigation'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import NavBar from '@/components/NavBar'
 import SignOut from '@/components/SignOut'
 import styles from '@/styles/app/accountPage.module.scss'
 
-export const metadata = {
-  title: 'Account – GifGrams',
-}
+export const revalidate = 0
 
-export default async function Account() {
-  const supabase = createServerComponentClient({ cookies })
+// export const metadata = {
+//   title: 'Account – GifGrams',
+// }
 
-  const { data, error } = await supabase.auth.getSession()
-  if (error) console.log('Error in getSession() in NavDock.js', error)
-  const session = data.session
+export default function Account() {
+  const router = useRouter()
+  const [thing, setUser] = useState({ email: 'bztravis' })
+
+  useEffect(() => {
+    const getSession = async () => {
+      const supabase = createClientComponentClient()
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      console.log('user', user)
+      console.log('user.email', user.email)
+      if (!user) router.replace('/signup')
+      setUser(user)
+    }
+    getSession()
+  }, [])
 
   return (
     <>
@@ -28,7 +44,7 @@ export default async function Account() {
           height={304}
           priority
         ></Image>
-        <h1>{session.user.email}</h1>
+        {thing !== null && <h1>{thing?.email}</h1>}
         <SignOut />
       </main>
     </>
