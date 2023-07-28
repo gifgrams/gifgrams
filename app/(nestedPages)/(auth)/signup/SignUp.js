@@ -50,7 +50,7 @@ export default function SignIn() {
         <form>
           <TextInput
             label="Full Name"
-            placeholder="Bruce Wayne"
+            placeholder="Goofy Goober"
             name="name"
             onChange={(e) => setName(e.target.value)}
             value={name}
@@ -58,7 +58,7 @@ export default function SignIn() {
           />
           <TextInput
             label="Email"
-            placeholder="Email"
+            placeholder="goofy@goobers.com"
             name="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -66,7 +66,7 @@ export default function SignIn() {
           />
           <TextInput
             label="Password"
-            placeholder="Password"
+            placeholder="1234"
             type="password"
             name="password"
             onChange={(e) => setPassword(e.target.value)}
