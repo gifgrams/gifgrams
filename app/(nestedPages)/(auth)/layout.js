@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import styles from '@/styles/app/authLayout.module.scss'
 
+export const revalidate = 0
+
 export default async function authLayout({ children }) {
   const supabase = createServerComponentClient({ cookies })
   const {
