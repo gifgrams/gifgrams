@@ -5,7 +5,6 @@ import styles from '@/styles/app/newPage.module.scss'
 
 export const metadata = {
   title: 'New Card – GifGrams',
-  description: '...',
 }
 
 export default async function App() {

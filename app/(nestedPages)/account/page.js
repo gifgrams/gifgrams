@@ -1,21 +1,29 @@
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import NavBar from '@/components/NavBar'
 import SignOut from '@/components/SignOut'
 import styles from '@/styles/app/accountPage.module.scss'
 
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+export const dynamicParams = true
+export const revalidate = 0
+
 export const metadata = {
   title: 'Account – GifGrams',
-  description: '...',
 }
 
 export default async function Account() {
   const supabase = createServerComponentClient({ cookies })
 
-  const { data, error } = await supabase.auth.getSession()
+  const {
+    data: { session },
+    error,
+  } = await supabase.auth.getSession()
   if (error) console.log('Error in getSession() in NavDock.js', error)
-  const session = data.session
+  if (!session) redirect('/signup')
 
   return (
     <>

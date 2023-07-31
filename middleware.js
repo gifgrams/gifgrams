@@ -1,21 +1,21 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
+// import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 
-const UNPROTECTED_ROUTES = ['/', '/:cardId', '/login', '/new-card']
-const PROTECTED_ROUTES = ['/account', '/new']
+// const UNPROTECTED_ROUTES = ['/', '/:cardId', '/login', '/new-card']
+// const PROTECTED_ROUTES = ['/account', '/new']
 
 export async function middleware(req) {
-  console.log(req.nextUrl.pathname)
+  // console.log(req.nextUrl.pathname)
 
   const res = NextResponse.next()
-  const supabase = createMiddlewareClient({ req, res })
+  /* const supabase = createMiddlewareClient({ req, res })
 
   const {
     data: { user },
-  } = await supabase.auth.getUser()
+  } = await supabase.auth.getUser() */
 
   // determine if checking auth is necessary
-  if (
+  /* if (
     [...UNPROTECTED_ROUTES, ...PROTECTED_ROUTES].includes(req.nextUrl.pathname)
   ) {
     if (user && ['/signin', '/signup'].includes(req.nextUrl.pathname)) {
@@ -29,7 +29,7 @@ export async function middleware(req) {
       // console.log('user not found!')
       return NextResponse.redirect(new URL('/signup', req.url))
     }
-  }
+  } */
 
   return res
 }

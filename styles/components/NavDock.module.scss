@@ -43,18 +43,26 @@
 
     >.loginBtn {
       height: 36px;
-      padding: 6px 12px;
+      padding: 4px 12px;
+      $background: colors.$n-200;
+      border: 2px solid $background;
       border-radius: 18px;
       @include typography.text-base;
       @include typography.text-sm;
       @include typography.text-semibold;
-      background: colors.$n-200;
+      background: $background;
       color: colors.$text-secondary;
 
-      transition: background 0.2s;
+      transition: all 0.2s;
 
       &:hover {
-        background: colors.$n-300;
+        border-color: darken($background, 10%) !important;
+        background: lighten($background, 5%) !important;
+      }
+
+      &:active {
+        border-color: darken($background, 10%) !important;
+        background: darken($background, 10%) !important;
       }
     }
   }
