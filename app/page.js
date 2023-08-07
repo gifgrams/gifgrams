@@ -16,7 +16,11 @@ export default async function App() {
   return (
     <div className={styles.container}>
       <NavBar newBtnVisible={true} />
-      <main></main>
+      <main>
+        <div className={styles.content}>
+          <h1>Send History</h1>
+        </div>
+      </main>
     </div>
   )
 }

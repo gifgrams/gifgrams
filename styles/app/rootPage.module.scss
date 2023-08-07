@@ -1,4 +1,6 @@
 @use '/styles/colors';
+@use '/styles/constants';
+@use '/styles/typography';
 
 
 .container {
@@ -11,9 +13,20 @@
   overflow: scroll;
 
   >main {
-    width: 100dvw;
-    padding: 64px;
     display: flex;
     justify-content: center;
+
+    >.content {
+      width: 100dvw;
+      max-width: constants.$navBarContentMaxWidth;
+      padding: 64px 0px;
+
+      >h1 {
+        @include typography.text-base;
+        @include typography.text-2xl;
+        @include typography.text-semibold;
+        color: colors.$just-white;
+      }
+    }
   }
 }
