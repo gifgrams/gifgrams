@@ -43,14 +43,20 @@ export default function MediaSelector({ setFormData }) {
           Image
         </button>
       </div>
-      <div className={styles.resultContainer}>
-        {/* <input type="text" placeholder="Search" /> */}
+      <div className={styles.searchContainer}>
         <TextInput
           placeholder="Search"
           style={{ width: '100%' }}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
+        <div className={styles.resultContainer}>
+          {Array(10)
+            .fill(null)
+            .map((elem) => (
+              <img key={elem} src="" className={styles.result} />
+            ))}
+        </div>
       </div>
     </div>
   )

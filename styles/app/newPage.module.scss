@@ -17,14 +17,14 @@
   >main {
     width: 100dvw;
     max-width: calc(constants.$navBarContentMaxWidth + 24px + 24px);
-    padding: 64px 24px;
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     >.twoCol {
       width: 100%;
-      margin-top: 64px;
+      margin-top: 32px;
       display: grid;
       justify-content: center;
       grid-template-columns: auto auto;
@@ -45,7 +45,7 @@
 
       >.gridItem {
         width: calc(100dvw - 24px - 24px);
-        $maxWidth: 632px;
+        $maxWidth: 612px;
         max-width: $maxWidth;
         height: 500px;
         background: #f0f0f0;

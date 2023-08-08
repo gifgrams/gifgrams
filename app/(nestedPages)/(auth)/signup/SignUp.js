@@ -52,6 +52,7 @@ export default function SignIn() {
             label="Full Name"
             placeholder="Goofy Goober"
             name="name"
+            containerStyle={{ marginTop: 24 }}
             onChange={(e) => setName(e.target.value)}
             value={name}
             required
@@ -60,6 +61,7 @@ export default function SignIn() {
             label="Email"
             placeholder="goofy@goobers.com"
             name="email"
+            containerStyle={{ marginTop: 24 }}
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required
@@ -69,6 +71,7 @@ export default function SignIn() {
             placeholder="1234"
             type="password"
             name="password"
+            containerStyle={{ marginTop: 24 }}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required
