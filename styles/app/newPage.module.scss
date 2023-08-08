@@ -42,14 +42,6 @@
       @media screen and (max-width: breakpoints.$newPage) {
         grid-template-columns: auto;
       }
-
-      >.gridItem {
-        width: calc(100dvw - 24px - 24px);
-        $maxWidth: 612px;
-        max-width: $maxWidth;
-        height: 500px;
-        background: #f0f0f0;
-      }
     }
   }
 }

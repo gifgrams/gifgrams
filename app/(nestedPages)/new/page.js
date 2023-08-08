@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 // import { cookies } from 'next/headers'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import CardPreview from '@/components/CardPreview'
 import MediaSelector from '@/components/MediaSelector'
 import NavBar from '@/components/NavBar'
 import NewProgress from '@/components/NewProgress'
@@ -55,9 +56,7 @@ export default function App() {
             <h2>Front</h2>
             <MediaSelector setFormData={setFormData} />
           </div>
-          <div className={styles.gridItem}>
-            <h2>Preview</h2>
-          </div>
+          <CardPreview />
         </div>
       </main>
     </div>
