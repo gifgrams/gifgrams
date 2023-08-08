@@ -55,7 +55,9 @@ export default function App() {
             <h2>Front</h2>
             <MediaSelector setFormData={setFormData} />
           </div>
-          <div className={styles.gridItem}></div>
+          <div className={styles.gridItem}>
+            <h2>Preview</h2>
+          </div>
         </div>
       </main>
     </div>

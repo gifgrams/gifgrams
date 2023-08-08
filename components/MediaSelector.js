@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import styleBuilder from '@/util/styleBuilder'
+import TextInput from '@/ui/TextInput'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
 import VideoLibrary from '@/public/icons/VideoLibrary.svg'
 import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
@@ -9,6 +10,8 @@ import styles from '@/styles/components/MediaSelector.module.scss'
 
 export default function MediaSelector({ setFormData }) {
   const [mediaType, setMediaType] = useState('gif')
+  const [query, setQuery] = useState('')
+
   return (
     <div className={styles.container}>
       <div className={styles.barCategory}>
@@ -39,6 +42,15 @@ export default function MediaSelector({ setFormData }) {
           <GalleryMinimalistic />
           Image
         </button>
+      </div>
+      <div className={styles.resultContainer}>
+        {/* <input type="text" placeholder="Search" /> */}
+        <TextInput
+          placeholder="Search"
+          style={{ width: '100%' }}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
     </div>
   )
