@@ -25,15 +25,19 @@
       width: 100%;
       margin-top: 64px;
       display: grid;
+      justify-content: center;
       grid-template-columns: auto auto;
       column-gap: 64px;
+      row-gap: 64px;
 
-      @media screen and (max-width: breakpoints.$phone) {
+      @media screen and (max-width: breakpoints.$newPage) {
         grid-template-columns: auto;
       }
 
       >.gridItem {
-        width: 100%;
+        width: calc(100dvw - 24px - 24px);
+        $maxWidth: 632px;
+        max-width: $maxWidth;
         height: 500px;
         background: gray;
       }
