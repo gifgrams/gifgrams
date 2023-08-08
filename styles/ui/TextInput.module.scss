@@ -2,7 +2,6 @@
 @use '/styles/typography';
 
 .container {
-  margin-top: 24px;
 
   h3 {
     @include typography.text-base;
