@@ -25,7 +25,7 @@ export default function SignIn() {
       password,
     })
     if (error) {
-      console.error('Error signing in')
+      console.error('Error signing in', error)
       emitToast(
         'Error signing in',
         'Username or password is incorrect.',

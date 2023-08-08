@@ -29,7 +29,7 @@ export default function SignIn() {
       },
     })
     if (error) {
-      console.error('Error signing up')
+      console.error('Error signing up', error)
       emitToast('Error signing up', 'Username or password is invalid.', 'error')
     } else {
       emitToast(
