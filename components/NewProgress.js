@@ -22,6 +22,7 @@ export default function NewProgress({ stage, setStage }) {
             className={styleBuilder([
               styles.stageBtn,
               [styles.active, stage === elem],
+              [styles.hoverable, stage > elem],
             ])}
             onClick={() => {
               if (stage > elem) setStage(elem)

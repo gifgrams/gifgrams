@@ -51,6 +51,7 @@
       @include typography.text-xl;
       @include typography.text-semibold;
       font-family: 'Chillax', 'ui-sans-serif', 'sans-serif';
+      cursor: default;
 
       transition: all 0.2s;
 
@@ -59,7 +60,8 @@
         color: colors.$just-white;
       }
 
-      &:hover {
+      &.hoverable:hover {
+        cursor: pointer;
         background: colors.$bubble-blue;
         color: colors.$just-white;
       }
