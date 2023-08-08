@@ -49,6 +49,10 @@ export default function App() {
       <NavBar newBtnVisible={false} />
       <main>
         <NewProgress stage={stage} setStage={setStage} />
+        <div className={styles.twoCol}>
+          <div className={styles.gridItem}></div>
+          <div className={styles.gridItem}></div>
+        </div>
       </main>
     </div>
   )

@@ -1,17 +1,42 @@
 @use '/styles/colors';
+@use '/styles/constants';
+@use '/styles/breakpoints';
 
 
 .container {
   width: 100dvw;
   height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-size: cover;
   background-position: center center;
   overflow: scroll;
 
   >main {
     width: 100dvw;
-    padding: 64px;
+    max-width: calc(constants.$navBarContentMaxWidth + 24px + 24px);
+    padding: 64px 24px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    >.twoCol {
+      width: 100%;
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: auto auto;
+      column-gap: 64px;
+
+      @media screen and (max-width: breakpoints.$phone) {
+        grid-template-columns: auto;
+      }
+
+      >.gridItem {
+        width: 100%;
+        height: 500px;
+        background: gray;
+      }
+    }
   }
 }
