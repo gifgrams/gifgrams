@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 // import { cookies } from 'next/headers'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import MediaSelector from '@/components/MediaSelector'
 import NavBar from '@/components/NavBar'
 import NewProgress from '@/components/NewProgress'
 import styles from '@/styles/app/newPage.module.scss'
@@ -50,7 +51,10 @@ export default function App() {
       <main>
         <NewProgress stage={stage} setStage={setStage} />
         <div className={styles.twoCol}>
-          <div className={styles.gridItem}></div>
+          <div>
+            <h2>Front</h2>
+            <MediaSelector setFormData={setFormData} />
+          </div>
           <div className={styles.gridItem}></div>
         </div>
       </main>

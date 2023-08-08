@@ -1,6 +1,7 @@
+@use '/styles/breakpoints';
 @use '/styles/colors';
 @use '/styles/constants';
-@use '/styles/breakpoints';
+@use '/styles/typography';
 
 
 .container {
@@ -30,6 +31,14 @@
       column-gap: 64px;
       row-gap: 64px;
 
+      h2 {
+        @include typography.text-base;
+        @include typography.text-xl;
+        @include typography.text-semibold;
+        margin-bottom: 32px;
+        color: colors.$text-primary;
+      }
+
       @media screen and (max-width: breakpoints.$newPage) {
         grid-template-columns: auto;
       }
@@ -39,7 +48,7 @@
         $maxWidth: 632px;
         max-width: $maxWidth;
         height: 500px;
-        background: gray;
+        background: #f0f0f0;
       }
     }
   }

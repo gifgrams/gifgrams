@@ -24,7 +24,7 @@ const chillax = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${generalSans.className} ${chillax.className}`}>
+      <body className={`${chillax.className} ${generalSans.className}`}>
         <Providers>
           {children}
           <ToastContainer />
