@@ -54,9 +54,9 @@ export default function App() {
         <div className={styles.twoCol}>
           <div>
             <h2>Front</h2>
-            <MediaSelector setFormData={setFormData} />
+            {stage === 0 && <MediaSelector setFormData={setFormData} />}
           </div>
-          <CardPreview />
+          <CardPreview stage={stage} setStage={setStage} />
         </div>
       </main>
     </div>
