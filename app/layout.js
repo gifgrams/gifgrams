@@ -13,10 +13,18 @@ const generalSans = localFont({
   ],
 })
 
+const chillax = localFont({
+  src: [
+    {
+      path: '../fonts/Chillax-Variable.ttf',
+    },
+  ],
+})
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={generalSans.className}>
+      <body className={`${generalSans.className} ${chillax.className}`}>
         <Providers>
           {children}
           <ToastContainer />
