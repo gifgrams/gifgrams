@@ -24,7 +24,7 @@ export default function NewProgress({ stage, setStage }) {
               [styles.active, stage === elem],
             ])}
             onClick={() => {
-              setStage(elem)
+              if (stage > elem) setStage(elem)
             }}
           >
             {elem + 1}
