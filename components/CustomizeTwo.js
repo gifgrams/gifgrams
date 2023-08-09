@@ -3,7 +3,7 @@ import Select from '@/ui/Select'
 import TextArea from '@/ui/TextArea'
 import styles from '@/styles/components/CustomizeTwo.module.scss'
 
-export default function CustomizeOne({ setFormData }) {
+export default function CustomizeTwo({ setFormData }) {
   return (
     <>
       <div className={styles.container}>
