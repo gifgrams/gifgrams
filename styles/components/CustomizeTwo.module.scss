@@ -1,0 +1,11 @@
+.container {
+
+  >.grid {
+    width: calc(100dvw - 24px - 24px);
+    $maxWidth: 612px;
+    max-width: $maxWidth;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 24px;
+  }
+}

@@ -1,0 +1,43 @@
+@use '/styles/colors';
+@use '/styles/typography';
+
+.container {
+
+  h3 {
+    @include typography.text-base;
+    @include typography.text-lg;
+    @include typography.text-semibold;
+    margin-bottom: 12px;
+    display: inline-block;
+    color: colors.$text-secondary;
+  }
+
+  >select {
+    width: 100%;
+    height: 56px;
+    padding: 0px 12px;
+    border: 2px solid colors.$n-200;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    background: colors.$n-50;
+    @include typography.text-base;
+    @include typography.text-lg;
+    @include typography.text-medium;
+    color: colors.$text-primary;
+    transition: border 0.2s;
+
+    &::placeholder {
+      color: colors.$text-tertiary;
+    }
+
+    &:hover {
+      border-color: darken(colors.$n-200, 10%);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: colors.$bubble-blue;
+    }
+  }
+}

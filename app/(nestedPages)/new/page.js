@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import CardPreview from '@/components/CardPreview'
 import CustomizeOne from '@/components/CustomizeOne'
+import CustomizeTwo from '@/components/CustomizeTwo'
 import NavBar from '@/components/NavBar'
 import NewProgress from '@/components/NewProgress'
 import styles from '@/styles/app/newPage.module.scss'
@@ -52,10 +53,8 @@ export default function App() {
       <main>
         <NewProgress stage={stage} setStage={setStage} />
         <div className={styles.twoCol}>
-          <div>
-            <h2>Front</h2>
-            {stage === 0 && <CustomizeOne setFormData={setFormData} />}
-          </div>
+          {stage === 0 && <CustomizeOne setFormData={setFormData} />}
+          {stage === 1 && <CustomizeTwo setFormData={setFormData} />}
           <CardPreview stage={stage} setStage={setStage} />
         </div>
       </main>

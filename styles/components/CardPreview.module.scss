@@ -6,7 +6,7 @@
   $maxWidth: 612px;
   max-width: $maxWidth;
   height: 500px;
-  background: #f0f0f0;
+  // background: #f0f0f0;
 
   >h2 {
     @include typography.text-base;

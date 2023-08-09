@@ -1,9 +1,14 @@
 'use client'
 
 import { useId } from 'react'
-import styles from '@/styles/ui/ColorPicker.module.scss'
+import styles from '@/styles/ui/Select.module.scss'
 
-export default function ColorPicker({ label, containerStyle, ...inputProps }) {
+export default function Select({
+  label,
+  containerStyle,
+  children,
+  ...inputProps
+}) {
   const id = useId()
   return (
     <div className={styles.container} style={containerStyle}>
@@ -12,7 +17,9 @@ export default function ColorPicker({ label, containerStyle, ...inputProps }) {
           <h3>{label}</h3>
         </label>
       )}
-      <input id={id} type="color" {...inputProps}></input>
+      <select id={id} {...inputProps}>
+        {...children}
+      </select>
     </div>
   )
 }

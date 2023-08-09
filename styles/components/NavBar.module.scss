@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   background: colors.$bubble-blue;
+  z-index: 1;
 
   >.content {
     width: constants.$navBarContentMaxWidth;
