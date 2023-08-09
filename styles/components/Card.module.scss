@@ -1,0 +1,11 @@
+.container {
+  width: calc(100dvw - 24px - 24px);
+  max-width: 640px;
+  aspect-ratio: 1;
+  background: gray;
+
+  @media screen and (max-height: 880px) and (min-width: 688px) {
+    width: auto;
+    height: calc(100dvh - 2 * (16px + 80px + 24px));
+  }
+}
