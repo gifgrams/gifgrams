@@ -1,0 +1,57 @@
+@use '/styles/colors';
+@use '/styles/typography';
+
+.container {
+
+  h3 {
+    @include typography.text-base;
+    @include typography.text-lg;
+    @include typography.text-semibold;
+    margin-bottom: 12px;
+    display: inline-block;
+    color: colors.$text-secondary;
+  }
+
+  >input {
+    width: 56px;
+    height: 56px;
+    padding: 10px;
+    border: 2px solid colors.$n-200;
+    border-radius: 8px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    background: colors.$n-50;
+    @include typography.text-base;
+    @include typography.text-lg;
+    @include typography.text-medium;
+    color: colors.$text-primary;
+    transition: border 0.2s;
+
+    // &::-webkit-color-swatch-wrapper {
+    //   width: 24px;
+    //   height: 24px;
+    //   border: 2px solid colors.$text-tertiary;
+    //   border-radius: 100%;
+    // }
+
+    // &::-webkit-color-swatch {
+    //   width: 24px;
+    //   height: 24px;
+    //   border: 2px solid colors.$text-tertiary;
+    //   border-radius: 100%;
+    //   position: absolute;
+    //   top: 10px;
+    //   left: 10px;
+    // }
+
+    &:hover {
+      border-color: darken(colors.$n-200, 10%);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: colors.$bubble-blue;
+    }
+  }
+}

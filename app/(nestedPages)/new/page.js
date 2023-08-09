@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import CardPreview from '@/components/CardPreview'
-import MediaSelector from '@/components/MediaSelector'
+import CustomizeOne from '@/components/CustomizeOne'
 import NavBar from '@/components/NavBar'
 import NewProgress from '@/components/NewProgress'
 import styles from '@/styles/app/newPage.module.scss'
@@ -54,7 +54,7 @@ export default function App() {
         <div className={styles.twoCol}>
           <div>
             <h2>Front</h2>
-            {stage === 0 && <MediaSelector setFormData={setFormData} />}
+            {stage === 0 && <CustomizeOne setFormData={setFormData} />}
           </div>
           <CardPreview stage={stage} setStage={setStage} />
         </div>
