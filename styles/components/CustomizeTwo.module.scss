@@ -5,7 +5,7 @@
     $maxWidth: 612px;
     max-width: $maxWidth;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: calc(50% - 12px) calc(50% - 12px);
     column-gap: 24px;
   }
 }

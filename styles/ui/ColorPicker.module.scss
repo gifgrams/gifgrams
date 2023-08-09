@@ -35,15 +35,15 @@
     //   border-radius: 100%;
     // }
 
-    // &::-webkit-color-swatch {
-    //   width: 24px;
-    //   height: 24px;
-    //   border: 2px solid colors.$text-tertiary;
-    //   border-radius: 100%;
-    //   position: absolute;
-    //   top: 10px;
-    //   left: 10px;
-    // }
+    &::-webkit-color-swatch {
+      // width: 24px;
+      // height: 24px;
+      // border: 2px solid colors.$text-tertiary;
+      border-radius: 4px;
+      // position: absolute;
+      // top: 10px;
+      // left: 10px;
+    }
 
     &:hover {
       border-color: darken(colors.$n-200, 10%);

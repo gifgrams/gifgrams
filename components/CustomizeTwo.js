@@ -1,5 +1,6 @@
-import Select from '@/ui/Select'
 import ColorPicker from '@/ui/ColorPicker'
+import Select from '@/ui/Select'
+import TextArea from '@/ui/TextArea'
 import styles from '@/styles/components/CustomizeTwo.module.scss'
 
 export default function CustomizeOne({ setFormData }) {
@@ -22,6 +23,11 @@ export default function CustomizeOne({ setFormData }) {
             containerStyle={{ marginTop: 24 }}
           />
         </div>
+        <TextArea
+          containerStyle={{ marginTop: 24 }}
+          label="Message"
+          placeholder="Type here"
+        />
       </div>
     </>
   )

@@ -1,13 +1,12 @@
 'use client'
 
 import { useId } from 'react'
-import AltArrowDown from '@/public/icons/AltArrowDown.svg'
-import styles from '@/styles/ui/Select.module.scss'
+import styles from '@/styles/ui/TextArea.module.scss'
 
-export default function Select({
+export default function TextArea({
   label,
+  placeholder,
   containerStyle,
-  children,
   ...inputProps
 }) {
   const id = useId()
@@ -18,9 +17,11 @@ export default function Select({
           <h3>{label}</h3>
         </label>
       )}
-      <select id={id} {...inputProps}>
-        {...children}
-      </select>
+      <textarea
+        id={id}
+        placeholder={placeholder ?? ''}
+        {...inputProps}
+      ></textarea>
     </div>
   )
 }
