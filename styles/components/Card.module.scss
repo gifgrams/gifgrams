@@ -5,7 +5,12 @@
   background: gray;
 
   @media screen and (max-height: 880px) and (min-width: 688px) {
-    width: auto;
-    height: calc(100dvh - 2 * (16px + 80px + 24px));
+    /* tag top margin, tag height, tag margin bottom, card margin bottom */
+    height: calc(100dvh - (16px + 80px + 24px + 24px));
+    /* follow height, aspect-ratio property only works with width */
+    max-width: none;
+    width: calc(100dvh - (16px + 80px + 24px + 24px));
+    position: relative;
+    top: 48px;
   }
 }
