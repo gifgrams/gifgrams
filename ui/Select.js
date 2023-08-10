@@ -1,12 +1,13 @@
 'use client'
 
 import { useId } from 'react'
-import styles from '@/styles/ui/TextInput.module.scss'
+import AltArrowDown from '@/public/icons/AltArrowDown.svg'
+import styles from '@/styles/ui/Select.module.scss'
 
-export default function TextInput({
+export default function Select({
   label,
-  placeholder,
   containerStyle,
+  children,
   ...inputProps
 }) {
   const id = useId()
@@ -17,7 +18,9 @@ export default function TextInput({
           <h3>{label}</h3>
         </label>
       )}
-      <input id={id} placeholder={placeholder ?? ''} {...inputProps}></input>
+      <select id={id} {...inputProps}>
+        {...children}
+      </select>
     </div>
   )
 }

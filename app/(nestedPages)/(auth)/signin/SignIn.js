@@ -25,7 +25,7 @@ export default function SignIn() {
       password,
     })
     if (error) {
-      console.error('Error signing in')
+      console.error('Error signing in', error)
       emitToast(
         'Error signing in',
         'Username or password is incorrect.',
@@ -45,6 +45,7 @@ export default function SignIn() {
             label="Email"
             placeholder="Email"
             name="email"
+            containerStyle={{ marginTop: 24 }}
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required
@@ -54,6 +55,7 @@ export default function SignIn() {
             placeholder="Password"
             type="password"
             name="password"
+            containerStyle={{ marginTop: 24 }}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required

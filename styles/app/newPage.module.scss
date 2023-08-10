@@ -1,17 +1,47 @@
+@use '/styles/breakpoints';
 @use '/styles/colors';
+@use '/styles/constants';
+@use '/styles/typography';
 
 
 .container {
   width: 100dvw;
   height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-size: cover;
   background-position: center center;
   overflow: scroll;
 
   >main {
     width: 100dvw;
-    padding: 64px;
+    max-width: calc(constants.$navBarContentMaxWidth + 24px + 24px);
+    padding: 48px 24px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    >.twoCol {
+      width: 100%;
+      margin-top: 32px;
+      display: grid;
+      justify-content: center;
+      grid-template-columns: auto auto;
+      column-gap: 128px;
+      row-gap: 64px;
+
+      h2 {
+        @include typography.text-base;
+        @include typography.text-xl;
+        @include typography.text-semibold;
+        margin-bottom: 32px;
+        color: colors.$text-primary;
+      }
+
+      @media screen and (max-width: breakpoints.$newPage) {
+        grid-template-columns: auto;
+      }
+    }
   }
 }

@@ -1,9 +1,9 @@
 'use client'
 
 import { useId } from 'react'
-import styles from '@/styles/ui/TextInput.module.scss'
+import styles from '@/styles/ui/TextArea.module.scss'
 
-export default function TextInput({
+export default function TextArea({
   label,
   placeholder,
   containerStyle,
@@ -17,7 +17,11 @@ export default function TextInput({
           <h3>{label}</h3>
         </label>
       )}
-      <input id={id} placeholder={placeholder ?? ''} {...inputProps}></input>
+      <textarea
+        id={id}
+        placeholder={placeholder ?? ''}
+        {...inputProps}
+      ></textarea>
     </div>
   )
 }

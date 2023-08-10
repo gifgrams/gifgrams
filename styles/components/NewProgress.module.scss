@@ -1,0 +1,70 @@
+@use '/styles/colors';
+@use '/styles/typography';
+
+.container {
+  width: 392px;
+  height: 56px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  >.back {
+    width: 36px;
+    height: 36px;
+    margin-right: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 100%;
+    background: none;
+    color: colors.$n-300;
+    transition: all 0.2s;
+
+    &:hover {
+      color: colors.$text-tertiary;
+      cursor: pointer;
+    }
+  }
+
+  >.pill {
+    width: 272px;
+    height: 56px;
+    margin-right: 60px;
+    padding: 4px;
+    box-shadow: 0 0 0 4px colors.$n-200;
+    border-radius: 28px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    >.stageBtn {
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: colors.$just-white;
+      color: colors.$bubble-blue;
+      @include typography.text-base;
+      @include typography.text-xl;
+      @include typography.text-semibold;
+      font-family: 'Chillax', 'ui-sans-serif', 'sans-serif';
+      cursor: default;
+
+      transition: all 0.2s;
+
+      &.active {
+        background: colors.$bubble-blue;
+        color: colors.$just-white;
+      }
+
+      &.hoverable:hover {
+        cursor: pointer;
+        background: colors.$bubble-blue;
+        color: colors.$just-white;
+      }
+    }
+  }
+}

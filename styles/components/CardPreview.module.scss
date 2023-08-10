@@ -1,0 +1,25 @@
+@use '/styles/colors';
+@use '/styles/typography';
+
+.container {
+  width: calc(100dvw - 24px - 24px);
+  $maxWidth: 612px;
+  max-width: $maxWidth;
+
+  >h2 {
+    @include typography.text-base;
+    @include typography.text-xl;
+    @include typography.text-semibold;
+    margin-bottom: 32px;
+    color: colors.$text-primary;
+  }
+
+  >.previewContainer {
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: 24px;
+    padding: 16px;
+    border-radius: 24px;
+    background: colors.$n-100;
+  }
+}

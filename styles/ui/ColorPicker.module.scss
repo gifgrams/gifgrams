@@ -13,12 +13,13 @@
   }
 
   >input {
-    width: 416px;
+    width: 56px;
     height: 56px;
-    padding: 16px 12px;
+    padding: 10px;
     border: 2px solid colors.$n-200;
     border-radius: 8px;
     display: flex;
+    // justify-content: center;
     align-items: center;
     background: colors.$n-50;
     @include typography.text-base;
@@ -27,8 +28,21 @@
     color: colors.$text-primary;
     transition: border 0.2s;
 
-    &::placeholder {
-      color: colors.$text-tertiary;
+    // &::-webkit-color-swatch-wrapper {
+    //   width: 24px;
+    //   height: 24px;
+    //   border: 2px solid colors.$text-tertiary;
+    //   border-radius: 100%;
+    // }
+
+    &::-webkit-color-swatch {
+      // width: 24px;
+      // height: 24px;
+      // border: 2px solid colors.$text-tertiary;
+      border-radius: 4px;
+      // position: absolute;
+      // top: 10px;
+      // left: 10px;
     }
 
     &:hover {

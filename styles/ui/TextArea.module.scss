@@ -12,10 +12,12 @@
     color: colors.$text-secondary;
   }
 
-  >input {
-    width: 416px;
-    height: 56px;
-    padding: 16px 12px;
+  >textarea {
+    width: calc(100dvw - 24px - 24px);
+    $maxWidth: 612px;
+    max-width: $maxWidth;
+    height: 256px;
+    padding: 12px;
     border: 2px solid colors.$n-200;
     border-radius: 8px;
     display: flex;

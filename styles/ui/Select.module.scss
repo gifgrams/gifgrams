@@ -12,15 +12,17 @@
     color: colors.$text-secondary;
   }
 
-  >input {
-    width: 416px;
+  >select {
+    width: 100%;
     height: 56px;
-    padding: 16px 12px;
+    padding: 0px 12px;
     border: 2px solid colors.$n-200;
     border-radius: 8px;
     display: flex;
     align-items: center;
-    background: colors.$n-50;
+    background: colors.$n-50 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12.3704 15.8351L18.8001 9.20467C19.2013 8.79094 18.9581 8 18.4297 8H5.5703C5.04189 8 4.79869 8.79094 5.1999 9.20467L11.6296 15.8351C11.8427 16.055 12.1573 16.0549 12.3704 15.8351Z" fill="#606060" /> </svg>');
+    background-position: right 8px top 50%;
+    // appearance: none;
     @include typography.text-base;
     @include typography.text-lg;
     @include typography.text-medium;
