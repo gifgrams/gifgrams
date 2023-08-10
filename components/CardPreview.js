@@ -1,3 +1,4 @@
+import CardContainer from '@/components/CardContainer'
 import Button from '@/ui/Button'
 import ArrowRight from '@/public/icons/ArrowRight.svg'
 import Plain from '@/public/icons/Plain.svg'
@@ -7,6 +8,9 @@ export default function CardPreview({ stage, setStage }) {
   return (
     <div className={styles.container}>
       <h2>Preview</h2>
+      <div className={styles.previewContainer}>
+        <CardContainer isPreview={true} isFront={true} />
+      </div>
 
       {stage === 2 ? (
         <Button

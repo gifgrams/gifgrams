@@ -1,3 +1,4 @@
+import styleBuilder from '@/util/styleBuilder'
 import Card from '@/components/Card'
 import CardControls from '@/components/CardControls'
 import GifGramsTag from '@/components/GifGramsTag'
@@ -5,6 +6,7 @@ import styles from '@/styles/components/CardContainer.module.scss'
 
 export default function CardContainer({
   isPreview = false,
+  isFront = true,
   cardData = {
     mediaUrl: '',
     accentColor: '#E0E0E0',
@@ -20,9 +22,14 @@ export default function CardContainer({
   },
 }) {
   return (
-    <div className={styles.container}>
-      <Card cardData={cardData} />
-      <CardControls />
+    <div
+      className={styleBuilder([
+        styles.container,
+        [styles.isPreview, isPreview],
+      ])}
+    >
+      <Card isPreview={isPreview} cardData={cardData} />
+      {!isPreview && <CardControls />}
       {!isPreview && <GifGramsTag />}
     </div>
   )

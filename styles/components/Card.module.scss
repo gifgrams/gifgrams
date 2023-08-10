@@ -1,8 +1,13 @@
 .container {
-  width: calc(100dvw - 24px - 24px);
+  width: calc(100% - 24px - 24px);
   max-width: 640px;
   aspect-ratio: 1;
   background: gray;
+
+  &.isPreview {
+    width: calc(100% - 32px - 32px);
+    height: calc(100% - 32px - 32px)
+  }
 
   @media screen and (max-height: 880px) and (min-width: 688px) {
     /* tag top margin, tag height, tag margin bottom, card margin bottom */

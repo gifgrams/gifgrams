@@ -49,7 +49,7 @@ export default function App() {
   }, []) */
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} key={stage}>
       <NavBar newBtnVisible={false} />
       <main>
         <NewProgress stage={stage} setStage={setStage} />
