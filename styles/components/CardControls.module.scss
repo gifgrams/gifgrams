@@ -1,5 +1,40 @@
+@use '/styles/typography';
+
 .container {
-  width: 100%;
-  height: 88px;
-  background: red;
+  width: calc(100% - 24px - 24px);
+  max-width: 640px;
+  height: 64px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  // background: red;
+
+  // DEPENDENCY OF: Card width
+  @media screen and (max-height: 880px) and (min-width: 688px) {
+    max-width: none;
+    width: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+  }
+
+  >button {
+    height: 44px;
+    padding: 8px 16px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    background: none;
+    @include typography.text-base;
+    @include typography.text-md;
+    @include typography.text-semibold;
+    color: rgba(0, 0, 0, 0.4);
+
+    transition: color 0.2s;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
 }

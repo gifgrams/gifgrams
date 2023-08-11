@@ -5,7 +5,7 @@ export default function Card({ cardId }) {
   return (
     <>
       <CardContainer
-        cardData={{
+      /* cardData={{
           mediaUrl: '',
           accentColor: '#E0E0E0',
           typeface: 'Monserrat',
@@ -17,7 +17,7 @@ export default function Card({ cardId }) {
           recipientName: '',
           recipientEmail: '',
           sendDate: Date.now(),
-        }}
+        }} */
       />
     </>
   )

@@ -19,7 +19,7 @@ export default function App() {
   //   data: { session },
   // } = await supabase.auth.getSession()
 
-  const [stage, setStage] = useState(2)
+  const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
     mediaUrl: '',
     accentColor: '#E0E0E0',
