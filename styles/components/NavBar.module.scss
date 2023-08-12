@@ -53,6 +53,10 @@
     .newBtn {
       position: absolute;
       left: calc(50% - (180px / 2));
+
+      @media screen and (max-width: breakpoints.$phone) {
+        display: none;
+      }
     }
   }
 }

@@ -21,13 +21,21 @@
     >.content {
       width: 100%;
       max-width: breakpoints.$navBarContentMaxWidth;
-      padding: 64px 0px;
+
+      >.newBtn {
+        display: none;
+
+        @media screen and (max-width: breakpoints.$phone) {
+          display: block;
+        }
+      }
 
       >h1 {
         @include typography.text-base;
         @include typography.text-2xl;
         @include typography.text-semibold;
         color: colors.$just-white;
+        margin-top: 64px;
       }
 
       >.cardContainer {
