@@ -10,7 +10,7 @@ export default function HistoryCard() {
         <CardContainer
           isPreview={true}
           isFront={true}
-          containerStyle={{ height: 400 }}
+          containerStyle={{ width: '100%', aspectRatio: 1 }}
         />
       </div>
       <h3>Thank you, John!</h3>

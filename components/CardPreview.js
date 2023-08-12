@@ -9,7 +9,11 @@ export default function CardPreview({ stage, setStage }) {
     <div className={styles.container}>
       <h2>Preview</h2>
       <div className={styles.previewContainer}>
-        <CardContainer isPreview={true} isFront={true} />
+        <CardContainer
+          isPreview={true}
+          isFront={true}
+          containerStyle={{ height: '100%' }}
+        />
       </div>
 
       {stage === 2 ? (
