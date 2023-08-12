@@ -24,8 +24,26 @@
     align-items: center;
 
     .wordmark {
-      height: 36px;
-      position: relative;
+      height: 48px;
+    }
+
+    .desktopWordmark {
+      height: 48px;
+    }
+
+    .mobileWordmark {
+      height: 48px;
+      display: none;
+    }
+
+    @media screen and (max-width: breakpoints.$phone) {
+      .desktopWordmark {
+        display: none;
+      }
+
+      .mobileWordmark {
+        display: block;
+      }
     }
 
     a {
@@ -34,7 +52,6 @@
 
     .newBtn {
       position: absolute;
-      // top: 50%;
       left: calc(50% - (180px / 2));
     }
   }

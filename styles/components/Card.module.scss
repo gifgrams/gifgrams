@@ -2,6 +2,17 @@
   width: calc(100% - 24px - 24px);
   max-width: 640px;
   aspect-ratio: 1;
+  transition: scale 0.1s ease-in-out;
+
+  &:hover {
+    scale: 1.01;
+    cursor: pointer;
+  }
+
+  &:active {
+    scale: 0.99;
+    cursor: pointer;
+  }
 
   &.isPreview {
     width: calc(100% - 32px - 32px);
