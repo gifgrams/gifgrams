@@ -10,7 +10,7 @@ export default function CardContainer({
   containerStyle,
   cardData = {
     mediaUrl: '',
-    accentColor: '#41C4E0',
+    accentColor: '#ffffff',
     typeface: 'Monserrat',
     fontSize: 14,
     fontColor: '#000000',
@@ -35,7 +35,7 @@ export default function CardContainer({
     >
       <Card isPreview={isPreview} cardData={cardData} />
       {!isPreview && <CardControls />}
-      {!isPreview && <GifGramsTag />}
+      {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
   )
 }

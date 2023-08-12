@@ -4,8 +4,8 @@ import { useState } from 'react'
 import styleBuilder from '@/util/styleBuilder'
 import TextInput from '@/ui/TextInput'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
-import VideoLibrary from '@/public/icons/VideoLibrary.svg'
 import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
+import VideoLibrary from '@/public/icons/VideoLibrary.svg'
 import styles from '@/styles/components/MediaSelector.module.scss'
 
 export default function MediaSelector({ setFormData }) {
@@ -19,6 +19,7 @@ export default function MediaSelector({ setFormData }) {
           className={styleBuilder([[styles.active, mediaType === 'gif']])}
           onClick={() => {
             setMediaType('gif')
+            setQuery('')
           }}
         >
           <ClapperboardPlay />
@@ -28,6 +29,7 @@ export default function MediaSelector({ setFormData }) {
           className={styleBuilder([[styles.active, mediaType === 'sticker']])}
           onClick={() => {
             setMediaType('sticker')
+            setQuery('')
           }}
         >
           <VideoLibrary />
@@ -37,6 +39,7 @@ export default function MediaSelector({ setFormData }) {
           className={styleBuilder([[styles.active, mediaType === 'image']])}
           onClick={() => {
             setMediaType('image')
+            setQuery('')
           }}
         >
           <GalleryMinimalistic />
@@ -44,19 +47,32 @@ export default function MediaSelector({ setFormData }) {
         </button>
       </div>
       <div className={styles.searchContainer}>
-        <TextInput
-          placeholder="Search"
-          style={{ width: '100%' }}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <div className={styles.resultContainer}>
-          {Array(10)
-            .fill(null)
-            .map((elem) => (
-              <img key={elem} src="" className={styles.result} />
-            ))}
-        </div>
+        {['gif', 'sticker'].includes(mediaType) && (
+          <>
+            <TextInput
+              placeholder="Search"
+              style={{ width: '100%' }}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <div className={styles.resultContainer}>
+              {Array(10)
+                .fill(null)
+                .map((elem) => (
+                  <img key={elem} src="" className={styles.result} />
+                ))}
+            </div>
+          </>
+        )}
+        {mediaType === 'image' && (
+          <div className={styles.uploadPanel}>
+            <GalleryMinimalistic />
+            <div>
+              Choose a file to <strong>upload</strong>
+            </div>
+            <input type="file" />
+          </div>
+        )}
       </div>
     </div>
   )

@@ -44,6 +44,11 @@
       &:hover {
         color: colors.$text-secondary;
       }
+
+      >svg {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
@@ -76,6 +81,40 @@
         background: colors.$n-300;
         animation: animations.$pulseOpacity;
       }
+    }
+  }
+
+  .uploadPanel {
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    @include typography.text-base;
+    @include typography.text-lg;
+    @include typography.text-semibold;
+    color: colors.$text-tertiary;
+
+    svg {
+      width: 96px;
+      height: 96px;
+    }
+
+    strong {
+      display: inline;
+      text-decoration: underline;
+      color: colors.$text-secondary;
+      @include typography.text-semibold;
+    }
+
+    >input {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
     }
   }
 }
