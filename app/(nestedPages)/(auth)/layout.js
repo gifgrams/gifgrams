@@ -44,7 +44,7 @@ export default function authLayout({ children }) {
             src="/wordmark.svg"
             alt="wordmark"
             width={208}
-            height={42}
+            height={48}
             priority
           ></Image>
         </Link>

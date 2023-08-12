@@ -13,7 +13,7 @@ export default function NavBar({ newBtnVisible = true }) {
             src="/wordmark.svg"
             alt="wordmark"
             width={178}
-            height={36}
+            height={42}
             priority
           ></Image>
         </Link>

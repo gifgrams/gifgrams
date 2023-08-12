@@ -7,6 +7,7 @@ import styles from '@/styles/components/CardContainer.module.scss'
 export default function CardContainer({
   isPreview = false,
   isFront = true,
+  containerStyle,
   cardData = {
     mediaUrl: '',
     accentColor: '#41C4E0',
@@ -28,6 +29,7 @@ export default function CardContainer({
         [styles.isPreview, isPreview],
       ])}
       style={{
+        ...containerStyle,
         background: `radial-gradient(50% 50.00% at 50% 50.00%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3 ) 100%), ${cardData.accentColor}`,
       }}
     >

@@ -1,5 +1,7 @@
+import Link from 'next/link'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
+import HistoryCard from '@/components/HistoryCard'
 import NavBar from '@/components/NavBar'
 import styles from '@/styles/app/rootPage.module.scss'
 
@@ -19,6 +21,15 @@ export default async function App() {
       <main>
         <div className={styles.content}>
           <h1>Send History</h1>
+          <div className={styles.cardContainer}>
+            {Array(5)
+              .fill(null)
+              .map((elem) => (
+                <Link href="/asdf" target="_blank">
+                  <HistoryCard />
+                </Link>
+              ))}
+          </div>
         </div>
       </main>
     </div>
