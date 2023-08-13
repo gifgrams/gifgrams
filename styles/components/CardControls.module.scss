@@ -1,3 +1,4 @@
+@use '/styles/breakpoints';
 @use '/styles/colors';
 @use '/styles/typography';
 
@@ -9,8 +10,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  // background: red;
+
+  @media screen and (max-width: breakpoints.$phone) {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 
   // DEPENDENCY OF: Card width
   @media screen and (max-height: 880px) and (min-width: 688px) {
