@@ -26,7 +26,7 @@ export default function Card({
       style={{
         border: `16px solid ${cardData.accentColor}`,
         background: `${cardData.backgroundColor}`,
-        boxShadow: `0px 8px 24px 0px ${cardData.accentColor}c0`,
+        boxShadow: `0px 8px 24px 0px ${cardData.accentColor}c0, 0px 16px 48px 0px #00000010`,
         pointerEvents: isPreview ? 'none' : 'initial',
       }}
     ></div>

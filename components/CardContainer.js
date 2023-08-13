@@ -10,7 +10,7 @@ export default function CardContainer({
   containerStyle,
   cardData = {
     mediaUrl: '',
-    accentColor: '#ffffff',
+    accentColor: '#34dba7',
     typeface: 'Monserrat',
     fontSize: 14,
     fontColor: '#000000',
