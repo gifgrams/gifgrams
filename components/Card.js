@@ -1,22 +1,7 @@
 import styleBuilder from '@/util/styleBuilder'
 import styles from '@/styles/components/Card.module.scss'
 
-export default function Card({
-  isPreview,
-  cardData = {
-    mediaUrl: '',
-    accentColor: '#FFC199',
-    typeface: 'Monserrat',
-    fontSize: 14,
-    fontColor: '#000000',
-    backgroundColor: '#ffffff',
-    message: '',
-    title: '',
-    recipientName: '',
-    recipientEmail: '',
-    sendDate: Date.now(),
-  },
-}) {
+export default function Card({ isPreview, cardData }) {
   return (
     <div
       className={styleBuilder([
@@ -26,7 +11,7 @@ export default function Card({
       style={{
         border: `16px solid ${cardData.accentColor}`,
         background: `${cardData.backgroundColor}`,
-        boxShadow: `0px 8px 24px 0px ${cardData.accentColor}c0, 0px 16px 48px 0px #00000010`,
+        boxShadow: `0px 8px 24px 0px ${cardData.accentColor}c0`,
         pointerEvents: isPreview ? 'none' : 'initial',
       }}
     ></div>
