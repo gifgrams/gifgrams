@@ -13,7 +13,7 @@ export default function CustomizeTwo({ setFormData }) {
             <option>default</option>
             <option>other</option>
           </Select>
-          <Select label="Font">
+          <Select label="Font Size">
             <option>default</option>
             <option>other</option>
           </Select>

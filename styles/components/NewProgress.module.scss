@@ -55,7 +55,7 @@
       justify-content: center;
       align-items: center;
       background: colors.$just-white;
-      color: colors.$bubble-blue;
+      color: colors.$n-300;
       @include typography.text-base;
       @include typography.text-xl;
       @include typography.text-semibold;
@@ -69,7 +69,11 @@
         color: colors.$just-white;
       }
 
-      &.hoverable:hover {
+      &.enabled {
+        color: colors.$bubble-blue;
+      }
+
+      &.enabled:hover {
         cursor: pointer;
         background: colors.$bubble-blue;
         color: colors.$just-white;
