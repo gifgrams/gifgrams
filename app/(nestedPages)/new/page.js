@@ -22,7 +22,7 @@ export default function App() {
   const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
     mediaUrl: '',
-    accentColor: '#E0E0E0',
+    accentColor: '#41C4E0',
     typeface: 'Monserrat',
     fontSize: 14,
     fontColor: '#000000',
