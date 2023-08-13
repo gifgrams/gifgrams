@@ -37,6 +37,10 @@ export default function App() {
   const supabase = createClientComponentClient()
   const router = useRouter()
 
+  useEffect(() => {
+    console.log('formData', formData)
+  }, [formData])
+
   /* useEffect(() => {
     const protectRoute = async () => {
       const {
@@ -54,10 +58,16 @@ export default function App() {
       <main>
         <NewProgress stage={stage} setStage={setStage} />
         <div className={styles.twoCol}>
-          {stage === 0 && <CustomizeOne setFormData={setFormData} />}
-          {stage === 1 && <CustomizeTwo setFormData={setFormData} />}
-          {stage === 2 && <CustomizeThree setFormData={setFormData} />}
-          <CardPreview stage={stage} setStage={setStage} />
+          {stage === 0 && (
+            <CustomizeOne formData={formData} setFormData={setFormData} />
+          )}
+          {stage === 1 && (
+            <CustomizeTwo formData={formData} setFormData={setFormData} />
+          )}
+          {stage === 2 && (
+            <CustomizeThree formData={formData} setFormData={setFormData} />
+          )}
+          <CardPreview stage={stage} setStage={setStage} cardData={formData} />
         </div>
       </main>
     </div>

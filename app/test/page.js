@@ -1,3 +1,8 @@
 export default function Test() {
-  return <p>hello world</p>
+  return (
+    <form>
+      <input type="text" />
+      <button>submit</button>
+    </form>
+  )
 }

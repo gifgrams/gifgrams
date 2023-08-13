@@ -28,8 +28,8 @@ export default async function App() {
           <div className={styles.cardContainer}>
             {Array(5)
               .fill(null)
-              .map((elem) => (
-                <Link href="/asdf" target="_blank">
+              .map((elem, index) => (
+                <Link key={index} href="/asdf" target="_blank">
                   <HistoryCard />
                 </Link>
               ))}

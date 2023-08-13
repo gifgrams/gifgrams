@@ -8,7 +8,7 @@ import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
 import VideoLibrary from '@/public/icons/VideoLibrary.svg'
 import styles from '@/styles/components/MediaSelector.module.scss'
 
-export default function MediaSelector({ setFormData }) {
+export default function MediaSelector({ formData, setFormData }) {
   const [mediaType, setMediaType] = useState('gif')
   const [query, setQuery] = useState('')
 
@@ -58,8 +58,8 @@ export default function MediaSelector({ setFormData }) {
             <div className={styles.resultContainer}>
               {Array(10)
                 .fill(null)
-                .map((elem) => (
-                  <img key={elem} src="" className={styles.result} />
+                .map((elem, index) => (
+                  <img key={index} src="" className={styles.result} />
                 ))}
             </div>
           </>
