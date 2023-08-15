@@ -7,13 +7,14 @@ import styles from '@/styles/components/CardContainer.module.scss'
 export default function CardContainer({
   isPreview = false,
   isFront = true,
+  containerStyle,
   cardData = {
     mediaUrl: '',
-    accentColor: '#E0E0E0',
+    accentColor: '#41C4E0',
     typeface: 'Monserrat',
     fontSize: 14,
     fontColor: '#000000',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff',
     message: '',
     title: '',
     recipientName: '',
@@ -27,10 +28,14 @@ export default function CardContainer({
         styles.container,
         [styles.isPreview, isPreview],
       ])}
+      style={{
+        ...containerStyle,
+        background: `radial-gradient(50% 50.00% at 50% 50.00%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4 ) 100%), ${cardData.accentColor}`,
+      }}
     >
       <Card isPreview={isPreview} cardData={cardData} />
       {!isPreview && <CardControls />}
-      {!isPreview && <GifGramsTag />}
+      {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
   )
 }

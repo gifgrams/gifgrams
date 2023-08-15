@@ -1,3 +1,4 @@
+@use '/styles/breakpoints';
 @use '/styles/colors';
 @use '/styles/typography';
 
@@ -7,6 +8,10 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @media screen and (max-width: breakpoints.$phone) {
+    width: auto;
+  }
 
   >.back {
     width: 36px;
@@ -37,6 +42,10 @@
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-width: breakpoints.$phone) {
+      margin: 0;
+    }
+
     >.stageBtn {
       width: 48px;
       height: 48px;
@@ -46,7 +55,7 @@
       justify-content: center;
       align-items: center;
       background: colors.$just-white;
-      color: colors.$bubble-blue;
+      color: colors.$n-300;
       @include typography.text-base;
       @include typography.text-xl;
       @include typography.text-semibold;
@@ -60,7 +69,11 @@
         color: colors.$just-white;
       }
 
-      &.hoverable:hover {
+      &.enabled {
+        color: colors.$bubble-blue;
+      }
+
+      &.enabled:hover {
         cursor: pointer;
         background: colors.$bubble-blue;
         color: colors.$just-white;

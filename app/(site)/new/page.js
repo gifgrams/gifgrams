@@ -19,10 +19,10 @@ export default function App() {
   //   data: { session },
   // } = await supabase.auth.getSession()
 
-  const [stage, setStage] = useState(2)
+  const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
     mediaUrl: '',
-    accentColor: '#E0E0E0',
+    accentColor: '#41C4E0',
     typeface: 'Monserrat',
     fontSize: 14,
     fontColor: '#000000',
@@ -36,6 +36,10 @@ export default function App() {
 
   const supabase = createClientComponentClient()
   const router = useRouter()
+
+  useEffect(() => {
+    console.log('formData', formData)
+  }, [formData])
 
   /* useEffect(() => {
     const protectRoute = async () => {
@@ -54,10 +58,16 @@ export default function App() {
       <main>
         <NewProgress stage={stage} setStage={setStage} />
         <div className={styles.twoCol}>
-          {stage === 0 && <CustomizeOne setFormData={setFormData} />}
-          {stage === 1 && <CustomizeTwo setFormData={setFormData} />}
-          {stage === 2 && <CustomizeThree setFormData={setFormData} />}
-          <CardPreview stage={stage} setStage={setStage} />
+          {stage === 0 && (
+            <CustomizeOne formData={formData} setFormData={setFormData} />
+          )}
+          {stage === 1 && (
+            <CustomizeTwo formData={formData} setFormData={setFormData} />
+          )}
+          {stage === 2 && (
+            <CustomizeThree formData={formData} setFormData={setFormData} />
+          )}
+          <CardPreview stage={stage} setStage={setStage} cardData={formData} />
         </div>
       </main>
     </div>

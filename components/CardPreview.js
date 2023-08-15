@@ -4,12 +4,17 @@ import ArrowRight from '@/public/icons/ArrowRight.svg'
 import Plain from '@/public/icons/Plain.svg'
 import styles from '@/styles/components/CardPreview.module.scss'
 
-export default function CardPreview({ stage, setStage }) {
+export default function CardPreview({ stage, setStage, cardData }) {
   return (
     <div className={styles.container}>
       <h2>Preview</h2>
       <div className={styles.previewContainer}>
-        <CardContainer isPreview={true} isFront={true} />
+        <CardContainer
+          isPreview={true}
+          isFront={true}
+          containerStyle={{ height: '100%' }}
+          cardData={cardData}
+        />
       </div>
 
       {stage === 2 ? (

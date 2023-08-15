@@ -15,8 +15,8 @@
   z-index: 1;
 
   >.content {
-    width: constants.$navBarContentMaxWidth;
-    max-width: constants.$navBarContentMaxWidth;
+    width: breakpoints.$navBarContentMaxWidth;
+    max-width: breakpoints.$navBarContentMaxWidth;
     height: 96px;
     position: relative;
     display: flex;
@@ -24,9 +24,26 @@
     align-items: center;
 
     .wordmark {
-      height: 36px;
-      position: relative;
-      top: 3px;
+      height: 48px;
+    }
+
+    .desktopWordmark {
+      height: 48px;
+    }
+
+    .mobileWordmark {
+      height: 48px;
+      display: none;
+    }
+
+    @media screen and (max-width: breakpoints.$phone) {
+      .desktopWordmark {
+        display: none;
+      }
+
+      .mobileWordmark {
+        display: block;
+      }
     }
 
     a {
@@ -35,8 +52,11 @@
 
     .newBtn {
       position: absolute;
-      // top: 50%;
       left: calc(50% - (180px / 2));
+
+      @media screen and (max-width: breakpoints.$phone) {
+        display: none;
+      }
     }
   }
 }

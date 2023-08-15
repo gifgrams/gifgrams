@@ -1,5 +1,84 @@
+@use '/styles/breakpoints';
+@use '/styles/colors';
+@use '/styles/typography';
+
 .container {
-  width: 100%;
-  height: 88px;
-  background: red;
+  width: calc(100% - 24px - 24px);
+  max-width: 640px;
+  height: 64px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  // DEPENDENCY OF: Card width
+  @media screen and (max-height: 880px) and (min-width: 688px) {
+    max-width: none;
+    height: 116px;
+    width: calc(100dvh - (16px + 80px + 24px + 24px + 48px + 52px));
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  @media screen and (max-width: breakpoints.$phone) {
+    height: 116px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  >button {
+    height: 44px;
+    padding: 8px 16px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    @include typography.text-base;
+    @include typography.text-md;
+    @include typography.text-semibold;
+    color: rgba(0, 0, 0, 0.4);
+
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  >.reactionContainer {
+    height: 64px;
+    padding: 16px 14px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    display: flex;
+    box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.10);
+    background: colors.$just-white;
+
+    >button {
+      width: 36px;
+      height: 36px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: none;
+      @include typography.text-base;
+      @include typography.text-2xl;
+      @include typography.text-semibold;
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+        scale: 1.1;
+      }
+
+      &:active {
+        scale: 0.95;
+      }
+    }
+  }
 }

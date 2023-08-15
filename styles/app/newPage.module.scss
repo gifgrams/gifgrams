@@ -16,7 +16,7 @@
 
   >main {
     width: 100dvw;
-    max-width: calc(constants.$navBarContentMaxWidth + 24px + 24px);
+    max-width: calc(breakpoints.$navBarContentMaxWidth + 24px + 24px);
     padding: 48px 24px;
     display: flex;
     flex-direction: column;

@@ -1,6 +1,9 @@
+import Link from 'next/link'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
+import HistoryCard from '@/components/HistoryCard'
 import NavBar from '@/components/NavBar'
+import SmallNewButton from '@/components/SmallNewButton'
 import styles from '@/styles/app/rootPage.module.scss'
 
 export const metadata = {
@@ -18,7 +21,19 @@ export default async function App() {
       <NavBar newBtnVisible={true} />
       <main>
         <div className={styles.content}>
+          <Link className={styles.newBtn} href="/new">
+            <SmallNewButton />
+          </Link>
           <h1>Send History</h1>
+          <div className={styles.cardContainer}>
+            {Array(5)
+              .fill(null)
+              .map((elem, index) => (
+                <Link key={index} href="/asdf" target="_blank">
+                  <HistoryCard />
+                </Link>
+              ))}
+          </div>
         </div>
       </main>
     </div>

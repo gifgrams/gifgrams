@@ -2,13 +2,24 @@
   width: calc(100% - 24px - 24px);
   max-width: 640px;
   aspect-ratio: 1;
-  background: gray;
+  transition: scale 0.1s ease-in-out;
+
+  &:hover {
+    scale: 1.01;
+    cursor: pointer;
+  }
+
+  &:active {
+    scale: 0.99;
+    cursor: pointer;
+  }
 
   &.isPreview {
     width: calc(100% - 32px - 32px);
     height: calc(100% - 32px - 32px)
   }
 
+  // DEPENDENCY TO: width of CardControls
   @media screen and (max-height: 880px) and (min-width: 688px) {
     /* tag top margin, tag height, tag margin bottom, card margin bottom */
     height: calc(100dvh - (16px + 80px + 24px + 24px + 48px));

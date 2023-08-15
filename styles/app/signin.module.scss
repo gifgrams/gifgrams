@@ -3,6 +3,7 @@
 
 .container {
   width: 512px;
+  max-width: calc(100dvw - 24px);
   padding: 48px;
   border-radius: 32px;
   background: colors.$just-white;

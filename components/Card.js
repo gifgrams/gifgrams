@@ -8,6 +8,12 @@ export default function Card({ isPreview, cardData }) {
         styles.container,
         [styles.isPreview, isPreview],
       ])}
+      style={{
+        border: `16px solid ${cardData.accentColor}`,
+        background: `${cardData.backgroundColor}`,
+        boxShadow: `0px 8px 24px 0px ${cardData.accentColor}c0`,
+        pointerEvents: isPreview ? 'none' : 'initial',
+      }}
     ></div>
   )
 }
