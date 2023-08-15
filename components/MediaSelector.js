@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
+import debounce from 'lodash.debounce'
 import styleBuilder from '@/util/styleBuilder'
 import TextInput from '@/ui/TextInput'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
@@ -12,6 +13,19 @@ import styles from '@/styles/components/MediaSelector.module.scss'
 export default function MediaSelector({ formData, setFormData }) {
   const [mediaType, setMediaType] = useState('gif')
   const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    setQuery('')
+  }, [mediaType])
+
+  const changeHandler = (event) => {
+    console.log(event.target.value)
+    setQuery(event.target.value)
+  }
+
+  const debouncedChangeHandler = useMemo(() => {
+    return debounce(changeHandler, 500)
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -51,10 +65,10 @@ export default function MediaSelector({ formData, setFormData }) {
         {['gif', 'sticker'].includes(mediaType) && (
           <>
             <TextInput
+              key={mediaType}
               placeholder="Search"
               style={{ width: '100%' }}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => debouncedChangeHandler(e)}
             />
             <div className={styles.resultContainer}>
               {Array(10)
