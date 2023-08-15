@@ -30,7 +30,7 @@ export default function CardContainer({
       ])}
       style={{
         ...containerStyle,
-        background: `radial-gradient(50% 50.00% at 50% 50.00%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3 ) 100%), ${cardData.accentColor}`,
+        background: `radial-gradient(50% 50.00% at 50% 50.00%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4 ) 100%), ${cardData.accentColor}`,
       }}
     >
       <Card isPreview={isPreview} cardData={cardData} />

@@ -5,6 +5,7 @@ import styleBuilder from '@/util/styleBuilder'
 import TextInput from '@/ui/TextInput'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
 import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
+import Upload from '@/public/icons/Upload.svg'
 import VideoLibrary from '@/public/icons/VideoLibrary.svg'
 import styles from '@/styles/components/MediaSelector.module.scss'
 
@@ -66,7 +67,7 @@ export default function MediaSelector({ formData, setFormData }) {
         )}
         {mediaType === 'image' && (
           <div className={styles.uploadPanel}>
-            <GalleryMinimalistic />
+            <Upload />
             <div>
               Choose a file to <strong>upload</strong>
             </div>
