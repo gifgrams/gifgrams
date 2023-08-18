@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
@@ -13,10 +14,23 @@ import styles from '@/styles/components/MediaSelector.module.scss'
 export default function MediaSelector({ formData, setFormData }) {
   const [mediaType, setMediaType] = useState('gif')
   const [query, setQuery] = useState('')
+  const [results, setResults] = useState([])
 
   useEffect(() => {
-    setQuery('')
+    console.log('mediaType', mediaType)
   }, [mediaType])
+
+  useEffect(() => {
+    const fetchResults = async () => {
+      const data = await (
+        await fetch(`/api/v1/${mediaType}/search?query=${query}`)
+      ).json()
+      setResults(data.data.results)
+      console.log('data', data.data.results)
+    }
+    if (query && ['gif', 'sticker'].includes(mediaType)) fetchResults()
+    else setResults([])
+  }, [query, mediaType])
 
   const changeHandler = (event) => {
     console.log(event.target.value)
@@ -24,7 +38,7 @@ export default function MediaSelector({ formData, setFormData }) {
   }
 
   const debouncedChangeHandler = useMemo(() => {
-    return debounce(changeHandler, 500)
+    return debounce(changeHandler, 300)
   }, [])
 
   return (
@@ -34,7 +48,6 @@ export default function MediaSelector({ formData, setFormData }) {
           className={styleBuilder([[styles.active, mediaType === 'gif']])}
           onClick={() => {
             setMediaType('gif')
-            setQuery('')
           }}
         >
           <ClapperboardPlay />
@@ -44,7 +57,6 @@ export default function MediaSelector({ formData, setFormData }) {
           className={styleBuilder([[styles.active, mediaType === 'sticker']])}
           onClick={() => {
             setMediaType('sticker')
-            setQuery('')
           }}
         >
           <VideoLibrary />
@@ -54,7 +66,6 @@ export default function MediaSelector({ formData, setFormData }) {
           className={styleBuilder([[styles.active, mediaType === 'image']])}
           onClick={() => {
             setMediaType('image')
-            setQuery('')
           }}
         >
           <GalleryMinimalistic />
@@ -65,17 +76,22 @@ export default function MediaSelector({ formData, setFormData }) {
         {['gif', 'sticker'].includes(mediaType) && (
           <>
             <TextInput
-              key={mediaType}
               placeholder="Search"
               style={{ width: '100%' }}
               onChange={(e) => debouncedChangeHandler(e)}
             />
-            <div className={styles.resultContainer}>
-              {Array(10)
-                .fill(null)
-                .map((elem, index) => (
-                  <img key={index} src="" className={styles.result} />
-                ))}
+            <div key={query} className={styles.resultContainer}>
+              {results.map((elem, index) => (
+                <img
+                  key={elem.id}
+                  src={elem.media_formats.tinygif.url}
+                  className={styles.result}
+                  loading="lazy"
+                  onLoad={() => {
+                    console.log('loaded', index)
+                  }}
+                />
+              ))}
             </div>
           </>
         )}

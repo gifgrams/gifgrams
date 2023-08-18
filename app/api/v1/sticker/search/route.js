@@ -5,7 +5,7 @@ export async function GET(request) {
   const query = searchParams.get('query')
 
   const res = await fetch(
-    `https://tenor.googleapis.com/v2/search?q=${query}&key=${process.env.TENOR_API_KEY}&client_key=my_test_app&limit=48`,
+    `https://tenor.googleapis.com/v2/search?q=${query}&searchfilter=sticker&key=${process.env.TENOR_API_KEY}&client_key=my_test_app&limit=48`,
     {
       headers: {
         'Content-Type': 'application/json',

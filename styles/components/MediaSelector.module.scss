@@ -66,20 +66,23 @@
       margin-top: 16px;
       border-radius: 4px;
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: calc((100% - 2 * (8px)) / 3) calc((100% - 2 * (8px)) / 3) calc((100% - 2 * (8px)) / 3);
       column-gap: 8px;
       row-gap: 8px;
       overflow-x: scroll;
 
       @media screen and (max-width: breakpoints.$phone) {
-        grid-template-columns: auto auto;
+        grid-template-columns: calc((100% - 1 * (8px)) / 2) calc((100% - 1 * (8px)) / 2);
       }
 
       >.result {
+        width: 100%;
+        height: 100%;
         aspect-ratio: 1;
         border-radius: 4px;
         background: colors.$n-300;
-        animation: animations.$pulseOpacity;
+        object-fit: fill;
+        // animation: animations.$pulseOpacity;
       }
     }
   }
