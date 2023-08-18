@@ -82,15 +82,16 @@ export default function MediaSelector({ formData, setFormData }) {
             />
             <div key={query} className={styles.resultContainer}>
               {results.map((elem, index) => (
-                <img
-                  key={elem.id}
-                  src={elem.media_formats.tinygif.url}
-                  className={styles.result}
-                  loading="lazy"
-                  onLoad={() => {
-                    console.log('loaded', index)
-                  }}
-                />
+                <button key={elem.id}>
+                  <img
+                    src={elem.media_formats.tinygif.url}
+                    className={styles.result}
+                    loading="lazy"
+                    onLoad={() => {
+                      console.log('loaded', index)
+                    }}
+                  />
+                </button>
               ))}
             </div>
           </>
