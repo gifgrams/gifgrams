@@ -7,6 +7,7 @@ import styleBuilder from '@/util/styleBuilder'
 import TextInput from '@/ui/TextInput'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
 import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
+import CheckSquare from '@/public/icons/CheckSquare.svg'
 import Upload from '@/public/icons/Upload.svg'
 import VideoLibrary from '@/public/icons/VideoLibrary.svg'
 import styles from '@/styles/components/MediaSelector.module.scss'
@@ -80,20 +81,42 @@ export default function MediaSelector({ formData, setFormData }) {
               style={{ width: '100%' }}
               onChange={(e) => debouncedChangeHandler(e)}
             />
-            <div key={query} className={styles.resultContainer}>
-              {results.map((elem, index) => (
-                <button key={elem.id}>
-                  <img
-                    src={elem.media_formats.tinygif.url}
-                    className={styles.result}
-                    loading="lazy"
-                    onLoad={() => {
-                      console.log('loaded', index)
+            {results.length > 0 && (
+              <div
+                key={`${query}${mediaType}`}
+                className={styles.resultContainer}
+              >
+                {results.map((elem, index) => (
+                  <button
+                    key={elem.id}
+                    onClick={() => {
+                      setFormData((prev) => {
+                        return { ...prev, mediaUrl: elem.media_formats.gif.url }
+                      })
                     }}
-                  />
-                </button>
-              ))}
-            </div>
+                    className={styleBuilder([
+                      [
+                        styles.selected,
+                        elem.media_formats.gif.url === formData.mediaUrl,
+                      ],
+                    ])}
+                  >
+                    <img
+                      src={elem.media_formats.tinygif.url}
+                      className={styles.result}
+                      loading="lazy"
+                      onLoad={() => {
+                        console.log('loaded', index)
+                      }}
+                    />
+                    <div className={styles.selection}>
+                      <CheckSquare />
+                      Selected
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </>
         )}
         {mediaType === 'image' && (
