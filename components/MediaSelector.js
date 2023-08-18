@@ -109,9 +109,11 @@ export default function MediaSelector({ formData, setFormData }) {
                         console.log('loaded', index)
                       }}
                     />
-                    <div className={styles.selection}>
-                      <CheckSquare />
-                      Selected
+                    <div className={styles.selectionBackdrop}>
+                      <div className={styles.selectionText}>
+                        <CheckSquare />
+                        Selected
+                      </div>
                     </div>
                   </button>
                 ))}

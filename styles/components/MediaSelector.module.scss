@@ -104,38 +104,58 @@
           object-fit: fill;
         }
 
-        >.selection {
+        >.selectionBackdrop {
           width: 100%;
           height: 100%;
           position: absolute;
           top: 0;
           left: 0;
           display: flex;
-          flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 8px;
           @include typography.text-base;
           @include typography.text-md;
           @include typography.text-semibold;
           color: colors.$just-white;
           background: transparentize(colors.$just-black, 0.6);
-          backdrop-filter: blur(2px);
           opacity: 0;
           transition: opacity 0.1s ease-in-out;
 
           animation: svg {
             width: 24px;
           }
-        }
 
-        &.selected {
-          >.selection {
-            opacity: 1;
+          >.selectionText {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(2px);
+            opacity: 0;
           }
         }
 
-        &:hover {}
+        &.selected {
+          >.selectionBackdrop {
+            opacity: 1;
+
+            >.selectionText {
+              opacity: 1;
+            }
+          }
+        }
+
+        &:hover {
+          >.selectionBackdrop {
+            opacity: 1;
+          }
+        }
       }
     }
   }
