@@ -24,7 +24,7 @@ export default function App() {
     mediaUrl: '',
     accentColor: '#41C4E0',
     typeface: 'Monserrat',
-    fontSize: 14,
+    fontSize: 'Medium',
     fontColor: '#000000',
     backgroundColor: '#FFFFFF',
     message: '',

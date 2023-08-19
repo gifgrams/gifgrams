@@ -27,16 +27,15 @@ export default function Card({ isPreview, isFront = true, cardData }) {
         <div
           className={styles.front}
           style={{
-            background: `${cardData.backgroundColor}`,
+            background: cardData.backgroundColor,
             backgroundImage: `url(${cardData.mediaUrl})`,
           }}
-        >
-          front
-        </div>
+        ></div>
         <div
           className={styles.back}
           style={{
-            background: `${cardData.backgroundColor}`,
+            color: cardData.fontColor,
+            background: cardData.backgroundColor,
           }}
         >
           back

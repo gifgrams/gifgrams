@@ -24,8 +24,17 @@ export default function CardPreview({ stage, setStage, cardData }) {
           color="justWhite"
           style={{
             width: '100%',
+            background: '#FFE058',
             // textShadow: '0 0 12px rgba(0, 0, 0, 0.2);',
           }}
+          disabled={
+            !(
+              cardData.title &&
+              cardData.recipientName &&
+              cardData.recipientEmail &&
+              cardData.sendDate
+            )
+          }
         >
           Send
           <Plain />
@@ -42,6 +51,10 @@ export default function CardPreview({ stage, setStage, cardData }) {
           onClick={() => {
             setStage((prev) => prev + 1)
           }}
+          disabled={
+            (stage === 0 && !cardData.mediaUrl) ||
+            (stage === 1 && !cardData.message)
+          }
         >
           Next
           <ArrowRight />
