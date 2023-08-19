@@ -4,16 +4,6 @@
 @use '/styles/constants';
 @use '/styles/typography';
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 .container {
   width: calc(100dvw - 24px - 24px);
   $maxWidth: 612px;
@@ -119,9 +109,9 @@
           color: colors.$just-white;
           background: transparentize(colors.$just-black, 0.6);
           opacity: 0;
-          transition: opacity 0.1s ease-in-out;
+          transition: opacity 0.2s ease-in-out;
 
-          animation: svg {
+          svg {
             width: 24px;
           }
 
@@ -136,24 +126,27 @@
             justify-content: center;
             align-items: center;
             gap: 8px;
+            background: none;
             backdrop-filter: blur(2px);
             opacity: 0;
-          }
-        }
-
-        &.selected {
-          >.selectionBackdrop {
-            opacity: 1;
-
-            >.selectionText {
-              opacity: 1;
-            }
+            transition: opacity 0.2s ease-in-out;
           }
         }
 
         &:hover {
           >.selectionBackdrop {
             opacity: 1;
+
+          }
+        }
+
+        &.selected {
+          >.selectionBackdrop {
+            opacity: 1 !important;
+
+            >.selectionText {
+              opacity: 1;
+            }
           }
         }
       }
