@@ -7,8 +7,7 @@
   .container {
     width: 100%;
     height: 100%;
-    transition: scale 0.1s ease-in-out;
-    transition: transform 1s;
+    transition: scale 0.1s ease-in-out, transform 1s;
     transform-style: preserve-3d;
 
     &:hover {

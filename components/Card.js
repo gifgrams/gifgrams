@@ -19,14 +19,28 @@ export default function Card({ isPreview, isFront = true, cardData }) {
         }}
         style={{
           border: `16px solid ${cardData.accentColor}`,
-          background: `${cardData.backgroundColor}`,
           boxShadow: `0px 8px 24px 0px ${cardData.accentColor}c0`,
           pointerEvents: isPreview ? 'none' : 'initial',
           transform: front ? 'rotateY(360deg)' : 'rotateY(180deg)',
         }}
       >
-        <div className={styles.front}>front</div>
-        <div className={styles.back}>back</div>
+        <div
+          className={styles.front}
+          style={{
+            background: `${cardData.backgroundColor}`,
+            backgroundImage: `url(${cardData.mediaUrl})`,
+          }}
+        >
+          front
+        </div>
+        <div
+          className={styles.back}
+          style={{
+            background: `${cardData.backgroundColor}`,
+          }}
+        >
+          back
+        </div>
       </div>
     </div>
   )
