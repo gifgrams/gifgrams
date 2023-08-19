@@ -11,7 +11,7 @@ export default function CardPreview({ stage, setStage, cardData }) {
       <div className={styles.previewContainer}>
         <CardContainer
           isPreview={true}
-          isFront={true}
+          isFront={stage === 0}
           containerStyle={{ height: '100%' }}
           cardData={cardData}
         />

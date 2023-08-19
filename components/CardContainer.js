@@ -33,7 +33,7 @@ export default function CardContainer({
         background: `radial-gradient(50% 50.00% at 50% 50.00%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4 ) 100%), ${cardData.accentColor}`,
       }}
     >
-      <Card isPreview={isPreview} cardData={cardData} />
+      <Card isPreview={isPreview} isFront={isFront} cardData={cardData} />
       {!isPreview && <CardControls />}
       {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
