@@ -25,7 +25,7 @@ export default function App() {
     accentColor: '#41C4E0',
     typeface: 'Monserrat',
     fontSize: 'Medium',
-    fontColor: '#000000',
+    fontColor: '#303030',
     backgroundColor: '#FFFFFF',
     message: '',
     title: '',

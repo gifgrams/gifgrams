@@ -28,7 +28,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      // background: #ff000080;
+      object-fit: fill;
       backface-visibility: hidden;
     }
 
@@ -41,6 +41,7 @@
       left: 0;
       // background: #00ff0080;
       white-space: break-spaces;
+      overflow-wrap: break-word;
       overflow-x: hidden;
       overflow-y: scroll;
       backface-visibility: hidden;
