@@ -1,8 +1,10 @@
+@use '/styles/breakpoints';
+
 .scene {
   width: calc(100% - 24px - 24px);
   max-width: 640px;
   aspect-ratio: 1;
-  perspective: 200dvh;
+  perspective: calc(100dvh + 100dvw);
 
   .container {
     width: 100%;
@@ -33,13 +35,44 @@
     .back {
       width: 100%;
       height: 100%;
-      padding: 32px;
+      padding: 48px;
       position: absolute;
       top: 0;
       left: 0;
       // background: #00ff0080;
+      white-space: break-spaces;
+      overflow-x: hidden;
+      overflow-y: scroll;
       backface-visibility: hidden;
       transform: rotateY(180deg);
+
+      &.fontSmall {
+        font-size: 18px;
+      }
+
+      &.fontMedium {
+        font-size: 22px;
+      }
+
+      &.fontLarge {
+        font-size: 28px
+      }
+
+      @media screen and (max-width: breakpoints.$phone) {
+        padding: 24px;
+
+        &.fontSmall {
+          font-size: 16px;
+        }
+
+        &.fontMedium {
+          font-size: 20px;
+        }
+
+        &.fontLarge {
+          font-size: 24px
+        }
+      }
     }
   }
 

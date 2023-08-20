@@ -32,13 +32,18 @@ export default function Card({ isPreview, isFront = true, cardData }) {
           }}
         ></div>
         <div
-          className={styles.back}
+          className={styleBuilder([
+            styles.back,
+            [styles.fontSmall, cardData.fontSize === 'Small'],
+            [styles.fontMedium, cardData.fontSize === 'Medium'],
+            [styles.fontLarge, cardData.fontSize === 'Large'],
+          ])}
           style={{
             color: cardData.fontColor,
             background: cardData.backgroundColor,
           }}
         >
-          back
+          {cardData.message}
         </div>
       </div>
     </div>
