@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import debounce from 'lodash.debounce'
 import styleBuilder from '@/util/styleBuilder'
 import TextInput from '@/ui/TextInput'
@@ -18,6 +18,8 @@ export default function MediaSelector({ formData, setFormData }) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
 
+  const searchInput = useRef()
+
   useEffect(() => {
     console.log('mediaType', mediaType)
   }, [mediaType])
@@ -31,7 +33,7 @@ export default function MediaSelector({ formData, setFormData }) {
       console.log('data', data.data.results)
     }
     if (query && ['gif', 'sticker'].includes(mediaType)) fetchResults()
-    else setResults([])
+    else setResults(Array(48).fill(''))
   }, [query, mediaType])
 
   const changeHandler = (event) => {
@@ -79,6 +81,7 @@ export default function MediaSelector({ formData, setFormData }) {
         {['gif', 'sticker'].includes(mediaType) && (
           <>
             <TextInput
+              searchInput={searchInput}
               placeholder="Search"
               style={{ width: '100%' }}
               onChange={(e) => debouncedChangeHandler(e)}
@@ -99,12 +102,12 @@ export default function MediaSelector({ formData, setFormData }) {
                     className={styleBuilder([
                       [
                         styles.selected,
-                        elem.media_formats.gif.url === formData.mediaUrl,
+                        elem.media_formats?.gif.url === formData.mediaUrl,
                       ],
                     ])}
                   >
                     <img
-                      src={elem.media_formats.tinygif.url}
+                      src={elem.media_formats?.tinygif.url}
                       className={styles.result}
                       loading="lazy"
                       onLoad={() => {
@@ -140,7 +143,10 @@ export default function MediaSelector({ formData, setFormData }) {
                   <button
                     key={index}
                     className={styles.suggestion}
-                    onClick={() => setQuery(elem)}
+                    onClick={() => {
+                      if (searchInput.current) searchInput.current.value = elem
+                      setQuery(elem)
+                    }}
                   >
                     {elem}
                   </button>
