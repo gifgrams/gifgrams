@@ -11,7 +11,7 @@ export default function CardPreview({ stage, setStage, cardData }) {
   const [isFront, setIsFront] = useState(true)
 
   useEffect(() => {
-    setIsFront(stage === 0)
+    setIsFront(stage !== 1)
   }, [stage])
 
   return (
