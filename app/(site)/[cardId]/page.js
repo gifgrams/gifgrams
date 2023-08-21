@@ -1,10 +1,17 @@
+'use client'
+
+import { useState } from 'react'
 import CardContainer from '@/components/CardContainer'
 import GifGramsTag from '@/components/GifGramsTag'
 
 export default function Card({ cardId }) {
+  const [isFront, setIsFront] = useState(true)
+
   return (
     <>
       <CardContainer
+        isFront={isFront}
+        setIsFront={setIsFront}
         cardData={{
           mediaUrl: '',
           accentColor: '#E0E0E0',
