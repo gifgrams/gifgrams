@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 // import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 // import { cookies } from 'next/headers'
 import { useRouter } from 'next/navigation'
@@ -41,6 +41,12 @@ export default function App() {
     console.log('formData', formData)
   }, [formData])
 
+  const scrollRef = useRef()
+
+  useEffect(() => {
+    if (scrollRef) scrollRef.current.scrollTop = 0
+  }, [stage])
+
   /* useEffect(() => {
     const protectRoute = async () => {
       const {
@@ -53,7 +59,7 @@ export default function App() {
   }, []) */
 
   return (
-    <div className={styles.container} key={stage}>
+    <div className={styles.container} ref={scrollRef}>
       <NavBar newBtnVisible={false} />
       <main>
         <NewProgress stage={stage} setStage={setStage} />

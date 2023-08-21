@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import CardContainer from '@/components/CardContainer'
 import Button from '@/ui/Button'
 import ArrowRight from '@/public/icons/ArrowRight.svg'
@@ -5,13 +8,20 @@ import Plain from '@/public/icons/Plain.svg'
 import styles from '@/styles/components/CardPreview.module.scss'
 
 export default function CardPreview({ stage, setStage, cardData }) {
+  const [isFront, setIsFront] = useState(true)
+
+  useEffect(() => {
+    setIsFront(stage === 0)
+  }, [stage])
+
   return (
     <div className={styles.container}>
       <h2>Preview</h2>
       <div className={styles.previewContainer}>
         <CardContainer
           isPreview={true}
-          isFront={stage === 0}
+          isFront={isFront}
+          setIsFront={setIsFront}
           containerStyle={{ height: '100%' }}
           cardData={cardData}
         />

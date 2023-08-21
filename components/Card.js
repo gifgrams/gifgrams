@@ -4,8 +4,7 @@ import { useState } from 'react'
 import styleBuilder from '@/util/styleBuilder'
 import styles from '@/styles/components/Card.module.scss'
 
-export default function Card({ isPreview, isFront = true, cardData }) {
-  const [front, setFront] = useState(isFront)
+export default function Card({ isPreview, isFront, setIsFront, cardData }) {
   return (
     <div className={styles.scene}>
       <div
@@ -14,23 +13,24 @@ export default function Card({ isPreview, isFront = true, cardData }) {
           [styles.isPreview, isPreview],
         ])}
         onClick={() => {
-          setFront((prev) => !prev)
-          console.log('front', front)
+          if (isPreview) return
+          setIsFront((prev) => !prev)
+          console.log('isFront', isFront)
         }}
         style={{
           border: `16px solid ${cardData.accentColor}`,
           boxShadow: `0px 8px 24px 0px ${cardData.accentColor}c0`,
-          pointerEvents: isPreview ? 'none' : 'initial',
-          transform: front ? 'rotateY(360deg)' : 'rotateY(180deg)',
+          // pointerEvents: isPreview ? 'none' : 'initial',
+          transform: isFront ? 'rotateY(360deg)' : 'rotateY(180deg)',
         }}
       >
-        <div
+        <img
           className={styles.front}
+          src={cardData.mediaUrl}
           style={{
             background: cardData.backgroundColor,
-            backgroundImage: `url(${cardData.mediaUrl})`,
           }}
-        ></div>
+        ></img>
         <div
           className={styleBuilder([
             styles.back,
