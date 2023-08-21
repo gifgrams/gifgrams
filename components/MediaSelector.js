@@ -138,6 +138,7 @@ export default function MediaSelector({ formData, setFormData }) {
                   'Graduation',
                 ].map((elem, index) => (
                   <button
+                    key={index}
                     className={styles.suggestion}
                     onClick={() => setQuery(elem)}
                   >
