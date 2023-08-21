@@ -15,7 +15,9 @@
     @include typography.text-base;
     @include typography.text-lg;
     @include typography.text-semibold;
-    transition: border-color 0.2s, background 0.2s;
+    color: colors.$just-white;
+    background: colors.$bubble-blue;
+    transition: border-color 0.2s, background 0.2s, opacity 0.2s;
 
     &:hover {
       border-color: darken(colors.$bubble-blue, 10%) !important;
@@ -33,6 +35,26 @@
 
     &.disabled {
       pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &.send {
+      background: colors.$cotton-gold;
+      text-shadow: 0 0 12px transparentize(colors.$just-black, 0.9);
+
+      svg {
+        filter: drop-shadow(0 0 12px transparentize(colors.$just-black, 0.8));
+      }
+
+      &:hover {
+        border-color: darken(colors.$cotton-gold, 10%) !important;
+        background: lighten(colors.$cotton-gold, 5%) !important;
+      }
+
+      &:active {
+        border-color: darken(colors.$cotton-gold, 10%) !important;
+        background: darken(colors.$cotton-gold, 10%) !important;
+      }
     }
   }
 }

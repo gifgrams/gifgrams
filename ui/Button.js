@@ -10,17 +10,20 @@ export default function Button({
   loading = false,
   disabled = loading,
   onClick,
+  variant,
   style,
   ...buttonProps
 }) {
   return (
     <div className={styles.container}>
       <button
-        className={styleBuilder([[styles.disabled, loading || disabled]])}
+        className={styleBuilder([
+          [styles.disabled, loading || disabled],
+          [styles[variant], variant],
+        ])}
         style={{
           ...{
             background: colors[background],
-            color: `${colors[color]}${disabled ? '80' : 'ff'}`,
           },
           ...style,
         }}

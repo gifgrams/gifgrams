@@ -61,8 +61,6 @@ export default function SignIn() {
             required
           />
           <Button
-            background="bubbleBlue"
-            color="justWhite"
             style={{ marginTop: '48px' }}
             loading={submitting}
             onClick={handleSignIn}
