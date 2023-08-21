@@ -1,30 +1,106 @@
-.container {
+@use '/styles/breakpoints';
+
+.scene {
   width: calc(100% - 24px - 24px);
   max-width: 640px;
   aspect-ratio: 1;
-  transition: scale 0.1s ease-in-out;
+  perspective: calc(100dvh + 100dvw);
 
-  &:hover {
-    scale: 1.01;
-    cursor: pointer;
-  }
+  .container {
+    width: 100%;
+    height: 100%;
+    transition: scale 0.1s ease-in-out, transform 1s;
+    transform-style: preserve-3d;
 
-  &:active {
-    scale: 0.99;
-    cursor: pointer;
-  }
+    &:hover {
+      scale: 1.01;
+      cursor: pointer;
+    }
 
-  &.isPreview {
-    width: calc(100% - 32px - 32px);
-    height: calc(100% - 32px - 32px)
-  }
+    &:active {
+      scale: 0.99;
+      cursor: pointer;
+    }
 
-  // DEPENDENCY TO: width of CardControls
-  @media screen and (max-height: 880px) and (min-width: 688px) {
-    /* tag top margin, tag height, tag margin bottom, card margin bottom */
-    height: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
-    //   /* follow height, aspect-ratio property only works with width */
-    max-width: none;
-    width: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+    .front {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: fill;
+      backface-visibility: hidden;
+    }
+
+    .back {
+      width: 100%;
+      height: 100%;
+      padding: 48px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      // background: #00ff0080;
+      white-space: break-spaces;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
+
+      &.fontSmall {
+        font-size: 18px;
+      }
+
+      &.fontMedium {
+        font-size: 22px;
+      }
+
+      &.fontLarge {
+        font-size: 28px
+      }
+
+      @media screen and (max-width: breakpoints.$phone) {
+        padding: 24px;
+
+        &.fontSmall {
+          font-size: 16px;
+        }
+
+        &.fontMedium {
+          font-size: 20px;
+        }
+
+        &.fontLarge {
+          font-size: 24px
+        }
+      }
+    }
+
+    &.isPreview {
+
+      &:hover {
+        scale: 1 !important;
+        cursor: default;
+      }
+
+      &:active {
+        scale: 1 !important;
+        cursor: default;
+      }
+    }
+
+    // DEPENDENCY TO: width of CardControls
+    @media screen and (max-height: 880px) and (min-width: 688px) {
+      /* tag top margin, tag height, tag margin bottom, card margin bottom */
+      height: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+      //   /* follow height, aspect-ratio property only works with width */
+      max-width: none;
+      width: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+
+      &.isPreview {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 }

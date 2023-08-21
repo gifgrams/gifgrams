@@ -18,11 +18,23 @@ export default function CustomizeTwo({ formData, setFormData }) {
               })
             }}
           >
-            <option>default</option>
-            <option>other</option>
+            <option>Open Sans</option>
+            <option>Montserrat</option>
+            <option>Poppins</option>
+            <option>Comic Sans</option>
+            <option>Press Start 2P</option>
+            <option>Impact</option>
+            <option>Pacifico</option>
+            <option>Caveat</option>
+            <option>Indie Flower</option>
+            <option>Permanent Marker</option>
+            <option>Corsiva</option>
+            <option>Arial</option>
+            <option>Bodini</option>
           </Select>
           <Select
             label="Font Size"
+            selected={formData.fontSize}
             value={formData.fontSize}
             onChange={(e) => {
               setFormData((prev) => {
@@ -30,8 +42,9 @@ export default function CustomizeTwo({ formData, setFormData }) {
               })
             }}
           >
-            <option>default</option>
-            <option>other</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
           </Select>
           <ColorPicker
             label="Font Color"

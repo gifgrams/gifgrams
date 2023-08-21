@@ -11,8 +11,8 @@ export default function CardControls() {
         Send a free response
       </button>
       <div className={styles.reactionContainer}>
-        {reactions.map((elem) => (
-          <button>{elem}</button>
+        {reactions.map((elem, index) => (
+          <button key={index}>{elem}</button>
         ))}
       </div>
     </div>

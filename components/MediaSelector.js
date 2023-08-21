@@ -6,6 +6,7 @@ import debounce from 'lodash.debounce'
 import styleBuilder from '@/util/styleBuilder'
 import TextInput from '@/ui/TextInput'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
+import ConfoundedCircle from '@/public/icons/ConfoundedCircle.svg'
 import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
 import CheckSquare from '@/public/icons/CheckSquare.svg'
 import Upload from '@/public/icons/Upload.svg'
@@ -67,6 +68,7 @@ export default function MediaSelector({ formData, setFormData }) {
           className={styleBuilder([[styles.active, mediaType === 'image']])}
           onClick={() => {
             setMediaType('image')
+            setQuery('')
           }}
         >
           <GalleryMinimalistic />
@@ -81,7 +83,7 @@ export default function MediaSelector({ formData, setFormData }) {
               style={{ width: '100%' }}
               onChange={(e) => debouncedChangeHandler(e)}
             />
-            {results.length > 0 && (
+            {results.length > 0 && query && (
               <div
                 key={`${query}${mediaType}`}
                 className={styles.resultContainer}
@@ -115,6 +117,31 @@ export default function MediaSelector({ formData, setFormData }) {
                         Selected
                       </div>
                     </div>
+                  </button>
+                ))}
+              </div>
+            )}
+            {results.length === 0 && query && (
+              <div className={styles.errorContainer}>
+                <ConfoundedCircle />
+                Oops! Connection failed.
+              </div>
+            )}
+            {!query && (
+              <div className={styles.suggestionContainer}>
+                {[
+                  'Thank You',
+                  'Happy Birthday',
+                  'Happy Holidays',
+                  'Congrats',
+                  'Get Well',
+                  'Graduation',
+                ].map((elem, index) => (
+                  <button
+                    className={styles.suggestion}
+                    onClick={() => setQuery(elem)}
+                  >
+                    {elem}
                   </button>
                 ))}
               </div>
