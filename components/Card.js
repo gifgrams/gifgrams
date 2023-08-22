@@ -30,6 +30,7 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
           style={{
             background: cardData.backgroundColor,
           }}
+          draggable={false}
         ></img>
         <div
           className={styleBuilder([
