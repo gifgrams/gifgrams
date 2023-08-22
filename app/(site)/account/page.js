@@ -39,10 +39,10 @@ export default function Account() {
       const {
         data: { session },
       } = await supabase.auth.getSession()
-      console.log('session client /account', session)
+      // console.log('session client /account', session)
       if (!session) router.push('/signup')
       setSession(session)
-      console.log('session?.user.email', session?.user.email)
+      // console.log('session?.user.email', session?.user.email)
     }
     protectRoute()
   }, [])

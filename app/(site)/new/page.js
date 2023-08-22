@@ -38,10 +38,6 @@ export default function App() {
   const supabase = createClientComponentClient()
   const router = useRouter()
 
-  useEffect(() => {
-    console.log('formData', formData)
-  }, [formData])
-
   const scrollRef = useRef()
 
   useEffect(() => {
@@ -53,7 +49,7 @@ export default function App() {
       const {
         data: { session },
       } = await supabase.auth.getSession()
-      console.log('session client /auth', session)
+      // console.log('session client /auth', session)
       if (!session) router.push('/signup')
     }
     protectRoute()

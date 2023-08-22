@@ -20,7 +20,7 @@ export default async function App() {
     .select()
     .eq('user_id', user.id)
     .order('created_at', { ascending: false })
-  console.log('data', data)
+  // console.log('data', data)
 
   return (
     <div className={styles.container}>

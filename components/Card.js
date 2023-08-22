@@ -15,7 +15,7 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
         onClick={() => {
           if (isPreview) return
           setIsFront((prev) => !prev)
-          console.log('isFront', isFront)
+          // console.log('isFront', isFront)
         }}
         style={{
           border: `16px solid ${cardData.accentColor}`,

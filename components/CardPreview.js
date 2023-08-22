@@ -33,7 +33,7 @@ export default function CardPreview({ stage, setStage, cardData }) {
       },
       body: JSON.stringify(payload),
     })
-    console.log('res.json()', await res.json())
+    // console.log('res.json()', await res.json())
   }
 
   return (
