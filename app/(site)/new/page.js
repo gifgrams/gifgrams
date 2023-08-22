@@ -48,7 +48,7 @@ export default function App() {
     if (scrollRef) scrollRef.current.scrollTop = 0
   }, [stage])
 
-  /* useEffect(() => {
+  useEffect(() => {
     const protectRoute = async () => {
       const {
         data: { session },
@@ -57,7 +57,7 @@ export default function App() {
       if (!session) router.push('/signup')
     }
     protectRoute()
-  }, []) */
+  }, [])
 
   return (
     <div className={styles.container} ref={scrollRef}>
