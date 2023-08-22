@@ -14,6 +14,19 @@ export default function CardPreview({ stage, setStage, cardData }) {
     setIsFront(stage !== 1)
   }, [stage])
 
+  const sendCard = async () => {
+    const res = await fetch('/api/v1/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: 'testing',
+      }),
+    })
+    console.log('res.json()', await res.json())
+  }
+
   return (
     <div className={styles.container}>
       <h2>Preview</h2>
@@ -42,6 +55,9 @@ export default function CardPreview({ stage, setStage, cardData }) {
               cardData.sendDate
             )
           }
+          onClick={() => {
+            sendCard()
+          }}
         >
           Send
           <Plain />
