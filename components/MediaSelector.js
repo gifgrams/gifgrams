@@ -52,6 +52,7 @@ export default function MediaSelector({ formData, setFormData }) {
   const [mediaType, setMediaType] = useState('gif')
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
+  const [connectionError, setConnectionError] = useState(false)
 
   const searchInput = useRef()
 
@@ -61,11 +62,16 @@ export default function MediaSelector({ formData, setFormData }) {
 
   useEffect(() => {
     const fetchResults = async () => {
-      const data = await (
-        await fetch(`/api/v1/${mediaType}/search?query=${query}`)
-      ).json()
-      setResults(data.data.results)
-      console.log('data', data.data.results)
+      fetch(`/api/v1/${mediaType}/search?query=${query}`)
+        .then(async (res) => {
+          const data = await res.json()
+          console.log('data', data)
+          setResults(data.data.results)
+          console.log('data', data.data.results)
+        })
+        .catch((e) => {
+          setConnectionError(true)
+        })
     }
     if (query && ['gif', 'sticker'].includes(mediaType)) fetchResults()
     else setResults(Array(48).fill(''))
@@ -121,7 +127,12 @@ export default function MediaSelector({ formData, setFormData }) {
               style={{ width: '100%' }}
               onChange={(e) => debouncedChangeHandler(e)}
             />
-            {results.length > 0 && query && (
+            {connectionError ? (
+              <div className={styles.errorContainer}>
+                <ConfoundedCircle />
+                Oops! Connection failed.
+              </div>
+            ) : query ? (
               <div
                 key={`${query}${mediaType}`}
                 className={styles.resultContainer}
@@ -158,14 +169,7 @@ export default function MediaSelector({ formData, setFormData }) {
                   </button>
                 ))}
               </div>
-            )}
-            {results.length === 0 && query && (
-              <div className={styles.errorContainer}>
-                <ConfoundedCircle />
-                Oops! Connection failed.
-              </div>
-            )}
-            {!query && (
+            ) : (
               <div className={styles.suggestionContainer}>
                 {suggestions.map((elem, index) => (
                   <button
