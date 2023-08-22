@@ -164,19 +164,28 @@
       column-gap: 8px;
 
       >.suggestion {
-        // height: calc((608px - 56px - 16px - 2 * (8px)) / 3);
         height: 100%;
         padding: 0;
         border: none;
         border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        @include typography.text-base;
-        @include typography.text-md;
-        @include typography.text-semibold;
-        color: colors.$just-white;
-        background: gray;
+        background: colors.$n-300;
+        background-size: cover;
+        background-position: center;
+
+        p {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          border-radius: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @include typography.text-base;
+          @include typography.text-md;
+          @include typography.text-semibold;
+          color: colors.$just-white;
+          background: transparentize(colors.$just-black, 0.6);
+        }
       }
     }
 

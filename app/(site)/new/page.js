@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 // import { cookies } from 'next/headers'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import moment from 'moment'
 import CardPreview from '@/components/CardPreview'
 import CustomizeOne from '@/components/CustomizeOne'
 import CustomizeTwo from '@/components/CustomizeTwo'
@@ -19,7 +20,7 @@ export default function App() {
   //   data: { session },
   // } = await supabase.auth.getSession()
 
-  const [stage, setStage] = useState(2)
+  const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
     mediaUrl: '',
     accentColor: '#41C4E0',
@@ -31,7 +32,7 @@ export default function App() {
     title: '',
     recipientName: '',
     recipientEmail: '',
-    sendDate: Date.now(),
+    sendDate: moment().format('YYYY-MM-DD'),
   })
 
   const supabase = createClientComponentClient()
@@ -47,7 +48,7 @@ export default function App() {
     if (scrollRef) scrollRef.current.scrollTop = 0
   }, [stage])
 
-  /* useEffect(() => {
+  useEffect(() => {
     const protectRoute = async () => {
       const {
         data: { session },
@@ -56,7 +57,7 @@ export default function App() {
       if (!session) router.push('/signup')
     }
     protectRoute()
-  }, []) */
+  }, [])
 
   return (
     <div className={styles.container} ref={scrollRef}>

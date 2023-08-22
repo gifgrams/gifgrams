@@ -10,7 +10,7 @@
   align-items: center;
   gap: 32px;
   background: colors.$bubble-blue;
-  background: url('/ripple.png');
+  background-image: url('/ripple.png');
   background-size: cover;
   background-position: center center;
   overflow: scroll;

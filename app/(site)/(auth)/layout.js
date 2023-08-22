@@ -12,7 +12,7 @@ import styles from '@/styles/app/authLayout.module.scss'
 
 export const revalidate = 0
 
-export default function authLayout({ children }) {
+export default function AuthLayout({ children }) {
   // const supabase = createServerComponentClient({ cookies })
   // const {
   //   data: { session },

@@ -11,7 +11,7 @@ export default function CardPreview({ stage, setStage, cardData }) {
   const [isFront, setIsFront] = useState(true)
 
   useEffect(() => {
-    setIsFront(stage === 0)
+    setIsFront(stage !== 1)
   }, [stage])
 
   return (
@@ -29,14 +29,11 @@ export default function CardPreview({ stage, setStage, cardData }) {
 
       {stage === 2 ? (
         <Button
-          // background={stage === 2 ? 'cottonGold' : 'bubbleBlue'}
-          background="bubbleBlue"
-          color="justWhite"
           style={{
             width: '100%',
-            background: '#FFE058',
             // textShadow: '0 0 12px rgba(0, 0, 0, 0.2);',
           }}
+          variant="send"
           disabled={
             !(
               cardData.title &&
@@ -51,9 +48,6 @@ export default function CardPreview({ stage, setStage, cardData }) {
         </Button>
       ) : (
         <Button
-          // background={stage === 2 ? 'cottonGold' : 'bubbleBlue'}
-          background="bubbleBlue"
-          color="justWhite"
           style={{
             width: '100%',
             // textShadow: '0 0 12px rgba(0, 0, 0, 0.2);',

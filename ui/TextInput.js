@@ -7,6 +7,7 @@ export default function TextInput({
   label,
   placeholder,
   containerStyle,
+  searchInput,
   ...inputProps
 }) {
   const id = useId()
@@ -17,7 +18,12 @@ export default function TextInput({
           <h3>{label}</h3>
         </label>
       )}
-      <input id={id} placeholder={placeholder ?? ''} {...inputProps}></input>
+      <input
+        ref={searchInput}
+        id={id}
+        placeholder={placeholder ?? ''}
+        {...inputProps}
+      ></input>
     </div>
   )
 }
