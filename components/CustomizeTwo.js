@@ -18,19 +18,17 @@ export default function CustomizeTwo({ formData, setFormData }) {
               })
             }}
           >
-            <option>Open Sans</option>
-            <option>Montserrat</option>
+            <option>General Sans</option>
             <option>Poppins</option>
+            <option>Montserrat</option>
             <option>Comic Sans</option>
             <option>Press Start 2P</option>
-            <option>Impact</option>
-            <option>Pacifico</option>
-            <option>Caveat</option>
             <option>Indie Flower</option>
-            <option>Permanent Marker</option>
-            <option>Corsiva</option>
-            <option>Arial</option>
-            <option>Bodini</option>
+            <option>Pacifico</option>
+            <option>Satisfy</option>
+            <option>Borel</option>
+            <option>Merriweather</option>
+            <option>Playfair Display</option>
           </Select>
           <Select
             label="Font Size"

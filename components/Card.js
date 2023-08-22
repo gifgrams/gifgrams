@@ -37,6 +37,7 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
             [styles.fontSmall, cardData.fontSize === 'Small'],
             [styles.fontMedium, cardData.fontSize === 'Medium'],
             [styles.fontLarge, cardData.fontSize === 'Large'],
+            styles[cardData.typeface.replaceAll(' ', '')],
           ])}
           style={{
             color: cardData.fontColor,

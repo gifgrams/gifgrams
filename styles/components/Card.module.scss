@@ -1,5 +1,7 @@
 @use '/styles/breakpoints';
 
+@import url('https://fonts.googleapis.com/css2?family=Borel&family=Comic+Neue:wght@700&family=Indie+Flower&family=Merriweather&family=Montserrat&family=Pacifico&family=Playfair+Display&family=Poppins&family=Press+Start+2P&family=Satisfy&display=swap');
+
 .scene {
   width: calc(100% - 24px - 24px);
   max-width: 640px;
@@ -39,7 +41,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      // background: #00ff0080;
+      line-height: auto;
       white-space: break-spaces;
       overflow-wrap: break-word;
       overflow-x: hidden;
@@ -48,15 +50,59 @@
       transform: rotateY(180deg);
 
       &.fontSmall {
-        font-size: 18px;
+        font-size: 20px;
       }
 
       &.fontMedium {
-        font-size: 22px;
+        font-size: 24px;
       }
 
       &.fontLarge {
-        font-size: 28px
+        font-size: 30px
+      }
+
+      &.GeneralSans {
+        font-family: 'General Sans';
+      }
+
+      &.Poppins {
+        font-family: 'Poppins';
+      }
+
+      &.Montserrat {
+        font-family: 'Montserrat';
+      }
+
+      &.ComicSans {
+        font-family: 'Comic Neue';
+      }
+
+      &.PressStart2P {
+        font-family: 'Press Start 2P';
+      }
+
+      &.IndieFlower {
+        font-family: 'Indie Flower';
+      }
+
+      &.Pacifico {
+        font-family: 'Pacifico';
+      }
+
+      &.Satisfy {
+        font-family: 'Satisfy';
+      }
+
+      &.Borel {
+        font-family: 'Borel';
+      }
+
+      &.Merriweather {
+        font-family: 'Merriweather';
+      }
+
+      &.PlayfairDisplay {
+        font-family: 'PlayfairDisplay';
       }
 
       @media screen and (max-width: breakpoints.$phone) {
