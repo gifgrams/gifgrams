@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-// import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-// import { cookies } from 'next/headers'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import moment from 'moment'
@@ -15,11 +13,6 @@ import NewProgress from '@/components/NewProgress'
 import styles from '@/styles/app/newPage.module.scss'
 
 export default function App() {
-  // const supabase = createServerComponentClient({ cookies })
-  // const {
-  //   data: { session },
-  // } = await supabase.auth.getSession()
-
   const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
     mediaUrl: '',
@@ -35,25 +28,11 @@ export default function App() {
     sendDate: moment().format('YYYY-MM-DD'),
   })
 
-  const supabase = createClientComponentClient()
-  const router = useRouter()
-
   const scrollRef = useRef()
 
   useEffect(() => {
     if (scrollRef) scrollRef.current.scrollTop = 0
   }, [stage])
-
-  useEffect(() => {
-    const protectRoute = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
-      // console.log('session client /auth', session)
-      if (!session) router.push('/signup')
-    }
-    protectRoute()
-  }, [])
 
   return (
     <div className={styles.container} ref={scrollRef}>
