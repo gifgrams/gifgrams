@@ -2,11 +2,15 @@ import MediaSelector from '@/components/MediaSelector'
 import ColorPicker from '@/ui/ColorPicker'
 import styles from '@/styles/components/CustomizeOne.module.scss'
 
-export default function CustomizeOne({ formData, setFormData }) {
+export default function CustomizeOne({ formData, setFormData, cardId }) {
   return (
     <div className={styles.container}>
       <h2>Front</h2>
-      <MediaSelector formData={formData} setFormData={setFormData} />
+      <MediaSelector
+        formData={formData}
+        setFormData={setFormData}
+        cardId={cardId}
+      />
       <ColorPicker
         label="Accent Color"
         containerStyle={{ marginTop: 24 }}

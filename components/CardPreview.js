@@ -10,7 +10,7 @@ import ArrowRight from '@/public/icons/ArrowRight.svg'
 import Plain from '@/public/icons/Plain.svg'
 import styles from '@/styles/components/CardPreview.module.scss'
 
-export default function CardPreview({ stage, setStage, cardData }) {
+export default function CardPreview({ stage, setStage, cardData, cardId }) {
   const supabase = createClientComponentClient()
   const router = useRouter()
 
@@ -27,7 +27,7 @@ export default function CardPreview({ stage, setStage, cardData }) {
       data: { user },
     } = await supabase.auth.getUser()
     const payload = {
-      id: crypto.randomUUID(),
+      id: cardId,
       user_id: user.id,
       card_data: cardData,
     }

@@ -27,6 +27,7 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
       >
         {cardData.mediaUrl ? (
           <img
+            key={cardData.imageKey}
             className={styles.front}
             src={cardData.mediaUrl}
             style={{

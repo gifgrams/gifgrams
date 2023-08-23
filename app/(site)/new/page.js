@@ -15,6 +15,7 @@ import styles from '@/styles/app/newPage.module.scss'
 export default function App() {
   const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
+    imageKey: '',
     mediaUrl: '',
     accentColor: '#41C4E0',
     typeface: 'Monserrat',
@@ -27,6 +28,7 @@ export default function App() {
     recipientEmail: '',
     sendDate: moment().format('YYYY-MM-DD'),
   })
+  const [cardId, setCardId] = useState(crypto.randomUUID())
 
   const scrollRef = useRef()
 
@@ -41,7 +43,11 @@ export default function App() {
         <NewProgress stage={stage} setStage={setStage} />
         <div className={styles.twoCol}>
           {stage === 0 && (
-            <CustomizeOne formData={formData} setFormData={setFormData} />
+            <CustomizeOne
+              formData={formData}
+              setFormData={setFormData}
+              cardId={cardId}
+            />
           )}
           {stage === 1 && (
             <CustomizeTwo formData={formData} setFormData={setFormData} />
@@ -49,7 +55,12 @@ export default function App() {
           {stage === 2 && (
             <CustomizeThree formData={formData} setFormData={setFormData} />
           )}
-          <CardPreview stage={stage} setStage={setStage} cardData={formData} />
+          <CardPreview
+            stage={stage}
+            setStage={setStage}
+            cardData={formData}
+            cardId={cardId}
+          />
         </div>
       </main>
     </div>
