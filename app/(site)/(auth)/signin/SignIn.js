@@ -31,7 +31,10 @@ export default function SignIn() {
         'Username or password is incorrect.',
         'error'
       )
-    } else router.push('/')
+    } else {
+      router.refresh()
+      router.push('/')
+    }
 
     setSubmitting(false)
   }

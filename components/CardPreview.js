@@ -53,6 +53,7 @@ export default function CardPreview({ stage, setStage, cardData }) {
         )
         setSendPending(false)
         setTimeout(() => {
+          router.refresh()
           router.push('/')
         }, 3000)
       }
