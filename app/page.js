@@ -28,7 +28,7 @@ export default async function App() {
     ...data,
     {
       id: 'e803424a-4ba4-4863-98c4-4a0fccb99230',
-      created_at: moment(),
+      created_at: user ? moment(user.created_at) : moment(),
       card_data: {
         title: 'Welcome! (click me)',
         message: '',
