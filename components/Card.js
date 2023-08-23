@@ -37,7 +37,7 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
         ) : (
           <div className={styles.front}>
             <GalleryAdd />
-            Select an image for the front of the card.
+            <p>Select an image for the front of the card.</p>
           </div>
         )}
         <div
