@@ -7,6 +7,7 @@ import debounce from 'lodash.debounce'
 import styleBuilder from '@/util/styleBuilder'
 import Progress from '@/ui/Progress'
 import TextInput from '@/ui/TextInput'
+import emitToast from '@/ui/Toast'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
 import ConfoundedCircle from '@/public/icons/ConfoundedCircle.svg'
 import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
@@ -94,14 +95,20 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
 
     // console.log('data', data)
     // console.log('error', error)
-
-    const {
-      data: { publicUrl },
-    } = supabase.storage.from('media').getPublicUrl(cardId)
-    // console.log('mediaUrl', publicUrl)
-    setFormData((prev) => {
-      return { ...prev, mediaUrl: `${publicUrl}?query=${crypto.randomUUID()}` }
-    })
+    if (error)
+      emitToast('Error', 'There was an error uploading your file.', 'error')
+    else {
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from('media').getPublicUrl(cardId)
+      // console.log('mediaUrl', publicUrl)
+      setFormData((prev) => {
+        return {
+          ...prev,
+          mediaUrl: `${publicUrl}?query=${crypto.randomUUID()}`,
+        } // append an arbitrary query param to force the image to re-fetch
+      })
+    }
     setLoadingUpload(false)
   }
 
