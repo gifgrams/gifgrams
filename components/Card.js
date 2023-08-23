@@ -7,7 +7,7 @@ import styles from '@/styles/components/Card.module.scss'
 
 export default function Card({ isPreview, isFront, setIsFront, cardData }) {
   return (
-    <div key={cardData.imageKey} className={styles.scene}>
+    <div className={styles.scene}>
       <div
         className={styleBuilder([
           styles.container,

@@ -15,7 +15,6 @@ import styles from '@/styles/app/newPage.module.scss'
 export default function App() {
   const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
-    imageKey: '',
     mediaUrl: '',
     accentColor: '#41C4E0',
     typeface: 'Monserrat',

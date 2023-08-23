@@ -100,9 +100,8 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
     } = supabase.storage.from('media').getPublicUrl(cardId)
     // console.log('mediaUrl', publicUrl)
     setFormData((prev) => {
-      return { ...prev, mediaUrl: publicUrl, imageKey: crypto.randomUUID() }
+      return { ...prev, mediaUrl: `${publicUrl}?query=${crypto.randomUUID()}` }
     })
-
     setLoadingUpload(false)
   }
 
