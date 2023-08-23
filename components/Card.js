@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import styleBuilder from '@/util/styleBuilder'
+import GalleryAdd from '@/public/icons/GalleryAdd.svg'
 import styles from '@/styles/components/Card.module.scss'
 
 export default function Card({ isPreview, isFront, setIsFront, cardData }) {
@@ -24,14 +25,21 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
           transform: isFront ? 'rotateY(360deg)' : 'rotateY(180deg)',
         }}
       >
-        <img
-          className={styles.front}
-          src={cardData.mediaUrl}
-          style={{
-            background: cardData.backgroundColor,
-          }}
-          draggable={false}
-        ></img>
+        {cardData.mediaUrl ? (
+          <img
+            className={styles.front}
+            src={cardData.mediaUrl}
+            style={{
+              background: cardData.backgroundColor,
+            }}
+            draggable={false}
+          ></img>
+        ) : (
+          <div className={styles.front}>
+            <GalleryAdd />
+            Select an image for the front of the card.
+          </div>
+        )}
         <div
           className={styleBuilder([
             styles.back,
