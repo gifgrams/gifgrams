@@ -102,6 +102,7 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
     setFormData((prev) => {
       return { ...prev, mediaUrl: publicUrl, imageKey: crypto.randomUUID() }
     })
+
     setLoadingUpload(false)
   }
 
