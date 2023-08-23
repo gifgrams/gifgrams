@@ -2,9 +2,9 @@ import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 
-export async function GET(request) {
-  const requestUrl = new URL(request.url)
-  const code = requestUrl.searchParams.get('code')
+export async function GET(req) {
+  const reqUrl = new URL(req.url)
+  const code = reqUrl.searchParams.get('code')
 
   if (code) {
     const supabase = createRouteHandlerClient({ cookies })
@@ -12,7 +12,7 @@ export async function GET(request) {
   }
 
   // URL to redirect to after sign in process completes
-  // console.log(request)
-  // console.log(requestUrl.origin)
-  return NextResponse.redirect('/signin', requestUrl.origin)
+  // console.log(req)
+  // console.log(reqUrl.origin)
+  return NextResponse.redirect('/signin', reqUrl.origin)
 }

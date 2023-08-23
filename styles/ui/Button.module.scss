@@ -35,6 +35,7 @@
 
     &.disabled {
       pointer-events: none;
+      color: transparentize(colors.$just-white, 0.2);
       opacity: 0.5;
     }
 

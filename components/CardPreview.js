@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import CardContainer from '@/components/CardContainer'
 import Button from '@/ui/Button'
 import ArrowRight from '@/public/icons/ArrowRight.svg'
@@ -8,11 +9,32 @@ import Plain from '@/public/icons/Plain.svg'
 import styles from '@/styles/components/CardPreview.module.scss'
 
 export default function CardPreview({ stage, setStage, cardData }) {
+  const supabase = createClientComponentClient()
+
   const [isFront, setIsFront] = useState(true)
 
   useEffect(() => {
     setIsFront(stage !== 1)
   }, [stage])
+
+  const sendCard = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+    const payload = {
+      id: crypto.randomUUID(),
+      user_id: user.id,
+      card_data: cardData,
+    }
+    const res = await fetch('/api/v1/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+    // console.log('res.json()', await res.json())
+  }
 
   return (
     <div className={styles.container}>
@@ -42,6 +64,9 @@ export default function CardPreview({ stage, setStage, cardData }) {
               cardData.sendDate
             )
           }
+          onClick={() => {
+            sendCard()
+          }}
         >
           Send
           <Plain />

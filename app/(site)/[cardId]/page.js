@@ -1,32 +1,29 @@
-'use client'
+import { cookies } from 'next/headers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import CardIdContainer from '@/components/CardIdContainer'
 
-import { useState } from 'react'
-import CardContainer from '@/components/CardContainer'
-import GifGramsTag from '@/components/GifGramsTag'
+export async function generateMetadata({ params }) {
+  // read route params
+  const id = params.cardId
 
-export default function Card({ cardId }) {
-  const [isFront, setIsFront] = useState(true)
+  // fetch data
+  const supabase = createServerComponentClient({ cookies })
+  const { data, error } = await supabase.from('card').select().eq('id', id)
+  // console.log('error', error)
+  // console.log('data', data)
 
-  return (
-    <>
-      <CardContainer
-        isFront={isFront}
-        setIsFront={setIsFront}
-        cardData={{
-          mediaUrl: '',
-          accentColor: '#E0E0E0',
-          typeface: 'Monserrat',
-          fontSize: 'Medium',
-          fontColor: '#000000',
-          backgroundColor: '#FFFFFF',
-          message:
-            "Dear reader,\n\nThis is a message to inform you that your car's extended warranty is about to expire. We advise that you take action immediately. Please do not report us as spam, we are from ToyBota and are very legit real 100% service representitors.\n\nLove, Bob",
-          title: '',
-          recipientName: '',
-          recipientEmail: '',
-          sendDate: Date.now(),
-        }}
-      />
-    </>
-  )
+  return {
+    title: data?.[0].card_data.title,
+  }
+}
+
+export default async function Card({ params }) {
+  const id = params.cardId
+
+  const supabase = createServerComponentClient({ cookies })
+  const { data, error } = await supabase.from('card').select().eq('id', id)
+  // console.log('error', error)
+  // console.log('data', data)
+
+  return <CardIdContainer cardData={data?.[0].card_data} />
 }

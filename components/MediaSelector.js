@@ -52,27 +52,28 @@ export default function MediaSelector({ formData, setFormData }) {
   const [mediaType, setMediaType] = useState('gif')
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
+  const [connectionError, setConnectionError] = useState(false)
 
   const searchInput = useRef()
 
   useEffect(() => {
-    console.log('mediaType', mediaType)
-  }, [mediaType])
-
-  useEffect(() => {
     const fetchResults = async () => {
-      const data = await (
-        await fetch(`/api/v1/${mediaType}/search?query=${query}`)
-      ).json()
-      setResults(data.data.results)
-      console.log('data', data.data.results)
+      fetch(`/api/v1/${mediaType}/search?query=${query}`)
+        .then(async (res) => {
+          const data = await res.json()
+          // console.log('data', data)
+          setResults(data.data.results)
+          // console.log('data', data.data.results)
+        })
+        .catch((e) => {
+          setConnectionError(true)
+        })
     }
     if (query && ['gif', 'sticker'].includes(mediaType)) fetchResults()
-    else setResults(Array(48).fill(''))
+    else setResults(Array(9).map((index) => index))
   }, [query, mediaType])
 
   const changeHandler = (event) => {
-    console.log(event.target.value)
     setQuery(event.target.value)
   }
 
@@ -121,7 +122,12 @@ export default function MediaSelector({ formData, setFormData }) {
               style={{ width: '100%' }}
               onChange={(e) => debouncedChangeHandler(e)}
             />
-            {results.length > 0 && query && (
+            {connectionError ? (
+              <div className={styles.errorContainer}>
+                <ConfoundedCircle />
+                Oops! Connection failed.
+              </div>
+            ) : query ? (
               <div
                 key={`${query}${mediaType}`}
                 className={styles.resultContainer}
@@ -130,9 +136,13 @@ export default function MediaSelector({ formData, setFormData }) {
                   <button
                     key={elem.id}
                     onClick={() => {
-                      setFormData((prev) => {
-                        return { ...prev, mediaUrl: elem.media_formats.gif.url }
-                      })
+                      if (elem)
+                        setFormData((prev) => {
+                          return {
+                            ...prev,
+                            mediaUrl: elem.media_formats.gif.url,
+                          }
+                        })
                     }}
                     className={styleBuilder([
                       [
@@ -145,9 +155,6 @@ export default function MediaSelector({ formData, setFormData }) {
                       src={elem.media_formats?.tinygif.url}
                       className={styles.result}
                       loading="lazy"
-                      onLoad={() => {
-                        console.log('loaded', index)
-                      }}
                     />
                     <div className={styles.selectionBackdrop}>
                       <div className={styles.selectionText}>
@@ -158,14 +165,7 @@ export default function MediaSelector({ formData, setFormData }) {
                   </button>
                 ))}
               </div>
-            )}
-            {results.length === 0 && query && (
-              <div className={styles.errorContainer}>
-                <ConfoundedCircle />
-                Oops! Connection failed.
-              </div>
-            )}
-            {!query && (
+            ) : (
               <div className={styles.suggestionContainer}>
                 {suggestions.map((elem, index) => (
                   <button

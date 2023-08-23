@@ -25,10 +25,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${chillax.className} ${generalSans.className}`}>
-        <Providers>
-          {children}
-          <ToastContainer />
-        </Providers>
+        {/* <Providers> */}
+        {children}
+        <ToastContainer />
+        {/* </Providers> */}
       </body>
     </html>
   )

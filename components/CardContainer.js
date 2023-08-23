@@ -31,7 +31,7 @@ export default function CardContainer({
       ])}
       style={{
         ...containerStyle,
-        background: `radial-gradient(50% 50.00% at 50% 50.00%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4 ) 100%), ${cardData.accentColor}`,
+        background: `radial-gradient(74.17% 74.17% at 50.00% 50.00%, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.25) 100%), ${cardData.accentColor}`,
       }}
     >
       <Card
