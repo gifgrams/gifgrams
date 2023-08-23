@@ -16,21 +16,22 @@ export default async function App() {
   const {
     data: { user },
   } = await supabase.auth.getUser()
-  const { data, error } = await supabase
-    .from('card')
-    .select()
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false })
+  const { data, error } = user
+    ? await supabase
+        .from('card')
+        .select()
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+    : { data: [], error: null }
   console.log('data', data)
   const dataWithStarter = [
     ...data,
     {
-      id: '03e13bb9-fe88-4cb4-8ffe-1221b1a366f9',
+      id: 'e803424a-4ba4-4863-98c4-4a0fccb99230',
       created_at: moment(),
       card_data: {
-        title: 'Welcome!',
-        message:
-          "Welcome to GifGrams!\n\nMy name's Brian, and I created GifGrams to make personalized e-cards better and free-er. \n\nI hope the experience receiving a GifGram is more delightful than simply receiving a text message, and more fun for the designer too (YOU!) :)\n\nIf you have any questions or suggestions, I'd appreciate it if you reached out to me at bztravis@umich.edu.\n\nBest,\nBrian",
+        title: 'Welcome! (click me)',
+        message: '',
         fontSize: 'Medium',
         mediaUrl:
           'https://media.tenor.com/oC8CSq25wx4AAAAC/baby-yoda-welcome.gif',
@@ -38,8 +39,8 @@ export default async function App() {
         typeface: 'Monserrat',
         fontColor: '#303030',
         accentColor: '#41c4e1',
-        recipientName: 'New user',
-        recipientEmail: 'you!',
+        recipientName: 'You',
+        recipientEmail: '',
         backgroundColor: '#FFFFFF',
       },
     },
