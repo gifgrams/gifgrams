@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import CardContainer from '@/components/CardContainer'
+import Progress from '@/ui/Progress'
 import emitToast from '@/ui/Toast'
 import Button from '@/ui/Button'
 import ArrowRight from '@/public/icons/ArrowRight.svg'
@@ -50,7 +51,6 @@ export default function CardPreview({
           'There was an unexpected error sending this card. Do not close this tab or unsaved data will be lost.',
           'error'
         )
-        setSendPending(false)
       } else {
         emitToast(
           'Your GifGram is on its way!',
@@ -58,7 +58,6 @@ export default function CardPreview({
           'success'
         )
         setConfetti(true)
-        setSendPending(false)
         setTimeout(() => {
           router.refresh()
           router.push('/')
