@@ -1,5 +1,15 @@
 @use 'colors';
 
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Variable.ttf');
+}
+
+@font-face {
+  font-family: 'Chillax';
+  src: url('/fonts/Chillax-Variable.ttf');
+}
+
 $weight-medium: 500;
 $weight-semibold: 600;
 
