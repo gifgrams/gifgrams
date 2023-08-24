@@ -41,7 +41,7 @@ export default function CardContainer({
         setIsFront={setIsFront}
         cardData={cardData}
       />
-      {!isPreview && !history && <CardControls />}
+      {!isPreview && !history && <CardControls isFront={isFront} />}
       {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
   )
