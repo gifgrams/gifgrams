@@ -17,13 +17,12 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function Card({ params }) {
+export default async function Card({ params, searchParams }) {
   const id = params.cardId
+  const history = searchParams.history !== undefined
 
   const supabase = createServerComponentClient({ cookies })
   const { data, error } = await supabase.from('card').select().eq('id', id)
-  // console.log('error', error)
-  // console.log('data', data)
 
-  return <CardIdContainer cardData={data?.[0].card_data} />
+  return <CardIdContainer history={history} cardData={data?.[0].card_data} />
 }

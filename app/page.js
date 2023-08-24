@@ -57,7 +57,11 @@ export default async function App() {
           <h1>Send History</h1>
           <div className={styles.cardContainer}>
             {dataWithStarter?.map((elem, index) => (
-              <Link key={index} href={`/${elem.id}`} target="_blank">
+              <Link
+                key={index}
+                href={`/${elem.id}?history=true`}
+                target="_blank"
+              >
                 <HistoryCard card={elem} />
               </Link>
             ))}

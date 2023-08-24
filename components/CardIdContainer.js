@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import CardContainer from '@/components/CardContainer'
 
-export default function CardIdContainer({ cardData }) {
+export default function CardIdContainer({ cardData, history }) {
   const [isFront, setIsFront] = useState(true)
 
   return (
@@ -12,6 +12,7 @@ export default function CardIdContainer({ cardData }) {
         <CardContainer
           isFront={isFront}
           setIsFront={setIsFront}
+          history={history}
           cardData={cardData}
         />
       ) : (
