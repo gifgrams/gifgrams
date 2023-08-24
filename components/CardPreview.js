@@ -10,7 +10,13 @@ import ArrowRight from '@/public/icons/ArrowRight.svg'
 import Plain from '@/public/icons/Plain.svg'
 import styles from '@/styles/components/CardPreview.module.scss'
 
-export default function CardPreview({ stage, setStage, cardData, cardId }) {
+export default function CardPreview({
+  stage,
+  setStage,
+  setConfetti,
+  cardData,
+  cardId,
+}) {
   const supabase = createClientComponentClient()
   const router = useRouter()
 
@@ -51,6 +57,7 @@ export default function CardPreview({ stage, setStage, cardData, cardId }) {
           'Redirecting to home...',
           'success'
         )
+        setConfetti(true)
         setSendPending(false)
         setTimeout(() => {
           router.refresh()

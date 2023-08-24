@@ -3,7 +3,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import Confetti from 'react-confetti'
 import moment from 'moment'
+import useWindowSize from 'react-use/lib/useWindowSize'
 import CardPreview from '@/components/CardPreview'
 import CustomizeOne from '@/components/CustomizeOne'
 import CustomizeTwo from '@/components/CustomizeTwo'
@@ -13,6 +15,8 @@ import NewProgress from '@/components/NewProgress'
 import styles from '@/styles/app/newPage.module.scss'
 
 export default function App() {
+  const { width, height } = useWindowSize()
+
   const [stage, setStage] = useState(0)
   const [formData, setFormData] = useState({
     mediaUrl: '',
@@ -28,6 +32,7 @@ export default function App() {
     sendDate: moment().format('YYYY-MM-DD'),
   })
   const [cardId, setCardId] = useState(crypto.randomUUID())
+  const [confetti, setConfetti] = useState(false)
 
   const scrollRef = useRef()
 
@@ -57,11 +62,13 @@ export default function App() {
           <CardPreview
             stage={stage}
             setStage={setStage}
+            setConfetti={setConfetti}
             cardData={formData}
             cardId={cardId}
           />
         </div>
       </main>
+      {confetti && <Confetti width={width} height={height} recycle={false} />}
     </div>
   )
 }
