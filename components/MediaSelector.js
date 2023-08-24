@@ -2,9 +2,12 @@
 'use client'
 
 import { useState, useEffect, useRef, useMemo } from 'react'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import debounce from 'lodash.debounce'
 import styleBuilder from '@/util/styleBuilder'
+import Progress from '@/ui/Progress'
 import TextInput from '@/ui/TextInput'
+import emitToast from '@/ui/Toast'
 import ClapperboardPlay from '@/public/icons/ClapperboardPlay.svg'
 import ConfoundedCircle from '@/public/icons/ConfoundedCircle.svg'
 import GalleryMinimalistic from '@/public/icons/GalleryMinimalistic.svg'
@@ -48,11 +51,14 @@ const suggestions = [
   },
 ]
 
-export default function MediaSelector({ formData, setFormData }) {
+export default function MediaSelector({ formData, setFormData, cardId }) {
+  const supabase = createClientComponentClient()
+
   const [mediaType, setMediaType] = useState('gif')
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [connectionError, setConnectionError] = useState(false)
+  const [loadingUpload, setLoadingUpload] = useState(false)
 
   const searchInput = useRef()
 
@@ -80,6 +86,31 @@ export default function MediaSelector({ formData, setFormData }) {
   const debouncedChangeHandler = useMemo(() => {
     return debounce(changeHandler, 300)
   }, [])
+
+  const uploadFile = async (file) => {
+    setLoadingUpload(true)
+    const { data, error } = await supabase.storage
+      .from('media')
+      .upload(cardId, file, { upsert: true })
+
+    // console.log('data', data)
+    // console.log('error', error)
+    if (error)
+      emitToast('Error', 'There was an error uploading your file.', 'error')
+    else {
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from('media').getPublicUrl(cardId)
+      // console.log('mediaUrl', publicUrl)
+      setFormData((prev) => {
+        return {
+          ...prev,
+          mediaUrl: `${publicUrl}?query=${crypto.randomUUID()}`,
+        } // append an arbitrary query param to force the image to re-fetch
+      })
+    }
+    setLoadingUpload(false)
+  }
 
   return (
     <div className={styles.container}>
@@ -187,11 +218,20 @@ export default function MediaSelector({ formData, setFormData }) {
         )}
         {mediaType === 'image' && (
           <div className={styles.uploadPanel}>
-            <Upload />
+            {loadingUpload ? (
+              <Progress containerStyle={{ width: 96, height: 96 }} />
+            ) : (
+              <Upload />
+            )}
             <div>
               Choose a file to <strong>upload</strong>
             </div>
-            <input type="file" />
+            <input
+              type="file"
+              onChange={(e) => {
+                uploadFile(e.target.files[0])
+              }}
+            />
           </div>
         )}
       </div>

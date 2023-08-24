@@ -1,10 +1,6 @@
 import { NextResponse } from 'next/server'
 
 export async function GET(req) {
-  return NextResponse.json(
-    { message: 'Error fetching from Tenor' },
-    { status: 500 }
-  )
   const { searchParams } = new URL(req.url)
   const query = searchParams.get('query')
 

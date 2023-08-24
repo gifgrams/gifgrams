@@ -8,6 +8,7 @@ export default function CardContainer({
   isPreview = false,
   isFront,
   setIsFront,
+  history,
   containerStyle,
   cardData = {
     mediaUrl: '',
@@ -40,7 +41,7 @@ export default function CardContainer({
         setIsFront={setIsFront}
         cardData={cardData}
       />
-      {!isPreview && <CardControls />}
+      {!isPreview && !history && <CardControls />}
       {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
   )
