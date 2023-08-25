@@ -17,7 +17,7 @@
     @include typography.text-semibold;
     color: colors.$just-white;
     background: colors.$bubble-blue;
-    transition: border-color 0.2s, background 0.2s, opacity 0.2s;
+    transition: border-color 0.2s, background 0.2s, opacity 0.2s, color 0.2s;
 
     &:hover {
       border-color: darken(colors.$bubble-blue, 10%) !important;
@@ -35,8 +35,8 @@
 
     &.disabled {
       pointer-events: none;
-      color: transparentize(colors.$just-white, 0.2);
-      opacity: 0.5;
+      color: transparentize(colors.$just-white, 0.3);
+      opacity: 0.6;
     }
 
     &.send {

@@ -23,7 +23,7 @@ export default async function App() {
         .eq('user_id', user.id)
         .order('created_at', { ascending: false })
     : { data: [], error: null }
-  console.log('data', data)
+  // console.log('data', data)
   const dataWithStarter = [
     ...data,
     {

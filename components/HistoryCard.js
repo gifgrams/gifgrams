@@ -19,7 +19,7 @@ export default function HistoryCard({ card }) {
       <div className={styles.detail}>
         <User />
         <h4>{`${card.card_data.recipientName} ${
-          card.card_data.recipientEmail && `${card.card_data.recipientEmail}`
+          card.card_data.recipientEmail && `(${card.card_data.recipientEmail})`
         }`}</h4>
       </div>
       <div className={styles.detail}>
