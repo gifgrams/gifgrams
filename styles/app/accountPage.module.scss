@@ -16,10 +16,14 @@
   }
 
   >h1 {
+    padding: 0 24px;
     @include typography.text-base;
     @include typography.text-2xl;
     @include typography.text-semibold;
     color: colors.$text-primary;
     margin-bottom: 24px;
+    word-wrap: break-word;
+    max-width: 100dvw;
+    text-align: center;
   }
 }
