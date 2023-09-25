@@ -31,7 +31,7 @@ export default function Container() {
   return (
     <StyledContainer
       position="bottom-right"
-      autoClose={20000}
+      autoClose={5000}
       hideProgressBar={true}
       newestOnTop={true}
       closeButton={false}
