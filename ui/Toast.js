@@ -1,9 +1,18 @@
+import localFont from 'next/font/local'
 import { toast } from 'react-toastify'
 import styleBuilder from '@/util/styleBuilder'
 import styles from '@/styles/ui/Toast.module.scss'
 import ErrorIcon from '@/public/icons/Error.svg'
 import InfoIcon from '@/public/icons/Info.svg'
 import SuccessIcon from '@/public/icons/Success.svg'
+
+const generalSans = localFont({
+  src: [
+    {
+      path: '../fonts/GeneralSans-Variable.ttf',
+    },
+  ],
+})
 
 const icons = {
   error: <ErrorIcon />,
@@ -15,7 +24,13 @@ function Toast({ open = true, severity = 'info', subject, message }) {
   return (
     <>
       {open && (
-        <div className={styleBuilder([styles.container, styles[severity]])}>
+        <div
+          className={styleBuilder([
+            styles.container,
+            styles[severity],
+            generalSans.className,
+          ])}
+        >
           {icons[severity]}
           <div>
             <h3>{subject}</h3>

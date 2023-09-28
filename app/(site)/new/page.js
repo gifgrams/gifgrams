@@ -68,7 +68,14 @@ export default function App() {
           />
         </div>
       </main>
-      {confetti && <Confetti width={width} height={height} recycle={false} />}
+      {confetti && (
+        <Confetti
+          width={width}
+          height={height}
+          recycle={false}
+          style={{ zIndex: 20 }}
+        />
+      )}
     </div>
   )
 }
