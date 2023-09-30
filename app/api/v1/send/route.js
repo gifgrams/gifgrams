@@ -12,6 +12,12 @@ export async function POST(req) {
     data: { user },
   } = await supabase.auth.getUser()
   console.log('user', user)
+  const { data, error: profileError } = await supabase
+    .from('profile')
+    .select()
+    .eq('id', user.id)
+  console.log('profileData', data)
+  console.log('profileError', profileError)
   const { error } = await supabase.from('card').insert(body)
   // console.log('error', error)
 
