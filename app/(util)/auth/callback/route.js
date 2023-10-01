@@ -14,5 +14,5 @@ export async function GET(req) {
   // URL to redirect to after sign in process completes
   // console.log(req)
   // console.log(reqUrl.origin)
-  return NextResponse.redirect('/signin', reqUrl.origin)
+  return NextResponse.redirect(new URL('/signin', reqUrl.origin))
 }
