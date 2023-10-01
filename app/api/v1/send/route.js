@@ -12,11 +12,11 @@ export async function POST(req) {
     data: { user },
   } = await supabase.auth.getUser()
   console.log('user', user)
-  const { data, error: profileError } = await supabase
+  const { data: profileData, error: profileError } = await supabase
     .from('profile')
     .select()
     .eq('id', user.id)
-  console.log('profileData', data)
+  console.log('profileData', profileData)
   console.log('profileError', profileError)
   const { error } = await supabase.from('card').insert(body)
   // console.log('error', error)
@@ -26,8 +26,8 @@ export async function POST(req) {
   const msg = {
     to: 'bztravis@umich.edu', // Change to your recipient
     from: 'noreply@gifgrams.com', // Change to your verified sender
-    subject: `Greeting from`,
-    text: 'and easy to do anywhere, even with Node.js',
+    subject: `Greeting from ${profileData.full_name}`,
+    text: '${profileData.full_name} sent you a GifGram! Open it here: https://gifgrams.com/${body.id}',
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   }
 
