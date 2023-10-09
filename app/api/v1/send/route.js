@@ -35,15 +35,9 @@ export async function POST(req) {
 
   console.log('msg', msg)
 
-  sgMail
-    .send(msg)
-    .then((response) => {
-      console.log(response[0].statusCode)
-      console.log(response[0].headers)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-
-  return NextResponse.json({ error })
+  const { response: sgResponse, error: sgError } = await sgMail.send(msg)
+  console.log(sgResponse?.[0].statusCode)
+  console.log(sgResponse?.[0].headers)
+  console.error(sgError)
+  return NextResponse.json({ msg: 'hm' }, { status: sgError ? 500 : 200 })
 }
