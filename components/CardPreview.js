@@ -51,6 +51,7 @@ export default function CardPreview({
           'There was an unexpected error sending this card. Do not close this tab or unsaved data will be lost.',
           'error'
         )
+        setSendPending(false)
       } else {
         emitToast(
           'Your GifGram is on its way!',

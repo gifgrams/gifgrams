@@ -16,6 +16,7 @@ export async function POST(req) {
     .from('profile')
     .select()
     .eq('id', user.id)
+  const profile = profileData[0]
   console.log('profileData', profileData)
   console.log('profileError', profileError)
   const { error } = await supabase.from('card').insert(body)
@@ -24,12 +25,14 @@ export async function POST(req) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
   const msg = {
-    to: 'bztravis@umich.edu', // Change to your recipient
+    to: body.card_data.recipientEmail, // Change to your recipient
     from: 'noreply@gifgrams.com', // Change to your verified sender
-    subject: `Greeting from ${profileData.full_name}`,
-    text: '${profileData.full_name} sent you a GifGram! Open it here: https://gifgrams.com/${body.id}',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    subject: `${profile.full_name} sent you a greeting: ${body.card_data.title}`,
+    text: `${profile.full_name} sent you a GifGram! Open it here: https://gifgrams.com/${body.card_data.id}`,
+    html: `<p>${profile.full_name} sent you a GifGram! </p><strong>${body.card_data.title}</strong><p>Open it here: https://gifgrams.com/${body.id}</p>`,
   }
+
+  console.log('msg', msg)
 
   sgMail
     .send(msg)
