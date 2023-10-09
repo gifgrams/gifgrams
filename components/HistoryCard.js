@@ -14,6 +14,7 @@ export default function HistoryCard({ card }) {
           containerStyle={{ width: '100%', aspectRatio: 1 }}
           cardData={card.card_data}
         />
+        <div className={styles.shadowOverlay}></div>
       </div>
       <h3>{card.card_data.title}</h3>
       <div className={styles.detail}>
