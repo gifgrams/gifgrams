@@ -15,3 +15,15 @@
 }
 
 $pulseBackground: pulseBackground 1.5s ease-in-out infinite;
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+$fadeIn: fadeIn 1s ease-in-out;

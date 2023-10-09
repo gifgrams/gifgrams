@@ -1,11 +1,17 @@
 'use client'
 
-import { useState } from 'react'
 import styleBuilder from '@/util/styleBuilder'
 import GalleryAdd from '@/public/icons/GalleryAdd.svg'
 import styles from '@/styles/components/Card.module.scss'
 
-export default function Card({ isPreview, isFront, setIsFront, cardData }) {
+export default function Card({
+  isPreview,
+  isFront,
+  setIsFront,
+  cardData,
+  showOnboarding,
+  setShowOnboarding,
+}) {
   return (
     <div className={styles.scene}>
       <div
@@ -15,6 +21,7 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
         ])}
         onClick={() => {
           if (isPreview) return
+          setShowOnboarding(false)
           setIsFront((prev) => !prev)
           // console.log('isFront', isFront)
         }}
@@ -55,6 +62,11 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
         >
           {cardData.message}
         </div>
+        {showOnboarding && (
+          <div className={styles.onboarding}>
+            Click or tap on the card to read its back...
+          </div>
+        )}
       </div>
     </div>
   )

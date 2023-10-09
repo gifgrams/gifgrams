@@ -25,12 +25,13 @@ export default function SignIn() {
       email,
       password,
       options: {
+        data: { name: name, email: email },
         emailRedirectTo: `${location.origin}/auth/callback`,
       },
     })
     if (error) {
       console.error('Error signing up', error)
-      emitToast('Error signing up', 'Username or password is invalid.', 'error')
+      emitToast('Error signing up', 'Oops! Something went wrong.', 'error')
     } else {
       emitToast(
         'A verification link has been sent',
@@ -47,7 +48,7 @@ export default function SignIn() {
     <>
       <div className={styles.container}>
         <h1>Sign Up</h1>
-        <form>
+        <form onSubmit={handleSignUp}>
           <TextInput
             label="Full Name"
             placeholder="Goofy Goober"
@@ -79,7 +80,7 @@ export default function SignIn() {
           <Button
             style={{ marginTop: '48px' }}
             loading={submitting}
-            onClick={handleSignUp}
+            type="submit"
           >
             Sign Up
           </Button>
