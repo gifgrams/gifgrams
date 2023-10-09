@@ -1,11 +1,27 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import moment from 'moment'
 import styleBuilder from '@/util/styleBuilder'
 import GalleryAdd from '@/public/icons/GalleryAdd.svg'
 import styles from '@/styles/components/Card.module.scss'
 
 export default function Card({ isPreview, isFront, setIsFront, cardData }) {
+  const [showOnboarding, setShowOnboarding] = useState(false)
+  useEffect(() => {
+    const gg_lastCardOnboarding = localStorage.getItem('gg_lastCardOnboarding')
+
+    if (
+      gg_lastCardOnboarding === undefined ||
+      moment(gg_lastCardOnboarding).diff(moment(), 'seconds') <= -3
+    ) {
+      console.log('TIME TO ONBOARD')
+      setShowOnboarding(true)
+    }
+
+    localStorage.setItem('gg_lastCardOnboarding', moment().toISOString())
+  }, [])
+
   return (
     <div className={styles.scene}>
       <div
@@ -55,6 +71,7 @@ export default function Card({ isPreview, isFront, setIsFront, cardData }) {
         >
           {cardData.message}
         </div>
+        <div className={styles.onboarding}></div>
       </div>
     </div>
   )
