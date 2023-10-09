@@ -10,6 +10,8 @@ export default function CardContainer({
   setIsFront,
   history,
   containerStyle,
+  showOnboarding,
+  setShowOnboarding,
   cardData = {
     mediaUrl: '',
     accentColor: '#41C4E0',
@@ -40,6 +42,8 @@ export default function CardContainer({
         isFront={isFront}
         setIsFront={setIsFront}
         cardData={cardData}
+        showOnboarding={showOnboarding}
+        setShowOnboarding={setShowOnboarding}
       />
       {!isPreview && !history && <CardControls isFront={isFront} />}
       {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}

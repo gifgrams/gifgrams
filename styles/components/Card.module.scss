@@ -1,3 +1,4 @@
+@use '/styles/animations';
 @use '/styles/breakpoints';
 @use '/styles/colors';
 @use '/styles/typography';
@@ -158,31 +159,53 @@
       }
     }
 
-    &.isPreview {
+    >.onboarding {
+      width: 100%;
+      height: 100%;
+      padding: 48px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #000000a0;
+      @include typography.text-base;
+      @include typography.text-2xl;
+      @include typography.text-semibold;
+      text-align: center;
+      color: #ffffffa0;
+      opacity: 0;
+      animation: animations.$fadeIn;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+  }
 
-      &:hover {
-        scale: 1 !important;
-        cursor: default;
-      }
+  &.isPreview {
 
-      &:active {
-        scale: 1 !important;
-        cursor: default;
-      }
+    &:hover {
+      scale: 1 !important;
+      cursor: default;
     }
 
-    // DEPENDENCY TO: width of CardControls
-    @media screen and (max-height: 880px) and (min-width: 688px) {
-      /* tag top margin, tag height, tag margin bottom, card margin bottom */
-      height: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
-      //   /* follow height, aspect-ratio property only works with width */
-      max-width: none;
-      width: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+    &:active {
+      scale: 1 !important;
+      cursor: default;
+    }
+  }
 
-      &.isPreview {
-        width: 100%;
-        height: 100%;
-      }
+  // DEPENDENCY TO: width of CardControls
+  @media screen and (max-height: 880px) and (min-width: 688px) {
+    /* tag top margin, tag height, tag margin bottom, card margin bottom */
+    height: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+    //   /* follow height, aspect-ratio property only works with width */
+    max-width: none;
+    width: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+
+    &.isPreview {
+      width: 100%;
+      height: 100%;
     }
   }
 }

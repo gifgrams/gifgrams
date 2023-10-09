@@ -66,7 +66,7 @@ export default function SignIn() {
           <Button
             style={{ marginTop: '48px' }}
             loading={submitting}
-            onClick={handleSignIn}
+            type="submit"
           >
             Sign In
           </Button>

@@ -13,7 +13,10 @@ export default function HistoryCard({ card }) {
           isFront={true}
           containerStyle={{ width: '100%', aspectRatio: 1 }}
           cardData={card.card_data}
+          showOnboarding={false}
+          setShowOnboarding={null}
         />
+        <div className={styles.shadowOverlay}></div>
       </div>
       <h3>{card.card_data.title}</h3>
       <div className={styles.detail}>
