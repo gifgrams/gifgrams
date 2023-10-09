@@ -64,7 +64,7 @@ export default function Card({
         </div>
         {showOnboarding && (
           <div className={styles.onboarding}>
-            Click or tap on the card to read the back...
+            Click or tap on the card to read its back...
           </div>
         )}
       </div>
