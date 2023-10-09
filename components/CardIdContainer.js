@@ -1,10 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import moment from 'moment'
 import CardContainer from '@/components/CardContainer'
 
 export default function CardIdContainer({ cardData, history }) {
   const [isFront, setIsFront] = useState(true)
+  const [showOnboarding, setShowOnboarding] = useState(false)
+
+  useEffect(() => {
+    const gg_lastCardOnboarding = localStorage.getItem('gg_lastCardOnboarding')
+
+    if (
+      gg_lastCardOnboarding === undefined ||
+      moment(gg_lastCardOnboarding).diff(moment(), 'seconds') <= -3
+    ) {
+      console.log('TIME TO ONBOARD')
+      setShowOnboarding(true)
+    }
+
+    localStorage.setItem('gg_lastCardOnboarding', moment().toISOString())
+  }, [])
 
   return (
     <>
@@ -14,6 +30,8 @@ export default function CardIdContainer({ cardData, history }) {
           setIsFront={setIsFront}
           history={history}
           cardData={cardData}
+          showOnboarding={showOnboarding}
+          setShowOnboarding={setShowOnboarding}
         />
       ) : (
         "Oops! The card you're looking for doesn't exist!"

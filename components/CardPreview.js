@@ -77,6 +77,8 @@ export default function CardPreview({
           setIsFront={setIsFront}
           containerStyle={{ height: '100%' }}
           cardData={cardData}
+          showOnboarding={false}
+          setShowOnboarding={null}
         />
       </div>
 
