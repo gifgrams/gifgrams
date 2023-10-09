@@ -23,6 +23,7 @@ export async function POST(req) {
   // console.log('error', error)
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+  console.log('process.env.SENDGRID_API_KEY', process.env.SENDGRID_API_KEY)
 
   const msg = {
     to: body.card_data.recipientEmail, // Change to your recipient
