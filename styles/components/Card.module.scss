@@ -157,32 +157,32 @@
         }
       }
     }
+  }
 
-    &.isPreview {
+  &.isPreview {
 
-      &:hover {
-        scale: 1 !important;
-        cursor: default;
-      }
-
-      &:active {
-        scale: 1 !important;
-        cursor: default;
-      }
+    &:hover {
+      scale: 1 !important;
+      cursor: default;
     }
 
-    // DEPENDENCY TO: width of CardControls
-    @media screen and (max-height: 880px) and (min-width: 688px) {
-      /* tag top margin, tag height, tag margin bottom, card margin bottom */
-      height: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
-      //   /* follow height, aspect-ratio property only works with width */
-      max-width: none;
-      width: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+    &:active {
+      scale: 1 !important;
+      cursor: default;
+    }
+  }
 
-      &.isPreview {
-        width: 100%;
-        height: 100%;
-      }
+  // DEPENDENCY TO: width of CardControls
+  @media screen and (max-height: 880px) and (min-width: 688px) {
+    /* tag top margin, tag height, tag margin bottom, card margin bottom */
+    height: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+    //   /* follow height, aspect-ratio property only works with width */
+    max-width: none;
+    width: calc(100dvh - (16px + 80px + 24px + 24px + 48px));
+
+    &.isPreview {
+      width: 100%;
+      height: 100%;
     }
   }
 }
