@@ -17,6 +17,12 @@ export async function POST(req) {
     .select()
     .eq('id', user.id)
   const profile = profileData[0]
+
+  const { error: cards_sentUpdateErr } = await supabase
+    .from('profile')
+    .update({ cards_sent: profile.cards_sent + 1 })
+    .eq('id', profile.id)
+
   console.log('profileData', profileData)
   console.log('profileError', profileError)
   const { error } = await supabase.from('card').insert(body)
