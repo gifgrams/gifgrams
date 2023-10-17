@@ -17,14 +17,16 @@
     transition: scale 0.1s ease-in-out, transform 1s;
     transform-style: preserve-3d;
 
-    &:hover {
-      scale: 1.01;
-      cursor: pointer;
-    }
+    &.notPreview {
+      &:hover {
+        scale: 1.01;
+        cursor: pointer;
+      }
 
-    &:active {
-      scale: 0.99;
-      cursor: pointer;
+      &:active {
+        scale: 0.99;
+        cursor: pointer;
+      }
     }
 
     .front {
