@@ -18,6 +18,7 @@ export default function Card({
         className={styleBuilder([
           styles.container,
           [styles.isPreview, isPreview],
+          [styles.notPreview, !isPreview],
         ])}
         onClick={() => {
           if (isPreview) return
