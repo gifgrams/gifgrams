@@ -17,12 +17,19 @@ export async function POST(req) {
     .select()
     .eq('id', user.id)
   const profile = profileData[0]
+
+  const { error: cards_sentUpdateErr } = await supabase
+    .from('profile')
+    .update({ cards_sent: profile.cards_sent + 1 })
+    .eq('id', profile.id)
+
   console.log('profileData', profileData)
   console.log('profileError', profileError)
   const { error } = await supabase.from('card').insert(body)
   // console.log('error', error)
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+  console.log('process.env.SENDGRID_API_KEY', process.env.SENDGRID_API_KEY)
 
   const msg = {
     to: body.card_data.recipientEmail, // Change to your recipient
@@ -34,15 +41,9 @@ export async function POST(req) {
 
   console.log('msg', msg)
 
-  sgMail
-    .send(msg)
-    .then((response) => {
-      console.log(response[0].statusCode)
-      console.log(response[0].headers)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-
-  return NextResponse.json({ error })
+  const { response: sgResponse, error: sgError } = await sgMail.send(msg)
+  console.log(sgResponse?.[0].statusCode)
+  console.log(sgResponse?.[0].headers)
+  console.error(sgError)
+  return NextResponse.json({ msg: 'hm' }, { status: sgError ? 500 : 200 })
 }

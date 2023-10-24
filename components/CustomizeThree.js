@@ -43,7 +43,7 @@ export default function CustomizeThree({ formData, setFormData }) {
             })
           }}
         />
-        <TextInput
+        {/* <TextInput
           label="Schedule Send"
           type="date"
           containerStyle={{ marginTop: 24 }}
@@ -54,7 +54,7 @@ export default function CustomizeThree({ formData, setFormData }) {
               return { ...prev, sendDate: e.target.value }
             })
           }}
-        />
+        /> */}
       </div>
     </>
   )

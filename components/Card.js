@@ -18,6 +18,7 @@ export default function Card({
         className={styleBuilder([
           styles.container,
           [styles.isPreview, isPreview],
+          [styles.notPreview, !isPreview],
         ])}
         onClick={() => {
           if (isPreview) return
@@ -64,7 +65,7 @@ export default function Card({
         </div>
         {showOnboarding && (
           <div className={styles.onboarding}>
-            Click or tap on the card to read the back...
+            Click or tap on the card to read its back...
           </div>
         )}
       </div>

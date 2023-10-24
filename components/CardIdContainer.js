@@ -12,10 +12,10 @@ export default function CardIdContainer({ cardData, history }) {
     const gg_lastCardOnboarding = localStorage.getItem('gg_lastCardOnboarding')
 
     if (
-      gg_lastCardOnboarding === undefined ||
-      moment(gg_lastCardOnboarding).diff(moment(), 'seconds') <= -3
+      gg_lastCardOnboarding === null ||
+      moment(gg_lastCardOnboarding).diff(moment(), 'months') <= -3
     ) {
-      console.log('TIME TO ONBOARD')
+      // console.log('TIME TO ONBOARD')
       setShowOnboarding(true)
     }
 
