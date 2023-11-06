@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import styleBuilder from '@/util/styleBuilder'
 import emitToast from '@/ui/Toast'
@@ -9,6 +10,7 @@ import styles from '@/styles/components/CardControls.module.scss'
 const reactions = ['😁', '😂', '❤️', '🙏', '🥳']
 
 export default function CardControls({ isFront, cardId }) {
+  const [reactionSent, setReactionSent] = useState(false)
   const router = useRouter()
 
   const alertComingSoon = (feature) => {
@@ -16,6 +18,7 @@ export default function CardControls({ isFront, cardId }) {
   }
 
   const sendEmojiReaction = (emoji) => {
+    setReactionSent(true)
     fetch('/api/v1/respond/emoji', {
       method: 'POST',
       body: JSON.stringify({
@@ -24,14 +27,20 @@ export default function CardControls({ isFront, cardId }) {
       }),
     })
       .then((response) => {
-        console.log('response', response)
+        // console.log('response', response)
         return response.json()
       })
       .then((data) => {
-        console.log('data', data)
+        // console.log('data', data)
+        emitToast(
+          `Your reaction was registered.`,
+          `"${emoji}" was sent to the sender`,
+          'success'
+        )
       })
       .catch((error) => {
-        console.log('error', error)
+        // console.log('error', error)
+        emitToast(`An unexpected error occurred.`, `Try again.`, 'error')
       })
   }
 
@@ -45,7 +54,12 @@ export default function CardControls({ isFront, cardId }) {
       </button>
       <div className={styles.reactionContainer}>
         {reactions.map((elem, index) => (
-          <button key={index} onClick={() => sendEmojiReaction(elem)}>
+          <button
+            key={index}
+            onClick={() => sendEmojiReaction(elem)}
+            disabled={reactionSent}
+            // className={styleBuilder([styles.disabled, false])}
+          >
             {elem}
           </button>
         ))}

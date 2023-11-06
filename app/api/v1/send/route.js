@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import sgMail from '@sendgrid/mail'
+import formatReceiverEmail from './formatReceiverEmail'
 
 export async function POST(req) {
   const body = await req.json()
@@ -36,7 +37,11 @@ export async function POST(req) {
     from: 'noreply@gifgrams.com', // Change to your verified sender
     subject: `${profile.full_name} sent you a greeting: ${body.card_data.title}`,
     text: `${profile.full_name} sent you a GifGram! ${body.card_data.title} Open your virtual greeting here: https://gifgrams.com/${body.id}`,
-    html: `<p>${profile.full_name} sent you a GifGram! </p><strong>${body.card_data.title}</strong><p>Open your virtual greeting here: https://gifgrams.com/${body.id}</p>`,
+    html: formatReceiverEmail(
+      profile.full_name,
+      body.card_data.title,
+      `https://gifgrams.com/${body.id}`
+    ),
   }
 
   console.log('msg', msg)

@@ -79,6 +79,10 @@
       @include typography.text-semibold;
       transition: all 0.1s ease-in-out;
 
+      &:disabled {
+        pointer-events: none;
+      }
+
       &:hover {
         scale: 1.1;
       }
