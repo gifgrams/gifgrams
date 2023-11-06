@@ -45,5 +45,8 @@ export async function POST(req) {
   console.log(sgResponse?.[0].statusCode)
   console.log(sgResponse?.[0].headers)
   console.error(sgError)
-  return NextResponse.json({ msg: 'hm' }, { status: sgError ? 500 : 200 })
+  return NextResponse.json(
+    { msg: sgError ? 'Sendgrid Error' : '' },
+    { status: sgError ? 500 : 200 }
+  )
 }

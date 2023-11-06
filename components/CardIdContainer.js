@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import moment from 'moment'
 import CardContainer from '@/components/CardContainer'
 
-export default function CardIdContainer({ cardData, history }) {
+export default function CardIdContainer({ cardData, history, cardId }) {
   const [isFront, setIsFront] = useState(true)
   const [showOnboarding, setShowOnboarding] = useState(false)
 
@@ -32,6 +32,7 @@ export default function CardIdContainer({ cardData, history }) {
           cardData={cardData}
           showOnboarding={showOnboarding}
           setShowOnboarding={setShowOnboarding}
+          cardId={cardId}
         />
       ) : (
         "Oops! The card you're looking for doesn't exist!"

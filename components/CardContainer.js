@@ -25,6 +25,7 @@ export default function CardContainer({
     recipientEmail: '',
     sendDate: Date.now(),
   },
+  cardId = null,
 }) {
   return (
     <div
@@ -45,7 +46,9 @@ export default function CardContainer({
         showOnboarding={showOnboarding}
         setShowOnboarding={setShowOnboarding}
       />
-      {!isPreview && !history && <CardControls isFront={isFront} />}
+      {!isPreview && !history && (
+        <CardControls isFront={isFront} cardId={cardId} />
+      )}
       {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
   )
