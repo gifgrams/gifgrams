@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import debounce from 'lodash.debounce'
+import { v4 as uuidv4 } from 'uuid'
 import styleBuilder from '@/util/styleBuilder'
 import Progress from '@/ui/Progress'
 import TextInput from '@/ui/TextInput'
@@ -105,7 +106,7 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
       setFormData((prev) => {
         return {
           ...prev,
-          mediaUrl: `${publicUrl}?query=${crypto.randomUUID()}`,
+          mediaUrl: `${publicUrl}?query=${uuidv4()}`,
         } // append an arbitrary query param to force the image to re-fetch
       })
     }

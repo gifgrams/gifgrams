@@ -24,5 +24,11 @@ export default async function Card({ params, searchParams }) {
   const supabase = createServerComponentClient({ cookies })
   const { data, error } = await supabase.from('card').select().eq('id', id)
 
-  return <CardIdContainer history={history} cardData={data?.[0].card_data} />
+  return (
+    <CardIdContainer
+      history={history}
+      cardData={data?.[0].card_data}
+      cardId={data?.[0].id}
+    />
+  )
 }

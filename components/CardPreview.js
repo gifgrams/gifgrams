@@ -33,9 +33,11 @@ export default function CardPreview({
     const {
       data: { user },
     } = await supabase.auth.getUser()
+    console.log('user', user)
     const payload = {
       id: cardId,
       user_id: user.id,
+      user_email: user.email,
       card_data: cardData,
     }
     fetch('/api/v1/send', {

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import Confetti from 'react-confetti'
 import moment from 'moment'
+import { v4 as uuidv4 } from 'uuid'
 import useWindowSize from 'react-use/lib/useWindowSize'
 import CardPreview from '@/components/CardPreview'
 import CustomizeOne from '@/components/CustomizeOne'
@@ -31,7 +32,7 @@ export default function App() {
     recipientEmail: '',
     sendDate: moment().format('YYYY-MM-DD'),
   })
-  const [cardId, setCardId] = useState(crypto.randomUUID())
+  const [cardId, setCardId] = useState(uuidv4())
   const [confetti, setConfetti] = useState(false)
 
   const scrollRef = useRef()
