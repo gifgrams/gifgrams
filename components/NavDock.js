@@ -52,7 +52,7 @@ export default function NavDock() {
             }}
           ></Image>
         ) : (
-          <div className={styles.loginBtn}>Login</div>
+          <div className={styles.loginBtn}>Sign Up</div>
         )}
       </Link>
     </div>
