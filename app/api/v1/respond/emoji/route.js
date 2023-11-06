@@ -17,9 +17,9 @@ export async function POST(req) {
   console.log('card', card)
 
   const msg = {
-    to: card.card_data., // Change to your recipient
+    to: card.card_data.user_email, // Change to your recipient
     from: 'noreply@gifgrams.com', // Change to your verified sender
-    subject: `${profile.full_name} sent you a greeting: ${body.card_data.title}`,
+    subject: `${card.card_data.recipientName} reacted to your GifGram: ${body.emoji}`,
     text: `${profile.full_name} sent you a GifGram! ${body.card_data.title} Open your virtual greeting here: https://gifgrams.com/${body.id}`,
     html: `<p>${profile.full_name} sent you a GifGram! </p><strong>${body.card_data.title}</strong><p>Open your virtual greeting here: https://gifgrams.com/${body.id}</p>`,
   }
