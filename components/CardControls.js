@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import styleBuilder from '@/util/styleBuilder'
 import emitToast from '@/ui/Toast'
 import UndoLeftRoundSquare from '@/public/icons/UndoLeftRoundSquare.svg'
@@ -8,6 +9,8 @@ import styles from '@/styles/components/CardControls.module.scss'
 const reactions = ['😁', '😂', '❤️', '🙏', '🥳']
 
 export default function CardControls({ isFront, cardId }) {
+  const router = useRouter()
+
   const alertComingSoon = (feature) => {
     alert(`${feature} are coming soon! Hang tight :)`)
   }
@@ -36,7 +39,7 @@ export default function CardControls({ isFront, cardId }) {
     <div
       className={styleBuilder([styles.container, [styles.isFront, isFront]])}
     >
-      <button onClick={() => alertComingSoon('Email respones')}>
+      <button onClick={() => router.push('/new')}>
         <UndoLeftRoundSquare />
         Send a free response
       </button>
