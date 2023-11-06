@@ -64,6 +64,7 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
   const searchInput = useRef()
 
   useEffect(() => {
+    setResults(Array(9).fill(null))
     const fetchResults = async () => {
       fetch(`/api/v1/${mediaType}/search?query=${query}`)
         .then(async (res) => {
@@ -77,7 +78,6 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
         })
     }
     if (query && ['gif', 'sticker'].includes(mediaType)) fetchResults()
-    else setResults(Array(9).map((index) => index))
   }, [query, mediaType])
 
   const changeHandler = (event) => {
