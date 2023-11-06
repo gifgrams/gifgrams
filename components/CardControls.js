@@ -7,7 +7,7 @@ import styles from '@/styles/components/CardControls.module.scss'
 
 const reactions = ['😁', '😂', '❤️', '🙏', '🥳']
 
-export default function CardControls({ isFront }) {
+export default function CardControls({ isFront, cardId }) {
   const alertComingSoon = (feature) => {
     alert(`${feature} are coming soon! Hang tight :)`)
   }
@@ -15,6 +15,10 @@ export default function CardControls({ isFront }) {
   const sendEmojiReaction = (emoji) => {
     fetch('/api/v1/respond/emoji', {
       method: 'POST',
+      body: JSON.stringify({
+        cardId: cardId,
+        emoji: emoji,
+      }),
     })
       .then((response) => {
         console.log('response', response)
@@ -38,10 +42,7 @@ export default function CardControls({ isFront }) {
       </button>
       <div className={styles.reactionContainer}>
         {reactions.map((elem, index) => (
-          <button
-            key={index}
-            onClick={() => alertComingSoon('Emoji reactions')}
-          >
+          <button key={index} onClick={() => sendEmojiReaction(elem)}>
             {elem}
           </button>
         ))}
