@@ -64,6 +64,7 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
   const searchInput = useRef()
 
   useEffect(() => {
+    setResults(Array(9).fill(null))
     const fetchResults = async () => {
       fetch(`/api/v1/${mediaType}/search?query=${query}`)
         .then(async (res) => {
@@ -77,7 +78,6 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
         })
     }
     if (query && ['gif', 'sticker'].includes(mediaType)) fetchResults()
-    else setResults(Array(9).map((index) => index))
   }, [query, mediaType])
 
   const changeHandler = (event) => {
@@ -90,26 +90,29 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
 
   const uploadFile = async (file) => {
     setLoadingUpload(true)
-    const { data, error } = await supabase.storage
+
+    supabase.storage
       .from('media')
       .upload(cardId, file, { upsert: true })
+      .then((res) => res.json())
+      .then((data) => {
+        const {
+          data: { publicUrl },
+        } = supabase.storage.from('media').getPublicUrl(cardId)
+        // console.log('mediaUrl', publicUrl)
+        setFormData((prev) => {
+          return {
+            ...prev,
+            mediaUrl: `${publicUrl}?query=${uuidv4()}`,
+          } // append an arbitrary query param to force the image to re-fetch
+        })
+      })
+      .catch((error) => {
+        emitToast('Error', 'There was an error uploading your file.', 'error')
+      })
 
     // console.log('data', data)
     // console.log('error', error)
-    if (error)
-      emitToast('Error', 'There was an error uploading your file.', 'error')
-    else {
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from('media').getPublicUrl(cardId)
-      // console.log('mediaUrl', publicUrl)
-      setFormData((prev) => {
-        return {
-          ...prev,
-          mediaUrl: `${publicUrl}?query=${uuidv4()}`,
-        } // append an arbitrary query param to force the image to re-fetch
-      })
-    }
     setLoadingUpload(false)
   }
 
@@ -166,7 +169,7 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
               >
                 {results.map((elem, index) => (
                   <button
-                    key={elem.id}
+                    key={elem?.id ?? index}
                     onClick={() => {
                       if (elem)
                         setFormData((prev) => {
@@ -179,12 +182,12 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
                     className={styleBuilder([
                       [
                         styles.selected,
-                        elem.media_formats?.gif.url === formData.mediaUrl,
+                        elem?.media_formats?.gif.url === formData.mediaUrl,
                       ],
                     ])}
                   >
                     <img
-                      src={elem.media_formats?.tinygif.url}
+                      src={elem?.media_formats?.tinygif.url}
                       className={styles.result}
                       loading="lazy"
                     />

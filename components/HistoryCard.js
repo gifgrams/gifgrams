@@ -1,6 +1,7 @@
 import moment from 'moment'
 import CardContainer from '@/components/CardContainer'
 import CalendarMinimalistic from '@/public/icons/CalendarMinimalistic.svg'
+import Plain from '@/public/icons/Plain.svg'
 import User from '@/public/icons/User.svg'
 import styles from '@/styles/components/HistoryCard.module.scss'
 
@@ -19,6 +20,10 @@ export default function HistoryCard({ card }) {
         <div className={styles.shadowOverlay}></div>
       </div>
       <h3>{card.card_data.title}</h3>
+      <div className={styles.detail}>
+        <Plain />
+        <h4>Delivered</h4>
+      </div>
       <div className={styles.detail}>
         <User />
         <h4>{`${card.card_data.recipientName} ${
