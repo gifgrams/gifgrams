@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 48px;
+  gap: 16px;
 
   >.profilePic {
     border-radius: 152px;
@@ -16,14 +16,21 @@
   }
 
   >h1 {
-    padding: 0 24px;
     @include typography.text-base;
     @include typography.text-2xl;
     @include typography.text-semibold;
+    margin-top: 32px;
     color: colors.$text-primary;
-    margin-bottom: 24px;
     word-wrap: break-word;
     max-width: 100dvw;
     text-align: center;
+  }
+
+  h3 {
+    @include typography.text-base;
+    @include typography.text-lg;
+    @include typography.text-medium;
+    color: colors.$text-secondary;
+    margin-bottom: 32px;
   }
 }

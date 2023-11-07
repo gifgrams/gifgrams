@@ -8,12 +8,13 @@ export default function CardIdContainer({ cardData, history, cardId }) {
   const [isFront, setIsFront] = useState(true)
   const [showOnboarding, setShowOnboarding] = useState(false)
 
+  // must use a client component to access localstorage
   useEffect(() => {
     const gg_lastCardOnboarding = localStorage.getItem('gg_lastCardOnboarding')
 
     if (
       gg_lastCardOnboarding === null ||
-      moment(gg_lastCardOnboarding).diff(moment(), 'months') <= -3
+      moment(gg_lastCardOnboarding).diff(moment(), 'months') <= -2
     ) {
       // console.log('TIME TO ONBOARD')
       setShowOnboarding(true)
