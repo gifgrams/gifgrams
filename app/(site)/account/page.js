@@ -22,6 +22,13 @@ export default async function Account() {
   // if (error) console.log('Error in getSession() in NavDock.js', error)
   if (!session) redirect('/signup')
 
+  const { data: profileData, profileError } = await supabase
+    .from('profile')
+    .select()
+    .eq('id', session.user.id)
+
+  console.log('profileData', profileData)
+
   return (
     <>
       <NavBar />
@@ -34,7 +41,8 @@ export default async function Account() {
           height={304}
           priority
         ></Image>
-        <h1>{session.user.email}</h1>
+        <h1>{profileData[0].email}</h1>
+        <h3>GifGrams sent: {profileData[0].cards_sent}</h3>
         <SignOut />
       </main>
     </>
