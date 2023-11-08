@@ -91,25 +91,26 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
   const uploadFile = async (file) => {
     setLoadingUpload(true)
 
-    supabase.storage
+    const { data, error } = await supabase.storage
       .from('media')
       .upload(cardId, file, { upsert: true })
-      .then((res) => res.json())
-      .then((data) => {
-        const {
-          data: { publicUrl },
-        } = supabase.storage.from('media').getPublicUrl(cardId)
-        // console.log('mediaUrl', publicUrl)
-        setFormData((prev) => {
-          return {
-            ...prev,
-            mediaUrl: `${publicUrl}?query=${uuidv4()}`,
-          } // append an arbitrary query param to force the image to re-fetch
-        })
-      })
-      .catch((error) => {
-        emitToast('Error', 'There was an error uploading your file.', 'error')
-      })
+    if (error) {
+      emitToast('Error', 'There was an error uploading your file.', 'error')
+      setLoadingUpload(false)
+      return
+    }
+
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from('media').getPublicUrl(cardId)
+    // console.log('mediaUrl', publicUrl)
+
+    setFormData((prev) => {
+      return {
+        ...prev,
+        mediaUrl: `${publicUrl}?query=${uuidv4()}`,
+      } // append an arbitrary query param to force the image to re-fetch
+    })
 
     // console.log('data', data)
     // console.log('error', error)

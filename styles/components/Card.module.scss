@@ -18,6 +18,8 @@
     transform-style: preserve-3d;
 
     &.notPreview {
+      animation: animations.$fadeUp;
+
       &:hover {
         scale: 1.01;
         cursor: pointer;
