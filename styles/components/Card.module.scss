@@ -5,24 +5,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Borel&family=Comic+Neue:wght@700&family=Indie+Flower&family=Merriweather&family=Montserrat&family=Pacifico&family=Playfair+Display&family=Poppins&family=Press+Start+2P&family=Satisfy&display=swap');
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .scene {
   width: calc(100% - 24px - 24px);
   max-width: 640px;
   aspect-ratio: 1;
   perspective: calc(100dvh + 100dvw);
-  animation: fadeUp ease-out 0.2s;
 
   .container {
     width: 100%;
@@ -31,6 +18,8 @@
     transform-style: preserve-3d;
 
     &.notPreview {
+      animation: animations.$fadeUp;
+
       &:hover {
         scale: 1.01;
         cursor: pointer;
