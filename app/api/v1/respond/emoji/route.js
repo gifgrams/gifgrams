@@ -7,7 +7,6 @@ import formatEmojiEmail from './formatEmojiEmail'
 export async function POST(req) {
   const body = await req.json()
 
-  console.log('body', body)
 
   const supabase = createRouteHandlerClient({ cookies })
   let { data: card, error } = await supabase
@@ -15,10 +14,7 @@ export async function POST(req) {
     .select('*')
     .eq('id', body.cardId)
 
-  console.log('cardfirst')
-  console.log('card', card)
 
-  console.log('ENV', process.env.SENDGRID_API_KEY)
 
   const msg = {
     to: card[0].user_email, // Change to your recipient
@@ -31,17 +27,10 @@ export async function POST(req) {
       body.emoji
     ),
   }
-  console.log('msg', msg)
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   const { response: sgResponse, error: sgError } = await sgMail.send(msg)
-  console.log('bruh')
   console.error(JSON.stringify(sgError))
-
-  console.log(sgResponse?.[0].statusCode)
-  console.log(sgResponse?.[0].headers)
-  console.log('bruh', sgResponse?.body?.errors)
-  console.error(sgError)
 
   return NextResponse.json(
     sgError ? { error: sgError } : { message: 'Success' },

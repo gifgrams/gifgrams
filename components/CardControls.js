@@ -27,11 +27,9 @@ export default function CardControls({ isFront, cardId }) {
       }),
     })
       .then((response) => {
-        // console.log('response', response)
         return response.json()
       })
       .then((data) => {
-        // console.log('data', data)
         emitToast(
           `Your reaction was registered.`,
           `"${emoji}" was sent to the sender`,
@@ -39,7 +37,6 @@ export default function CardControls({ isFront, cardId }) {
         )
       })
       .catch((error) => {
-        // console.log('error', error)
         emitToast(`An unexpected error occurred.`, `Try again.`, 'error')
       })
   }
@@ -58,7 +55,7 @@ export default function CardControls({ isFront, cardId }) {
             key={index}
             onClick={() => sendEmojiReaction(elem)}
             disabled={reactionSent}
-            // className={styleBuilder([styles.disabled, false])}
+          // className={styleBuilder([styles.disabled, false])}
           >
             {elem}
           </button>

@@ -24,7 +24,6 @@ export default function Card({
           if (isPreview) return
           setShowOnboarding(false)
           setIsFront((prev) => !prev)
-          // console.log('isFront', isFront)
         }}
         style={{
           border: `16px solid ${cardData.accentColor}`,

@@ -18,12 +18,11 @@ export default async function App() {
   } = await supabase.auth.getUser()
   const { data, error } = user
     ? await supabase
-        .from('card')
-        .select()
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false })
+      .from('card')
+      .select()
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
     : { data: [], error: null }
-  // console.log('data', data)
   const dataWithStarter = [
     ...data,
     {

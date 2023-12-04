@@ -6,13 +6,11 @@ import formatReceiverEmail from './formatReceiverEmail'
 
 export async function POST(req) {
   const body = await req.json()
-  console.log('body', body)
 
   const supabase = createRouteHandlerClient({ cookies })
   const {
     data: { user },
   } = await supabase.auth.getUser()
-  console.log('user', user)
   const { data: profileData, error: profileError } = await supabase
     .from('profile')
     .select()
@@ -24,13 +22,9 @@ export async function POST(req) {
     .update({ cards_sent: profile.cards_sent + 1 })
     .eq('id', profile.id)
 
-  console.log('profileData', profileData)
-  console.log('profileError', profileError)
   const { error } = await supabase.from('card').insert(body)
-  // console.log('error', error)
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-  console.log('process.env.SENDGRID_API_KEY', process.env.SENDGRID_API_KEY)
 
   const msg = {
     to: body.card_data.recipientEmail, // Change to your recipient
@@ -44,11 +38,8 @@ export async function POST(req) {
     ),
   }
 
-  console.log('msg', msg)
 
   const { response: sgResponse, error: sgError } = await sgMail.send(msg)
-  console.log(sgResponse?.[0].statusCode)
-  console.log(sgResponse?.[0].headers)
   console.error(sgError)
   return NextResponse.json(
     { msg: sgError ? 'Sendgrid Error' : '' },

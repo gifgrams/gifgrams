@@ -13,8 +13,6 @@ export default async function authLayout({ children }) {
     data: { session },
     error,
   } = await supabase.auth.getSession()
-  // console.log('session', session)
-  // if (error) console.log('Error in getSession() in NavDock.js', error)
   if (session) redirect('/')
 
   return (
