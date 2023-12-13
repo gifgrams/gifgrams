@@ -1,45 +1,43 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/navigation'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import Confetti from 'react-confetti'
-import moment from 'moment'
-import { v4 as uuidv4 } from 'uuid'
-import useWindowSize from 'react-use/lib/useWindowSize'
-import CardPreview from '@/components/CardPreview'
-import CustomizeOne from '@/components/CustomizeOne'
-import CustomizeTwo from '@/components/CustomizeTwo'
-import CustomizeThree from '@/components/CustomizeThree'
-import NavBar from '@/components/NavBar'
-import NewProgress from '@/components/NewProgress'
-import styles from '@/styles/app/newPage.module.scss'
+import { useState, useEffect, useRef } from "react";
+import Confetti from "react-confetti";
+import moment from "moment";
+import { v4 as uuidv4 } from "uuid";
+import useWindowSize from "react-use/lib/useWindowSize";
+import CardPreview from "@/components/CardPreview";
+import CustomizeOne from "@/components/CustomizeOne";
+import CustomizeTwo from "@/components/CustomizeTwo";
+import CustomizeThree from "@/components/CustomizeThree";
+import NavBar from "@/components/NavBar";
+import NewProgress from "@/components/NewProgress";
+import styles from "@/styles/app/newPage.module.scss";
 
 export default function App() {
-  const { width, height } = useWindowSize()
+  const { width, height } = useWindowSize();
 
-  const [stage, setStage] = useState(0)
+  const [stage, setStage] = useState(0);
   const [formData, setFormData] = useState({
-    mediaUrl: '',
-    accentColor: '#41C4E0',
-    typeface: 'Monserrat',
-    fontSize: 'Medium',
-    fontColor: '#303030',
-    backgroundColor: '#FFFFFF',
-    message: '',
-    title: '',
-    recipientName: '',
-    recipientEmail: '',
-    sendDate: moment().format('YYYY-MM-DD'),
-  })
-  const [cardId, setCardId] = useState(uuidv4())
-  const [confetti, setConfetti] = useState(false)
+    mediaUrl: "",
+    accentColor: "#41C4E0",
+    typeface: "Monserrat",
+    fontSize: "Medium",
+    fontColor: "#303030",
+    backgroundColor: "#FFFFFF",
+    message: "",
+    title: "",
+    recipientName: "",
+    recipientEmail: "",
+    sendDate: moment().format("YYYY-MM-DD"),
+  });
+  const [cardId] = useState(uuidv4());
+  const [confetti, setConfetti] = useState(false);
 
-  const scrollRef = useRef()
+  const scrollRef = useRef();
 
   useEffect(() => {
-    if (scrollRef) scrollRef.current.scrollTop = 0
-  }, [stage])
+    if (scrollRef) scrollRef.current.scrollTop = 0;
+  }, [stage]);
 
   return (
     <div className={styles.container} ref={scrollRef}>
@@ -78,5 +76,5 @@ export default function App() {
         />
       )}
     </div>
-  )
+  );
 }
