@@ -69,9 +69,7 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
       fetch(`/api/v1/${mediaType}/search?query=${query}`)
         .then(async (res) => {
           const data = await res.json()
-          // console.log('data', data)
           setResults(data.data.results)
-          // console.log('data', data.data.results)
         })
         .catch((e) => {
           setConnectionError(true)
@@ -103,7 +101,6 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
     const {
       data: { publicUrl },
     } = supabase.storage.from('media').getPublicUrl(cardId)
-    // console.log('mediaUrl', publicUrl)
 
     setFormData((prev) => {
       return {
@@ -112,8 +109,6 @@ export default function MediaSelector({ formData, setFormData, cardId }) {
       } // append an arbitrary query param to force the image to re-fetch
     })
 
-    // console.log('data', data)
-    // console.log('error', error)
     setLoadingUpload(false)
   }
 

@@ -19,7 +19,6 @@ export default async function Account() {
     data: { session },
     error,
   } = await supabase.auth.getSession()
-  // if (error) console.log('Error in getSession() in NavDock.js', error)
   if (!session) redirect('/signup')
 
   const { data: profileData, profileError } = await supabase
@@ -27,7 +26,6 @@ export default async function Account() {
     .select()
     .eq('id', session.user.id)
 
-  console.log('profileData', profileData)
 
   return (
     <>

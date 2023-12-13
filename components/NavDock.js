@@ -16,7 +16,6 @@ export default function NavDock() {
   useEffect(() => {
     const getSession = async () => {
       const { data, error } = await supabase.auth.getSession()
-      // if (error) console.log('Error in getSession() in NavDock.js', error)
       setSession(data.session)
     }
     getSession()

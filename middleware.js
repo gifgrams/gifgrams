@@ -18,7 +18,6 @@ export async function middleware(req) {
       !UNPROTECTED_ROUTES.includes(req.nextUrl.pathname) &&
       !DEVELOPMENT_ROUTES.includes(req.nextUrl.pathname)
     ) {
-      console.log('Forbidden', req.nextUrl.pathname)
       return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
     }
   }

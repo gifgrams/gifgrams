@@ -16,7 +16,6 @@ export default function CardIdContainer({ cardData, history, cardId }) {
       gg_lastCardOnboarding === null ||
       moment(gg_lastCardOnboarding).diff(moment(), 'months') <= -2
     ) {
-      // console.log('TIME TO ONBOARD')
       setShowOnboarding(true)
     }
 

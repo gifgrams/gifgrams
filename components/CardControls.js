@@ -1,54 +1,51 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import styleBuilder from '@/util/styleBuilder'
-import emitToast from '@/ui/Toast'
-import UndoLeftRoundSquare from '@/public/icons/UndoLeftRoundSquare.svg'
-import styles from '@/styles/components/CardControls.module.scss'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import styleBuilder from "@/util/styleBuilder";
+import emitToast from "@/ui/Toast";
+import UndoLeftRoundSquare from "@/public/icons/UndoLeftRoundSquare.svg";
+import styles from "@/styles/components/CardControls.module.scss";
 
-const reactions = ['😁', '😂', '❤️', '🙏', '🥳']
+const reactions = ["😁", "😂", "❤️", "🙏", "🥳"];
 
 export default function CardControls({ isFront, cardId }) {
-  const [reactionSent, setReactionSent] = useState(false)
-  const router = useRouter()
+  const [reactionSent, setReactionSent] = useState(false);
+  const router = useRouter();
 
   const alertComingSoon = (feature) => {
-    alert(`${feature} are coming soon! Hang tight :)`)
-  }
+    alert(`${feature} are coming soon! Hang tight :)`);
+  };
 
   const sendEmojiReaction = (emoji) => {
-    setReactionSent(true)
-    fetch('/api/v1/respond/emoji', {
-      method: 'POST',
+    setReactionSent(true);
+    fetch("/api/v1/respond/emoji", {
+      method: "POST",
       body: JSON.stringify({
-        cardId: cardId,
-        emoji: emoji,
+        cardId,
+        emoji,
       }),
     })
       .then((response) => {
-        // console.log('response', response)
-        return response.json()
+        return response.json();
       })
       .then((data) => {
-        // console.log('data', data)
         emitToast(
           `Your reaction was registered.`,
           `"${emoji}" was sent to the sender`,
-          'success'
-        )
+          "success"
+        );
       })
       .catch((error) => {
-        // console.log('error', error)
-        emitToast(`An unexpected error occurred.`, `Try again.`, 'error')
-      })
-  }
+        emitToast(`An unexpected error occurred.`, `Try again.`, "error");
+      });
+  };
 
   return (
     <div
       className={styleBuilder([styles.container, [styles.isFront, isFront]])}
     >
-      <button onClick={() => router.push('/new')}>
+      <button onClick={() => router.push("/new")}>
         <UndoLeftRoundSquare />
         Send a free response
       </button>
@@ -65,5 +62,5 @@ export default function CardControls({ isFront, cardId }) {
         ))}
       </div>
     </div>
-  )
+  );
 }
