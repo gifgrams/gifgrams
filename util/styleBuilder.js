@@ -12,7 +12,6 @@ export default function styleBuilder(styles) {
   for (const style of styles) {
     if (!style) continue;
     if (typeof style === "string") usedStyles.push(style);
-    // "cooper could destructure instead of indexing"
     else {
       const [styleValue, condition] = style;
       if (condition) usedStyles.push(styleValue);
@@ -20,12 +19,3 @@ export default function styleBuilder(styles) {
   }
   return usedStyles.join(" ") || undefined;
 }
-
-/**
- * const NAV_ITEMS = {
- *   home: "Home"
- *   settings: "Settings"
- * } as const
- *
- * type NavKey = keyof typeof NAV_ITEMS
- */
