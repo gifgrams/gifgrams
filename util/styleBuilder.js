@@ -8,11 +8,24 @@
  * @example styleBuilder(["a", ["b", condition]]) -> "a b" if condition else "a"
  */
 export default function styleBuilder(styles) {
-  const usedStyles = []
+  const usedStyles = [];
   for (const style of styles) {
-    if (!style) continue
-    if (typeof style === 'string') usedStyles.push(style)
-    else if (style[1]) usedStyles.push(style[0])
+    if (!style) continue;
+    if (typeof style === "string") usedStyles.push(style);
+    // "cooper could destructure instead of indexing"
+    else {
+      const [styleValue, condition] = style;
+      if (condition) usedStyles.push(styleValue);
+    }
   }
-  return usedStyles.join(' ') || undefined
+  return usedStyles.join(" ") || undefined;
 }
+
+/**
+ * const NAV_ITEMS = {
+ *   home: "Home"
+ *   settings: "Settings"
+ * } as const
+ *
+ * type NavKey = keyof typeof NAV_ITEMS
+ */

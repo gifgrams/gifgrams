@@ -11,30 +11,29 @@ export const metadata = {
   title: "GifGrams",
 };
 
+const getStarterCard = (user) => ({
+  id: "e803424a-4ba4-4863-98c4-4a0fccb99230",
+  created_at: user ? moment(user.created_at) : moment(),
+  card_data: {
+    title: "Welcome! (click me)",
+    message: "",
+    fontSize: "Medium",
+    mediaUrl: "https://media.tenor.com/oC8CSq25wx4AAAAC/baby-yoda-welcome.gif",
+    sendDate: "",
+    typeface: "Monserrat",
+    fontColor: "#303030",
+    accentColor: "#41c4e1",
+    recipientName: "You",
+    recipientEmail: "",
+    backgroundColor: "#FFFFFF",
+  },
+});
+
 export default async function App() {
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  const starterCard = {
-    id: "e803424a-4ba4-4863-98c4-4a0fccb99230",
-    created_at: user ? moment(user.created_at) : moment(),
-    card_data: {
-      title: "Welcome! (click me)",
-      message: "",
-      fontSize: "Medium",
-      mediaUrl:
-        "https://media.tenor.com/oC8CSq25wx4AAAAC/baby-yoda-welcome.gif",
-      sendDate: "",
-      typeface: "Monserrat",
-      fontColor: "#303030",
-      accentColor: "#41c4e1",
-      recipientName: "You",
-      recipientEmail: "",
-      backgroundColor: "#FFFFFF",
-    },
-  };
 
   const { data, error } = user
     ? await supabase
@@ -43,7 +42,7 @@ export default async function App() {
         .eq("user_id", user.id)
         .order("created_at", { ascending: false })
     : { data: [], error: null };
-  const dataWithStarter = [...data, starterCard];
+  const dataWithStarter = [...data, getStarterCard(user)];
 
   return (
     <div className={styles.container}>
