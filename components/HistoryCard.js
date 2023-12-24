@@ -1,9 +1,9 @@
-import moment from "moment";
-import CardContainer from "@/components/CardContainer";
-import CalendarMinimalistic from "@/public/icons/CalendarMinimalistic.svg";
-import Plain from "@/public/icons/Plain.svg";
-import User from "@/public/icons/User.svg";
-import styles from "@/styles/components/HistoryCard.module.scss";
+import moment from 'moment';
+import CardContainer from '@/components/CardContainer';
+import CalendarMinimalistic from '@/public/icons/CalendarMinimalistic.svg';
+import Plain from '@/public/icons/Plain.svg';
+import User from '@/public/icons/User.svg';
+import styles from '@/styles/components/HistoryCard.module.scss';
 
 export default function HistoryCard({ card }) {
   return (
@@ -12,7 +12,7 @@ export default function HistoryCard({ card }) {
         <CardContainer
           isPreview={true}
           isFront={true}
-          containerStyle={{ width: "100%", aspectRatio: 1 }}
+          containerStyle={{ width: '100%', aspectRatio: 1 }}
           cardData={card.card_data}
           showOnboarding={false}
           setShowOnboarding={null}
@@ -26,16 +26,23 @@ export default function HistoryCard({ card }) {
       </div>
       <div className={styles.detail}>
         <User />
-        <h4>{`${card.card_data.recipientName}${
-          card.card_data.recipientEmail
-            ? ` (${card.card_data.recipientEmail})`
-            : ""
-        }`}</h4>
+        <h4>{getRecipientsString(card.card_data)}</h4>
       </div>
       <div className={styles.detail}>
         <CalendarMinimalistic />
-        <h4>{moment(card.created_at).format("MMM Do, YYYY")}</h4>
+        <h4>{moment(card.created_at).format('MMM Do, YYYY')}</h4>
       </div>
     </div>
   );
+
+  function getRecipientsString(cardData) {
+    // new schema
+    if (cardData.recipients?.[0].name)
+      return cardData.recipients.map((r) => r.name).join(', ');
+    // old schema
+    else
+      return `${cardData.recipientName}${
+        cardData.recipientEmail ? ` (${cardData.recipientEmail})` : ''
+      }`;
+  }
 }
