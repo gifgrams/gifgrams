@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 import HistoryCard from '@/components/HistoryCard';
 import NavBar from '@/components/NavBar';
 import SmallNewButton from '@/components/SmallNewButton';
@@ -23,7 +24,7 @@ const getStarterCard = (user) => ({
     typeface: 'Monserrat',
     fontColor: '#303030',
     accentColor: '#41c4e1',
-    recipients: [{ name: 'You', id: crypto.randomUUID(), email: '' }],
+    recipients: [{ name: 'You', id: uuidv4(), email: '' }],
     backgroundColor: '#FFFFFF',
   },
 });

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import TextInput from '@/ui/TextInput';
 import styles from '@/styles/components/RecipientsEditor.module.scss';
 import Button from '@/ui/Button';
@@ -37,10 +38,7 @@ const RecipientsEditor = ({ recipients, setRecipients }) => {
   );
 
   function addRecipient() {
-    setRecipients([
-      ...recipients,
-      { name: '', email: '', id: crypto.randomUUID() },
-    ]);
+    setRecipients([...recipients, { name: '', email: '', id: uuidv4() }]);
   }
 
   function deleteRecipient(id) {
