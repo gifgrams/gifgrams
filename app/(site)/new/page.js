@@ -1,35 +1,36 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import Confetti from "react-confetti";
-import moment from "moment";
-import { v4 as uuidv4 } from "uuid";
-import useWindowSize from "react-use/lib/useWindowSize";
-import CardPreview from "@/components/CardPreview";
-import CustomizeOne from "@/components/CustomizeOne";
-import CustomizeTwo from "@/components/CustomizeTwo";
-import CustomizeThree from "@/components/CustomizeThree";
-import NavBar from "@/components/NavBar";
-import NewProgress from "@/components/NewProgress";
-import styles from "@/styles/app/newPage.module.scss";
+import { useState, useEffect, useRef } from 'react';
+import Confetti from 'react-confetti';
+import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
+import useWindowSize from 'react-use/lib/useWindowSize';
+import CardPreview from '@/components/CardPreview';
+import CustomizeOne from '@/components/CustomizeOne';
+import CustomizeTwo from '@/components/CustomizeTwo';
+import CustomizeThree from '@/components/CustomizeThree';
+import NavBar from '@/components/NavBar';
+import NewProgress from '@/components/NewProgress';
+import styles from '@/styles/app/newPage.module.scss';
+
+const DEFAULT_FORM_DATA = {
+  mediaUrl: '',
+  accentColor: '#41C4E0',
+  typeface: 'Monserrat',
+  fontSize: 'Medium',
+  fontColor: '#303030',
+  backgroundColor: '#FFFFFF',
+  message: '',
+  title: '',
+  recipients: [],
+  sendDate: moment().format('YYYY-MM-DD'),
+};
 
 export default function App() {
   const { width, height } = useWindowSize();
 
   const [stage, setStage] = useState(0);
-  const [formData, setFormData] = useState({
-    mediaUrl: "",
-    accentColor: "#41C4E0",
-    typeface: "Monserrat",
-    fontSize: "Medium",
-    fontColor: "#303030",
-    backgroundColor: "#FFFFFF",
-    message: "",
-    title: "",
-    recipientName: "",
-    recipientEmail: "",
-    sendDate: moment().format("YYYY-MM-DD"),
-  });
+  const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
   const [cardId] = useState(uuidv4());
   const [confetti, setConfetti] = useState(false);
 

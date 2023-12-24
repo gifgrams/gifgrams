@@ -1,8 +1,8 @@
-import styleBuilder from '@/util/styleBuilder'
-import Card from '@/components/Card'
-import CardControls from '@/components/CardControls'
-import GifGramsTag from '@/components/GifGramsTag'
-import styles from '@/styles/components/CardContainer.module.scss'
+import styleBuilder from '@/util/styleBuilder';
+import Card from '@/components/Card';
+import CardControls from '@/components/CardControls';
+import GifGramsTag from '@/components/GifGramsTag';
+import styles from '@/styles/components/CardContainer.module.scss';
 
 export default function CardContainer({
   isPreview = false,
@@ -21,8 +21,7 @@ export default function CardContainer({
     backgroundColor: '#ffffff',
     message: '',
     title: '',
-    recipientName: '',
-    recipientEmail: '',
+    recipients: [],
     sendDate: Date.now(),
   },
   cardId = null,
@@ -51,5 +50,5 @@ export default function CardContainer({
       )}
       {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
-  )
+  );
 }

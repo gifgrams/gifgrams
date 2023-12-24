@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const StyledContainer = styled(ToastContainer)`
   // https://styled-components.com/docs/faqs#how-can-i-override-styles-with-higher-specificity
@@ -25,12 +25,12 @@ const StyledContainer = styled(ToastContainer)`
     padding: 0;
     animation: none;
   }
-`
+`;
 
 export default function Container() {
   return (
     <StyledContainer
-      position="bottom-right"
+      position='bottom-right'
       autoClose={5000}
       hideProgressBar={true}
       newestOnTop={true}
@@ -39,5 +39,5 @@ export default function Container() {
       draggable={false}
       pauseOnHover={true}
     />
-  )
+  );
 }

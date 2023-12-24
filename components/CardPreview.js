@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import CardContainer from '@/components/CardContainer'
-import Progress from '@/ui/Progress'
-import emitToast from '@/ui/Toast'
-import Button from '@/ui/Button'
-import ArrowRight from '@/public/icons/ArrowRight.svg'
-import Plain from '@/public/icons/Plain.svg'
-import styles from '@/styles/components/CardPreview.module.scss'
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import CardContainer from '@/components/CardContainer';
+import Progress from '@/ui/Progress';
+import emitToast from '@/ui/Toast';
+import Button from '@/ui/Button';
+import ArrowRight from '@/public/icons/ArrowRight.svg';
+import Plain from '@/public/icons/Plain.svg';
+import styles from '@/styles/components/CardPreview.module.scss';
 
 export default function CardPreview({
   stage,
@@ -18,27 +18,27 @@ export default function CardPreview({
   cardData,
   cardId,
 }) {
-  const supabase = createClientComponentClient()
-  const router = useRouter()
+  const supabase = createClientComponentClient();
+  const router = useRouter();
 
-  const [isFront, setIsFront] = useState(true)
-  const [sendPending, setSendPending] = useState(false)
+  const [isFront, setIsFront] = useState(true);
+  const [sendPending, setSendPending] = useState(false);
 
   useEffect(() => {
-    setIsFront(stage !== 1)
-  }, [stage])
+    setIsFront(stage !== 1);
+  }, [stage]);
 
   const sendCard = async () => {
-    setSendPending(true)
+    setSendPending(true);
     const {
       data: { user },
-    } = await supabase.auth.getUser()
+    } = await supabase.auth.getUser();
     const payload = {
       id: cardId,
       user_id: user.id,
       user_email: user.email,
       card_data: cardData,
-    }
+    };
     fetch('/api/v1/send', {
       method: 'POST',
       headers: {
@@ -49,24 +49,24 @@ export default function CardPreview({
       if (!res.ok) {
         emitToast(
           'Error sending card',
-          'There was an unexpected error sending this card. Do not close this tab or unsaved data will be lost.',
+          "There was an unexpected error sending this card. Make sure your internet connection is stable and your recipients' emails are valid.",
           'error'
-        )
-        setSendPending(false)
+        );
+        setSendPending(false);
       } else {
         emitToast(
           'Your GifGram is on its way!',
           'Redirecting to home...',
           'success'
-        )
-        setConfetti(true)
+        );
+        setConfetti(true);
         setTimeout(() => {
-          router.refresh()
-          router.push('/')
-        }, 3000)
+          router.refresh();
+          router.push('/');
+        }, 3000);
       }
-    })
-  }
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -90,17 +90,19 @@ export default function CardPreview({
             width: '100%',
             // textShadow: '0 0 12px rgba(0, 0, 0, 0.2);',
           }}
-          variant="send"
+          variant='send'
           disabled={
             !(
               cardData.title &&
-              cardData.recipientName &&
-              cardData.recipientEmail &&
+              cardData.recipients.length > 0 &&
+              cardData.recipients.every(
+                ({ name, email }) => name.length > 0 && email.length > 0
+              ) &&
               cardData.sendDate
             )
           }
           onClick={() => {
-            sendCard()
+            sendCard();
           }}
         >
           Send
@@ -113,7 +115,7 @@ export default function CardPreview({
             // textShadow: '0 0 12px rgba(0, 0, 0, 0.2);',
           }}
           onClick={() => {
-            setStage((prev) => prev + 1)
+            setStage((prev) => prev + 1);
           }}
           disabled={
             (stage === 0 && !cardData.mediaUrl) ||
@@ -125,5 +127,5 @@ export default function CardPreview({
         </Button>
       )}
     </div>
-  )
+  );
 }
