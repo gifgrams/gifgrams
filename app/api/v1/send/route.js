@@ -43,9 +43,11 @@ export async function POST(req) {
     return sgMail.send(msg);
   });
 
-  Promise.all(sgPromises).catch((err) => {
+  try {
+    const responses = await Promise.all(sgPromises);
+  } catch (err) {
     errorSending = true;
-  });
+  }
 
   if (errorSending)
     return NextResponse.json({ message: 'Sendgrid Error' }, { status: 400 });
