@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import TextInput from '@/ui/TextInput';
 import styles from '@/styles/components/RecipientsEditor.module.scss';
 import Button from '@/ui/Button';
-import UserPlus from '@/public/icons/userPlus.svg';
-import CloseSquare from '@/public/icons/closeSquare.svg';
+import UserPlus from '@/public/icons/UserPlus.svg';
+import CloseSquare from '@/public/icons/CloseSquare.svg';
 
 const RecipientsEditor = ({ recipients, setRecipients }) => {
   return (
