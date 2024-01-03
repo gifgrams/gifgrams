@@ -25,6 +25,7 @@ export default function CardContainer({
     sendDate: Date.now(),
   },
   cardId = null,
+  senderId = null,
 }) {
   return (
     <div
@@ -46,7 +47,7 @@ export default function CardContainer({
         setShowOnboarding={setShowOnboarding}
       />
       {!isPreview && !history && (
-        <CardControls isFront={isFront} cardId={cardId} />
+        <CardControls isFront={isFront} cardId={cardId} senderId={senderId} />
       )}
       {!isPreview && <GifGramsTag accentColor={cardData.accentColor} />}
     </div>
