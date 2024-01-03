@@ -24,7 +24,13 @@ export async function POST(req) {
     .update({ cards_sent: profile.cards_sent + 1 })
     .eq('id', profile.id);
 
-  const { supabaseError } = await supabase.from('card').insert(body);
+  const cardsToInsert = body.card_data.recipients.map((recipient) => ({
+    ...body,
+    id: crypto.randomUUID(),
+    card_data: { ...body.card_data, recipients: [recipient] },
+  }));
+  console.log('cardsToInsert', cardsToInsert);
+  const { supabaseError } = await supabase.from('card').insert(cardsToInsert);
 
   let errorSending = supabaseError;
 
