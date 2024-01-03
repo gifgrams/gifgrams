@@ -30,7 +30,7 @@ const RecipientsEditor = ({ recipients, setRecipients }) => {
           </button>
         </div>
       ))}
-      <Button onClick={addRecipient}>
+      <Button onClick={addRecipient} disabled={recipients.length >= 10}>
         New Recipient
         <UserPlus />
       </Button>

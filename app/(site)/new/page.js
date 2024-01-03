@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Confetti from 'react-confetti';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
@@ -26,8 +27,12 @@ const DEFAULT_FORM_DATA = {
   sendDate: moment().format('YYYY-MM-DD'),
 };
 
-export default function App() {
+export default function New() {
   const { width, height } = useWindowSize();
+
+  const searchParams = useSearchParams();
+  const name = searchParams.get('name');
+  const email = searchParams.get('email');
 
   const [stage, setStage] = useState(0);
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
@@ -37,8 +42,16 @@ export default function App() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    if (scrollRef) scrollRef.current.scrollTop = 0;
+    scrollRef.current.scrollTop = 0;
   }, [stage]);
+
+  useEffect(() => {
+    if (name && email)
+      setFormData((prev) => ({
+        ...prev,
+        recipients: [{ name, email, id: uuidv4() }],
+      }));
+  }, [name, email]);
 
   return (
     <div className={styles.container} ref={scrollRef}>
